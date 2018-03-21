@@ -31,7 +31,6 @@ function turnBlack() {
     inactiveButton = [document.getElementById("red-button"), document.getElementById("blue-button"), document.getElementById("white-button"), document.getElementById("green-button")];
 }
 
-
 function activateButton() {
     document.getElementById("background").style.backgroundColor = activeColor;
     activeButton.style.border = "solid 1px";
@@ -40,8 +39,21 @@ function activateButton() {
     inactiveButton[1].style.border = "none";
     inactiveButton[2].style.border = "none";
     inactiveButton[3].style.border = "none";
-    //document.getElementById("header").style.color = lightness;
-    //document.getElementsByClassName("test").style.color = lightness;
     document.documentElement.style.setProperty("--lightnesscolor", lightness);
 }
 
+function deactivateButton() {
+    document.getElementById("background").style.backgroundColor = "#aaa";
+}
+
+/*function hIn(obj) {
+    if(activeButton = obj) {
+        obj.innerHTML = "X";
+        obj.style.margin = "0";
+        obj.style.padding = "0";
+        obj.style.color = lightness;
+    }
+}
+function hOut(obj) {
+    obj.innerHTML = "";
+}*/

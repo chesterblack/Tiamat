@@ -1,5 +1,5 @@
 :root{
-    --lightnesscolor:#fff;
+    --lightnesscolor:#000;
 }
 
 #background{
@@ -13,29 +13,40 @@ body{
     margin: 0;
 }
 #container{
-    margin: 0 10px;
+    max-width: 1000px;
+    padding: 0 10px;
+    margin: 0 auto;
 }
-/* --- HEADER --- */
 h1{
     display: inline-block;
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     text-transform: uppercase;
     letter-spacing: 12px;
     float: right;
     margin: 7px 0 0 0;
-    
+    font-size: 32px;
 }
+p, a{
+    font-family: Roboto, sans-serif;
+    font-size: 26px;
+    margin: 0;
+    color: var(--lightnesscolor);
+}
+/* --- HEADER --- */
 div#header{
     padding-top: 10px; 
     padding-bottom: 15px;
-    border-bottom: 1px solid;
-    color: var(--lightnesscolor);
+    border-bottom: 1px solid var(--lightnesscolor);
+
 }
 #nav{
     padding-top: 10px;
     display:inline-block;
 }
-button{
+#nav a{
+    font-size:20px;
+}
+#header button{
     width: 30px;
     height: 30px;
     padding: 0;
@@ -63,7 +74,7 @@ button{
     display: inline-block;
 }
 /* --- CONTENT --- */
-#content{
+.content{
     margin: 0 auto;
 }
 .item{
@@ -73,4 +84,49 @@ button{
     display: inline-block;
     padding: 10px;
     text-align: center;
+    text-transform: uppercase;
+}
+.item a{
+    text-decoration: none;
+}
+.item p{
+    color:#000000;
+}
+.item img{
+    height:100px;
+    margin-bottom: 10px;
+    transform: translateZ(0);
+}
+/* --- SINGLE-ENTRY --- */
+.content{
+    padding: 500px 20px 0 20px;
+}
+.content h2{
+    display: inline-block;
+    font-family: Roboto, sans-serif;
+    text-transform: uppercase;
+    color: var(--lightnesscolor);
+    display: inline-block;
+    font-size: 70px;
+    margin: 0;
+}
+.price{
+    float: right;
+    display: inline-block;
+}
+.price p{
+    color: var(--lightnesscolor);
+    width: 100%;
+    padding: 0 5px;
+}
+.content a{
+    float: right;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 10px;
+    border: 1px solid var(--lightnesscolor);
+    padding: 5px;
 }
