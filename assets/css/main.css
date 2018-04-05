@@ -36,11 +36,17 @@ h1{
     margin: 7px 0 0 0;
     font-size: 32px;
 }
-p, a{
+p, a, li{
     font-family: Roboto, sans-serif;
     font-size: 26px;
     margin: 0;
     color: var(--lightnesscolor);
+}
+ul{
+    padding: 0;
+}
+li {
+    list-style: none;
 }
 /*--- CART ---*/
 #cart{
@@ -68,6 +74,16 @@ p, a{
 .cart-contents .checkout{
   margin-top:50px;
 }
+#cart-items button{
+    border: none;
+    padding: 0;
+    background: none;
+    font-family: Roboto, sans-serif;
+    font-size: 26px;
+    margin: 0 5px;
+    float: right;
+    color: var(--lightnesscolor);
+}
 /* --- HEADER --- */
 div#header{
     padding-top: 10px;
@@ -91,18 +107,23 @@ div#header{
 }
 #red-button{
     background-color: #b1372b;
+    border: 1px solid #b1372b;
 }
 #blue-button{
     background-color: #5c9abc;
+    border: 1px solid #5c9abc;
 }
 #green-button{
     background-color: #b1cc3d;
+    border: 1px solid #b1cc3d;
 }
 #white-button{
     background-color: #ffffff;
+    border: 1px solid #ffffff;
 }
 #black-button{
     background-color: #000000;
+    border: 1px solid #000000;
 }
 #logo{
     max-width: 50px;
