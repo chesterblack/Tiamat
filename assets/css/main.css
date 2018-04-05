@@ -1,16 +1,25 @@
 :root{
     --lightnesscolor:#000;
+    --activeColor:#aaa;
 }
-
+html{
+  min-height: 100%;
+  position: relative;
+}
 #background{
     width: 100%;
     height: 100%;
     position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: -1;
     background-color: #aaa;
 }
 body{
     margin: 0;
+    height: 100%;
 }
 #container{
     max-width: 1000px;
@@ -20,6 +29,7 @@ body{
 h1{
     display: inline-block;
     font-family: Roboto, sans-serif;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 12px;
     float: right;
@@ -32,9 +42,35 @@ p, a{
     margin: 0;
     color: var(--lightnesscolor);
 }
+/*--- CART ---*/
+#cart{
+  position:absolute;
+  top:20%;
+  left:0;
+  border-top:1px solid var(--lightnesscolor);
+  border-right:1px solid var(--lightnesscolor);
+  border-bottom:1px solid var(--lightnesscolor);
+  padding:20px;
+  background-color: var(--activeColor);
+}
+#cart-total{
+  text-decoration: none;
+}
+.cart-contents{
+  float: right;
+  padding-top: 15px;
+}
+#price-total{
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top:1px solid var(--lightnesscolor);
+}
+.cart-contents .checkout{
+  margin-top:50px;
+}
 /* --- HEADER --- */
 div#header{
-    padding-top: 10px; 
+    padding-top: 10px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--lightnesscolor);
 
@@ -73,8 +109,8 @@ div#header{
     float: right;
     display: inline-block;
 }
-/* --- CONTENT --- */
-.content{
+/* --- HOMEPAGE --- */
+.all-items{
     margin: 0 auto;
 }
 .item{
@@ -99,15 +135,16 @@ div#header{
 }
 /* --- SINGLE-ENTRY --- */
 .content{
-    padding: 500px 20px 0 20px;
+    padding: 500px 20px 20px 20px;
+    margin:0 auto;
 }
-.content h2{
+h2{
     display: inline-block;
     font-family: Roboto, sans-serif;
     text-transform: uppercase;
     color: var(--lightnesscolor);
     display: inline-block;
-    font-size: 70px;
+    font-size: 85px;
     margin: 0;
 }
 .price{
@@ -119,7 +156,7 @@ div#header{
     width: 100%;
     padding: 0 5px;
 }
-.content a{
+.cart-button{
     float: right;
     display: block;
     width: 100%;
@@ -129,4 +166,5 @@ div#header{
     margin-top: 10px;
     border: 1px solid var(--lightnesscolor);
     padding: 5px;
+    cursor:pointer;
 }

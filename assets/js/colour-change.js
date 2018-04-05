@@ -1,4 +1,20 @@
 var background = document.getElementById("background");
+var activeButton = sessionStorage.getItem("activeButton");
+var activeColor = sessionStorage.getItem("activeColor");
+var lightness = sessionStorage.getItem("lightness");
+
+if (activeColor === '#b1372b') {activeButton = document.getElementById("red-button");
+} else if (activeColor === '#5c9abc') {activeButton = document.getElementById("blue-button");
+} else if (activeColor === '#b1cc3d') {activeButton = document.getElementById("green-button");
+} else if (activeColor === '#000') {activeButton = document.getElementById("black-button");
+} else if (activeColor === '#fff') {activeButton = document.getElementById("white-button");}
+
+document.documentElement.style.setProperty("--lightnesscolor", lightness);
+document.documentElement.style.setProperty("--activeColor", activeColor);
+background.style.backgroundColor = activeColor;
+
+activeButton.style.border = "solid 1px";
+activeButton.style.borderColor = lightness;
 
 function turnRed() {
     activeButton = document.getElementById("red-button");
@@ -32,7 +48,7 @@ function turnBlack() {
 }
 
 function activateButton() {
-    document.getElementById("background").style.backgroundColor = activeColor;
+    background.style.backgroundColor = activeColor;
     activeButton.style.border = "solid 1px";
     activeButton.style.borderColor = lightness;
     inactiveButton[0].style.border = "none";
@@ -40,10 +56,13 @@ function activateButton() {
     inactiveButton[2].style.border = "none";
     inactiveButton[3].style.border = "none";
     document.documentElement.style.setProperty("--lightnesscolor", lightness);
+    document.documentElement.style.setProperty("--activeColor", activeColor);
+    sessionStorage.setItem("activeColor",activeColor);
+    sessionStorage.setItem("lightness",lightness);
 }
 
 function deactivateButton() {
-    document.getElementById("background").style.backgroundColor = "#aaa";
+    background.style.backgroundColor = "#aaa";
 }
 
 /*function hIn(obj) {

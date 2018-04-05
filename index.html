@@ -1,16 +1,33 @@
 <!doctype html>
 
 <html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/tiamat-new.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <meta charset="utf-8">
+
+    <title>T I A M A T</title>
+
+    <link rel="stylesheet" href="assets/css/main.css?v=1.0">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
 <body>
     
     <div id="background"></div>
     
+    <div id="cart">
+      <a href="cart.html" id="cart-total">0</a>
+    </div>
+    
     <div id="container">
             
         <script src="assets/js/header.js"></script>
         
-        <div id="content">
+        <div class="all-items">
             <div class="item">
                 <a href="#">
                     <img src="#">
@@ -36,7 +53,7 @@
                 </a>
             </div>
             <div class="item">
-                <a href="/tshirt.html">
+                <a href="tshirt.html">
                     <img src="#">
                     <p>
                         tshirt
@@ -61,6 +78,10 @@
             </div>
         </div>
     </div>
+    
+    <p id="cart-total"></p>
+    
     <script src="assets/js/colour-change.js"></script>
+    <script src="assets/js/cart.js"></script>
 </body>
 </html>
