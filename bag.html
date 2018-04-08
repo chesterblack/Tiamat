@@ -16,32 +16,34 @@
 </head>
 
 <body>
+
+    <div id="background"></div>
     
     <div id="cart">
       <a href="cart.html" id="cart-total">0</a>
     </div>
     
-    <div id="background"></div>
-      
     <div id="container">
-            
+    
         <script src="assets/js/header.js"></script>
         
-        <h2>CART:</h2>
+        <div class="main">
+            <img src="#">
         
-        <div class="cart-contents">
-          <ul id="cart-items"></ul>
-          <p id="price-total">empty</p>
-          <a class="cart-button checkout" href="">Checkout</a>
+            <div class="content">
+                <h2>
+                    Bag
+                </h2>
+                <div class="price">
+                    <p>Price: £24.99</p>
+
+                    <a class="cart-button" onclick="addToCart('bag'), addPrice(24.99)">add to cart</a>
+                </div>
+            </div>
         </div>
-        
-<!--
-        <button onclick="addToCart('jumper'), addPrice(10);"></button>
-        <button onclick="addToCart('shorts'), addPrice(15);"></button>
--->
-        
-    </div>
     
+    </div>
     <script src="assets/js/colour-change.js"></script>
     <script src="assets/js/cart.js"></script>
 </body>
+</html>

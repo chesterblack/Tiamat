@@ -61,10 +61,6 @@ function activateButton() {
     sessionStorage.setItem("lightness",lightness);
 }
 
-function deactivateButton() {
-    background.style.backgroundColor = "#aaa";
-}
-
 /*function hIn(obj) {
     if(activeButton = obj) {
         obj.innerHTML = "X";
