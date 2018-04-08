@@ -31,12 +31,12 @@
         
         <div class="cart-contents">
           <ul id="cart-items"></ul>
-          <p id="price-total">total price - £19.99</p>
+          <p id="price-total">empty</p>
           <a class="cart-button checkout" href="">Checkout</a>
         </div>
         
-        <button onclick="addToCart('jumper');"></button>
-        <button onclick="addToCart('shorts');"></button>
+        <button onclick="addToCart('jumper'), addPrice(10);"></button>
+        <button onclick="addToCart('shorts'), addPrice(15);"></button>
         
     </div>
     
