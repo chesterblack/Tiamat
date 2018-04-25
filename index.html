@@ -9,6 +9,7 @@
     <title>T I A M A T</title>
 
     <link rel="stylesheet" href="assets/css/main.css?v=1.0">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=1.0">
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -16,20 +17,22 @@
 </head>
 
 <body>
-    
+    <script src="assets/js/include.js"></script>
     <div id="background"></div>
-    
+
     <div id="cart">
-      <a href="cart.html" id="cart-total">0</a>
+      <a href="cart" id="cart-total">0</a>
     </div>
-    
+
     <div id="container">
-            
-        <script src="assets/js/header.js"></script>
-        
+
+
+        <div w3-include-html="includes/header.html"></div>
+
+
         <div class="all-items">
             <div class="item">
-                <a href="jumper.html">
+                <a href="jumper">
                     <img src="#">
                     <p>
                         jumper
@@ -37,15 +40,18 @@
                 </a>
             </div>
             <div class="item">
-                <a href="shoes.html">
+                <a href="shoes">
                     <img src="#">
                     <p>
                         shoes
                     </p>
                 </a>
+                <button class="pop-in" onclick="addToCart('shoes'), addPrice(49.99)">
+                  add to cart
+                </button>
             </div>
             <div class="item">
-                <a href="jeans.html">
+                <a href="jeans">
                     <img src="#">
                     <p>
                         jeans
@@ -53,7 +59,7 @@
                 </a>
             </div>
             <div class="item">
-                <a href="tshirt.html">
+                <a href="tshirt">
                     <img src="#">
                     <p>
                         tshirt
@@ -61,7 +67,7 @@
                 </a>
             </div>
             <div class="item">
-                <a href="hat.html">
+                <a href="hat">
                     <img src="#">
                     <p>
                         hat
@@ -69,7 +75,7 @@
                 </a>
             </div>
             <div class="item">
-                <a href="bag.html">
+                <a href="bag">
                     <img src="#">
                     <p>
                         bag
@@ -78,10 +84,13 @@
             </div>
         </div>
     </div>
-    
+
     <p id="cart-total"></p>
-    
-    <script src="assets/js/colour-change.js"></script>
+
+    <script>
+      includeHTML();
+    </script>
+    <script src="assets/js/colour-change.js"></script> 
     <script src="assets/js/cart.js"></script>
 </body>
 </html>

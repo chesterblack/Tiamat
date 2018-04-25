@@ -41,7 +41,7 @@ function addToCart(){
     var result = "";
     var i;
     for (i = 0; i < arguments.length; i++) {
-      result += "<li>" + arguments[i] + "<button onclick='addAnother("+ String(arguments[i]) +")'>+</button><button onclick='removeFromCart("+ arguments[i] +")'>-</button></li>";
+      result += "<li>" + arguments[i] + "<button onclick='addAnother("+ arguments[i] +")'>+</button><button onclick='removeFromCart("+ arguments[i] +")'>-</button></li>";
     }
     if(window.location.href.indexOf("cart") > -1) {
         cartItemList.innerHTML = cartStored;
@@ -67,7 +67,7 @@ function addPrice(price){
 }
 
 function addAnother(whatsAdded){
-    console.log(whatsAdded);
+//    console.log(String(whatsAdded));
 }
 
 function removeFromCart(){

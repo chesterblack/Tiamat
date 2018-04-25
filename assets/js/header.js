@@ -7,7 +7,7 @@ document.write('\
             <button onclick="turnWhite(),activateButton()" id="white-button"></button>\
             <button onclick="turnBlack(),activateButton()" id="black-button"></button>\
         </div>\
-        <a href="index.html"><img src="assets/images/tiamat-new.png" id="logo">\
-        <h1 id="header">Tiamat</h1></a>\
+        <a href="../"><img src="assets/images/tiamat-new.png" id="logo" class="logo">\
+        <h1 class="logo" id="header">Tiamat</h1></a>\
     </div>\
 ');

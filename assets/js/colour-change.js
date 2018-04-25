@@ -13,7 +13,7 @@ document.documentElement.style.setProperty("--lightnesscolor", lightness);
 document.documentElement.style.setProperty("--activeColor", activeColor);
 background.style.backgroundColor = activeColor;
 
-activeButton.style.border = "solid 1px";
+activeButton.style.border = "solid 1px var(--lightnesscolor)";
 activeButton.style.borderColor = lightness;
 
 function turnRed() {

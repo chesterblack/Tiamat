@@ -50,8 +50,8 @@ li {
 }
 /*--- CART ---*/
 #cart{
-  position:absolute;
-  top:20%;
+  position:fixed;
+  bottom:0;
   left:0;
   border-top:1px solid var(--lightnesscolor);
   border-right:1px solid var(--lightnesscolor);
@@ -87,9 +87,25 @@ li {
 /* --- HEADER --- */
 div#header{
     padding-top: 10px;
-    padding-bottom: 15px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--lightnesscolor);
-
+}
+nav ul{
+  position: relative;
+  top:-32px;
+  margin-bottom: -38px;
+}
+nav li{
+  background-color: var(--activeColor);
+  display: inline-block;
+  padding: 0 5px;
+  margin: 0 20px;
+}
+nav a{
+  text-decoration: none;
+}
+nav a:hover{
+  border-bottom: 1px solid var(--lightnesscolor);
 }
 #nav{
     padding-top: 10px;
@@ -134,15 +150,17 @@ div#header{
 /* --- HOMEPAGE --- */
 .all-items{
     margin: 0 auto;
+    padding-top: 10px;
 }
 .item{
     background-color: #fff;
     width: 100px;
-    margin: 20px;
+    margin: 10px 20px 32px 20px;
     display: inline-block;
     padding: 10px;
     text-align: center;
     text-transform: uppercase;
+    vertical-align: top;
 }
 .item a{
     text-decoration: none;
@@ -154,6 +172,23 @@ div#header{
     height:100px;
     margin-bottom: 10px;
     transform: translateZ(0);
+}
+.pop-in{
+  background-color: #ffffff;
+  border: none;
+  margin: 0 auto;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  margin-top: 10px;
+  display: none;
+  cursor: pointer;
+}
+.item:hover .pop-in{
+  display: block;
+}
+.item:hover{
+  margin-bottom:0;
+  margin-top:10px;
 }
 /* --- SINGLE-ENTRY --- */
 .content{
@@ -189,4 +224,8 @@ h2{
     border: 1px solid var(--lightnesscolor);
     padding: 5px;
     cursor:pointer;
+}
+.cart-button:hover{
+  background-color: var(--lightnesscolor);
+  color: var(--activeColor);
 }

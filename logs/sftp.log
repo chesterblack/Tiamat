@@ -1,0 +1,15 @@
+Apr 25 23:02:15 10.71.50.8 u93306654 Connection from 10.71.50.8 port 27766 on 217.160.63.105 port 22
+Apr 25 23:02:16 10.71.50.8 u93306654 Accepted password for u93306654 from 10.71.50.8 port 27766 ssh2
+Apr 25 23:02:16 10.71.50.8 u93306654 Starting session: subsystem 'sftp' for u93306654 from 10.71.50.8 port 27766
+Apr 25 23:02:16 10.71.50.8 u93306654 session opened for local user u93306654 from [10.71.50.8]
+Apr 25 23:02:16 10.71.50.8 u93306654 open "/" flags READ mode 0100000
+Apr 25 23:02:16 10.71.50.8 u93306654 close "/" bytes read 0 written 0
+Apr 25 23:02:16 10.71.50.8 u93306654 [10.71.50.8|get|0|0|0|0|0|2f|]
+Apr 25 23:02:16 10.71.50.8 u93306654 open "/" flags READ mode 0100000
+Apr 25 23:02:16 10.71.50.8 u93306654 close "/" bytes read 0 written 0
+Apr 25 23:02:16 10.71.50.8 u93306654 [10.71.50.8|get|0|0|0|0|0|2f|]
+Apr 25 23:03:33 10.71.50.8 u93306654 open "/" flags READ mode 0100000
+Apr 25 23:03:33 10.71.50.8 u93306654 close "/" bytes read 0 written 0
+Apr 25 23:03:33 10.71.50.8 u93306654 [10.71.50.8|get|0|0|0|0|0|2f|]
+Apr 25 23:09:41 10.71.50.8 u93306654 Connection closed by 10.71.50.8
+Apr 25 23:09:41 10.71.50.8 u93306654 session closed for local user u93306654 from [10.71.50.8]
