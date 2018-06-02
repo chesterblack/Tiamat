@@ -2,6 +2,9 @@ var background = document.getElementById("background");
 var activeButton = sessionStorage.getItem("activeButton");
 var activeColor = sessionStorage.getItem("activeColor");
 var lightness = sessionStorage.getItem("lightness");
+if (lightness === "#000") {
+  var oppositeLightness = "#eaeaea"
+} else {var oppositeLightness = "#383838"};
 
 if (activeColor === '#b1372b') {activeButton = document.getElementById("red-button");
 } else if (activeColor === '#5c9abc') {activeButton = document.getElementById("blue-button");
@@ -10,6 +13,7 @@ if (activeColor === '#b1372b') {activeButton = document.getElementById("red-butt
 } else if (activeColor === '#fff') {activeButton = document.getElementById("white-button");}
 
 document.documentElement.style.setProperty("--lightnesscolor", lightness);
+document.documentElement.style.setProperty("--oppositeLightnessColor", oppositeLightness);
 document.documentElement.style.setProperty("--activeColor", activeColor);
 background.style.backgroundColor = activeColor;
 
@@ -59,6 +63,10 @@ function activateButton() {
     document.documentElement.style.setProperty("--activeColor", activeColor);
     sessionStorage.setItem("activeColor",activeColor);
     sessionStorage.setItem("lightness",lightness);
+    if (lightness === "#000") {
+      var oppositeLightness = "#eaeaea"
+    } else {var oppositeLightness = "#383838"};
+    document.documentElement.style.setProperty("--oppositeLightnessColor", oppositeLightness);
 }
 
 /*function hIn(obj) {

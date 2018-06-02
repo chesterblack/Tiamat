@@ -1,6 +1,7 @@
 :root{
     --lightnesscolor:#000;
     --activeColor:#aaa;
+    --oppositeLightnessColor:#fff;
 }
 html{
   min-height: 100%;
@@ -153,7 +154,6 @@ nav a:hover{
     padding-top: 10px;
 }
 .item{
-    background-color: #fff;
     width: 100px;
     margin: 10px 20px 32px 20px;
     display: inline-block;
@@ -162,11 +162,15 @@ nav a:hover{
     text-transform: uppercase;
     vertical-align: top;
 }
+.item:hover{
+  border: 1px solid var(--lightnesscolor);
+  padding: 9px;
+}
 .item a{
     text-decoration: none;
 }
 .item p{
-    color:#000000;
+    color:var(--lightnesscolor);
 }
 .item img{
     height:100px;
@@ -174,7 +178,8 @@ nav a:hover{
     transform: translateZ(0);
 }
 .pop-in{
-  background-color: #ffffff;
+  background-color: var(--lightnesscolor);
+  color: var(--activeColor);
   border: none;
   margin: 0 auto;
   font-family: Roboto, sans-serif;
@@ -182,9 +187,17 @@ nav a:hover{
   margin-top: 10px;
   display: none;
   cursor: pointer;
+  width: 100%;
+  padding: 2px 7px;
 }
 .item:hover .pop-in{
   display: block;
+}
+.pop-in:hover{
+  background-color: var(--activeColor);
+  color: var(--lightnesscolor);
+  border: 1px solid var(--lightnesscolor);
+  padding: 1px 6px!important;
 }
 .item:hover{
   margin-bottom:0;
