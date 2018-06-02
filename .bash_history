@@ -42,3 +42,5 @@ cd /
 apt-get install nodejs-legacy
 pwd
 cd root
+pwd
+ll
