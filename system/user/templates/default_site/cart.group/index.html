@@ -1,0 +1,30 @@
+{embed="/_includes/header"}
+
+<div id="cart">
+  <a href="/cart" id="cart-total">0</a>
+</div>
+
+<div id="background"></div>
+
+<div class="container">
+
+    <div w3-include-html="includes/header.html"></div>
+
+    <h2>CART:</h2>
+
+    <div class="cart-contents">
+      <ul id="cart-items"></ul>
+      <p id="price-total">empty</p>
+      <a class="cart-button checkout" href="">Checkout</a>
+    </div>
+
+<!--
+    <button onclick="addToCart('jumper'), addPrice(10);"></button>
+    <button onclick="addToCart('shorts'), addPrice(15);"></button>
+-->
+
+</div>
+
+<script src="assets/js/colour-change.js"></script> <script>includeHTML();</script>
+<script src="assets/js/cart.js"></script>
+</body>

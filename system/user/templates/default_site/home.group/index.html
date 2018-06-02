@@ -1,110 +1,33 @@
-<!doctype html>
+    {embed="/_includes/header"}
 
-<html lang="en">
-<head>
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/tiamat-new.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
-    <meta charset="utf-8">
-
-    <title>T I A M A T</title>
-
-    <link rel="stylesheet" href="assets/css/main.css?v=1.0">
-    <link rel="stylesheet" href="assets/css/responsive.css?v=1.0">
-
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
-</head>
-
-<body>
-    <script src="assets/js/include.js"></script>
     <div id="background"></div>
 
     <div id="cart">
-      <a href="cart" id="cart-total">0</a>
+      <a href="/cart" id="cart-total">0</a>
     </div>
 
-    <div id="container">
-
-
-        <div w3-include-html="includes/header.html"></div>
-
+    <div class="container">
 
         <div class="all-items">
+            {exp:channel:entries channel="products"}
             <div class="item">
-                <a href="jumper">
+                <a href="{url_title_path="products/"}">
                     <img src="#">
                     <p>
-                        jumper
+                        {title}
                     </p>
                 </a>
-                <button class="pop-in" onclick="addToCart('jumper'), addPrice(29.99)">
+                <button class="pop-in" onclick="addToCart('{title}'), addPrice({price})">
                   add to cart
                 </button>
             </div>
-            <div class="item">
-                <a href="shoes">
-                    <img src="#">
-                    <p>
-                        shoes
-                    </p>
-                </a>
-                <button class="pop-in" onclick="addToCart('shoes'), addPrice(49.99)">
-                  add to cart
-                </button>
-            </div>
-            <div class="item">
-                <a href="jeans">
-                    <img src="#">
-                    <p>
-                        jeans
-                    </p>
-                </a>
-                <button class="pop-in" onclick="addToCart('jeans'), addPrice(19.99)">
-                  add to cart
-                </button>
-            </div>
-            <div class="item">
-                <a href="tshirt">
-                    <img src="#">
-                    <p>
-                        tshirt
-                    </p>
-                </a>
-                <button class="pop-in" onclick="addToCart('tshirt'), addPrice(9.99)">
-                  add to cart
-                </button>
-            </div>
-            <div class="item">
-                <a href="hat">
-                    <img src="#">
-                    <p>
-                        hat
-                    </p>
-                </a>
-                <button class="pop-in" onclick="addToCart('hst'), addPrice(4.99)">
-                  add to cart
-                </button>
-            </div>
-            <div class="item">
-                <a href="bag">
-                    <img src="#">
-                    <p>
-                        bag
-                    </p>
-                </a>
-                <button class="pop-in" onclick="addToCart('bag'), addPrice(24.99)">
-                  add to cart
-                </button>
-            </div>
+            {/exp:channel:entries}
         </div>
+
     </div>
 
     <p id="cart-total"></p>
 
-    <script>
-      includeHTML();
-    </script>
     <script src="assets/js/colour-change.js"></script>
     <script src="assets/js/cart.js"></script>
 </body>
