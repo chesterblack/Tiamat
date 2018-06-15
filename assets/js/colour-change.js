@@ -2,6 +2,7 @@ var background = document.getElementById("background");
 var activeButton = sessionStorage.getItem("activeButton");
 var activeColor = sessionStorage.getItem("activeColor");
 var lightness = sessionStorage.getItem("lightness");
+var bgswitch = 0;
 if (lightness === "#000") {
   var oppositeLightness = "#eaeaea"
 } else {var oppositeLightness = "#383838"};
@@ -53,6 +54,7 @@ function turnBlack() {
 
 function activateButton() {
     background.style.backgroundColor = activeColor;
+    // background.classList.toggle("scale-up-hor-left");
     activeButton.style.border = "solid 1px";
     activeButton.style.borderColor = lightness;
     inactiveButton[0].style.border = "none";
@@ -67,6 +69,11 @@ function activateButton() {
       var oppositeLightness = "#eaeaea"
     } else {var oppositeLightness = "#383838"};
     document.documentElement.style.setProperty("--oppositeLightnessColor", oppositeLightness);
+    if (bgswitch === 0){
+      bgswitch = 1;
+    } else {
+      bgswitch = 0;
+    };
 }
 
 /*function hIn(obj) {
