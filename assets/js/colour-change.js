@@ -1,4 +1,5 @@
 var background = document.getElementById("background");
+var background2 = document.getElementById("background2");
 var activeButton = sessionStorage.getItem("activeButton");
 var activeColor = sessionStorage.getItem("activeColor");
 var lightness = sessionStorage.getItem("lightness");
@@ -17,6 +18,7 @@ document.documentElement.style.setProperty("--lightnesscolor", lightness);
 document.documentElement.style.setProperty("--oppositeLightnessColor", oppositeLightness);
 document.documentElement.style.setProperty("--activeColor", activeColor);
 background.style.backgroundColor = activeColor;
+background2.style.backgroundColor = activeColor;
 
 activeButton.style.border = "solid 1px var(--lightnesscolor)";
 activeButton.style.borderColor = lightness;
@@ -53,7 +55,6 @@ function turnBlack() {
 }
 
 function activateButton() {
-    background.style.backgroundColor = activeColor;
     // background.classList.toggle("scale-up-hor-left");
     activeButton.style.border = "solid 1px";
     activeButton.style.borderColor = lightness;
@@ -69,10 +70,20 @@ function activateButton() {
       var oppositeLightness = "#eaeaea"
     } else {var oppositeLightness = "#383838"};
     document.documentElement.style.setProperty("--oppositeLightnessColor", oppositeLightness);
+    background.classList.toggle("scale-up-hor-left");
+    background2.classList.toggle("scale-up-hor-left");
     if (bgswitch === 0){
+      background.style.backgroundColor = activeColor;
+      background2.style.zIndex = "-10";
+      background.style.zIndex= "-5";
       bgswitch = 1;
+      console.log(bgswitch);
     } else {
+      background2.style.backgroundColor = activeColor;
+      background.style.zIndex = "-10";
+      background2.style.zIndex= "-5";
       bgswitch = 0;
+      console.log(bgswitch);
     };
 }
 
