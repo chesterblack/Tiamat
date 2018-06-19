@@ -1,3 +1,11 @@
 @media screen and (max-width: 650px) {
-
+  #nav-left{
+    display: none;
+  }
+  #nav-right{
+    float: none;
+  }
+  #header{
+    text-align: center;
+  }
 }

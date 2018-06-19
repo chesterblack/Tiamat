@@ -4,8 +4,12 @@ var activeButton = sessionStorage.getItem("activeButton");
 var activeColor = sessionStorage.getItem("activeColor");
 var lightness = sessionStorage.getItem("lightness");
 var bgswitch = 0;
+var transparancyColor = "rgba(255,255,255,0.3)"
+if (activeColor === "#000") {
+  var transparancyColor = "rgba(0,0,0,0.3);";
+}
 if (lightness === "#000") {
-  var oppositeLightness = "#eaeaea"
+  var oppositeLightness = "#eaeaea";
 } else {var oppositeLightness = "#383838"};
 
 if (activeColor === '#b1372b') {activeButton = document.getElementById("red-button");
@@ -85,6 +89,12 @@ function activateButton() {
       bgswitch = 0;
       console.log(bgswitch);
     };
+    if(activeColor === "#000"){
+      transparancyColor = "rgba(255,255,255,0.1)";
+    } else {
+      transparancyColor = "rgba(0,0,0,0.3)";
+    }
+    document.documentElement.style.setProperty("--transparancyColor", transparancyColor);
 }
 
 /*function hIn(obj) {
