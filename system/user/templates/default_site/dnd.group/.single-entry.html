@@ -1,0 +1,16 @@
+{exp:channel:entries
+    channel="dnd-resources"
+    limit="1"
+    url_title="{last_segment}"
+    show_expired="no"
+    show_future_entries="no"
+    status="NOT closed"
+  }
+  
+  {if resource-file}
+  <button>
+      <a href="{resource-file}">download</a>
+  </button
+  {/if}
+  
+{/exp:channel:entries}
