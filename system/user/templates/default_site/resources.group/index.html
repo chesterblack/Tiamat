@@ -5,10 +5,16 @@
     show_future_entries="no"
     status="NOT closed"
   }
-  
 
+    {if resource-html}
         {resource-html}
+    {/if}
 
+    {if resource-file}
+        <button>
+        <a href="{resource-file}" target="_blank">
+            Download
+        </a>
+    {/if}
 
-  
 {/exp:channel:entries}
