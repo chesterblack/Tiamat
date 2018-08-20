@@ -1,3 +1,37 @@
-@media screen and (max-width: 650px) {
-
+@media only screen and (max-width: 650px) {
+  .mob-hide{
+    display: none;
+  }
+  #nav-right{
+    float: none;
+  }
+  .container{
+    text-align: center;
+  }
+  .hamburger {
+    display: block;
+    float: left;
+    margin-top: 20px;
+  }
+  #mobile-menu.open-menu{
+    display: block;
+  }
+  #mobile-menu{
+    background-color: var(--transparancyColor);
+    width: 200px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid var(--lightnesscolor);
+  }
+  .menu-inner{
+    width: 100%;
+  }
+  #mobile-menu .colour-buttons{
+    margin-top: 133px;
+  }
+  #mobile-menu li{
+    margin: 10px;
+  }
 }

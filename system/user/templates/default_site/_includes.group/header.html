@@ -5,11 +5,15 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/tiamat-new.png">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>T I A M A T</title>
 
+    <link rel="stylesheet" href="/assets/css/hamburgers.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/responsive.css">
+
+    <script src="/assets/js/hamburger.js"></script>
 
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
@@ -18,25 +22,45 @@
 
 <body>
 
-<div class="container">
 <div id="header">
-  <div id="nav">
-      <button onclick="turnRed(),activateButton()" id="red-button"></button>
-      <button onclick="turnBlue(),activateButton()" id="blue-button"></button>
-      <button onclick="turnGreen(),activateButton()" id="green-button"></button>
-      <button onclick="turnWhite(),activateButton()" id="white-button"></button>
-      <button onclick="turnBlack(),activateButton()" id="black-button"></button>
-  </div>
-  <a href="/"><img src="assets/images/tiamat-new.png" id="logo" class="logo">
-  <h1 class="logo" id="header">Tiamat</h1></a>
-</div>
+<div class="container">
 
-<nav>
-    <ul>
-        <li><a href="/">home</a></li>
-        <li><a href="/cart">cart</a></li>
-    </ul>
-</nav>
+  <div id="nav-left">
+    <div class="mob-hide">
+        <div class="colour-buttons">
+          <button class="colour-button" onclick="turnRed(),activateButton()" id="red-button"></button>
+          <button class="colour-button" onclick="turnBlue(),activateButton()" id="blue-button"></button>
+          <button class="colour-button" onclick="turnGreen(),activateButton()" id="green-button"></button>
+          <button class="colour-button" onclick="turnWhite(),activateButton()" id="white-button"></button>
+          <button class="colour-button" onclick="turnBlack(),activateButton()" id="black-button"></button>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/cart">cart</a></li>
+            </ul>
+        </nav>
+      </div>
+  </div>
+
+  <div id="mobile-menu">
+    {embed="/_includes/mobile-menu"}
+  </div>
+
+  <button class="hamburger hamburger--collapse" id="hamburger" type="button" onclick="expand()">
+    <span class="hamburger-box">
+      <span class="hamburger-inner"></span>
+    </span>
+  </button>
+
+  <div id="nav-right">
+    <a href="/">
+      <img src="/assets/images/tiamat-new.png" id="logo" class="logo">
+      <h1 class="logo" id="header">Tiamat</h1>
+    </a>
+  </div>
+
+</div>
 </div>
 
 <div id="background"></div>
