@@ -34,7 +34,7 @@ function moveDivs(event)
         
     {exp:channel:entries channel="characters"}
         document.getElementById("{url_title}").style.left=x+"px";
-        document.getElementById("{url_title}").style.top=(y-80)+"px";
+        document.getElementById("{url_title}").style.top=(y-50)+"px";
     {/exp:channel:entries}
 
     }
@@ -63,7 +63,7 @@ function moveDivs(event)
                 <h3>{title}</h3>
 
                 <p>
-                    {exp:low_replace regex="yes" find="a class=QUOTE(.+)QUOTE" replace="a href='/characters/profile/$1' onmouseover=QUOTEshowBox('$1')QUOTE onmouseout=QUOTEshowBox('$1')QUOTE"}
+                    {exp:low_replace regex="yes" find="a class=QUOTE(.*?)QUOTE" replace="a href='/characters/profile/$1' target='_blank' onmouseover=QUOTEshowBox('$1')QUOTE onmouseout=QUOTEshowBox('$1')QUOTE"}
                         {what-happened}
                     {/exp:low_replace}
                 </p>
