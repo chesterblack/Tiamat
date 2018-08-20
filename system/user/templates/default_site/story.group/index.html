@@ -1,0 +1,52 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/tiamat-new.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+    <meta charset="utf-8">
+
+    <title>T I A M A T</title>
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/story.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="h1-container" id="top">
+            <h1>The Story So Far...</h1>
+        </div>
+        
+        <div class="menu">
+            {exp:channel:entries channel="story" status="not closed" sort="asc"}
+                <li><a href="#{url_title}">{title}</a></li>
+            {/exp:channel:entries}
+        </div>
+
+        {exp:channel:entries channel="story" status="not closed" sort="asc"}
+            <div class="chapter" id="{url_title}">
+
+                <h2>Chapter {chapter}</h2>
+
+                {!--<div class="top-arrow">
+                    <a href="#top">^</a>
+                </div>--}
+
+                <h3>{title}</h3>
+
+                <p>
+                    {what-happened}
+                </p>
+
+            </div>
+        {/exp:channel:entries}
+    </div>
+
+</body>
+</html>
