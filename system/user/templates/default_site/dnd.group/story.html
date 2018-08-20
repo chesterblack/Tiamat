@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/tiamat-new.png">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
     <meta charset="utf-8">
 
     <title>T I A M A T</title>
@@ -19,22 +19,32 @@
 
 <body>
     <div class="container">
-        <div class="h1-container">
+        <div class="h1-container" id="top">
             <h1>The Story So Far...</h1>
+        </div>
+        
+        <div class="menu">
+            {exp:channel:entries channel="story" status="not closed" sort="asc"}
+                <li><a href="#{url_title}">{title}</a></li>
+            {/exp:channel:entries}
         </div>
 
         {exp:channel:entries channel="story" status="not closed" sort="asc"}
-        <div class="chapter">
+            <div class="chapter" id="{url_title}">
 
-            <h2>Chapter {chapter}</h2>
+                <h2>Chapter {chapter}</h2>
 
-            <h3>{title}</h3>
+                <div class="top-arrow">
+                    <a href="#top">^</a>
+                </div>
 
-            <p>
-                {what-happened}
-            </p>
+                <h3>{title}</h3>
 
-        </div>
+                <p>
+                    {what-happened}
+                </p>
+
+            </div>
         {/exp:channel:entries}
     </div>
 
