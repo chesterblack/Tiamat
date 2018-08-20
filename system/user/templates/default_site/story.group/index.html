@@ -15,7 +15,27 @@
     <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
     <![endif]-->
+
 </head>
+
+<script>
+
+function showBox(profile){
+    console.log(profile);
+    document.getElementById(profile).classList.toggle("hidden");
+}
+
+function moveDivs(event)
+    {
+        x=event.screenX;
+        y=event.screenY;
+        
+    {exp:channel:entries channel="characters"}
+        document.getElementById("{url_title}").style.left=x+"px";
+        document.getElementById("{url_title}").style.top=(y-80)+"px";
+    {/exp:channel:entries}
+    }
+</script>
 
 <body>
     <div class="container">
@@ -41,12 +61,21 @@
                 <h3>{title}</h3>
 
                 <p>
-                    {what-happened}
+                    {exp:low_replace regex="yes" find="class='(.+)'" replace="href='/characters/profile/$1' onmouseover=QUOTEshowBox('$1')QUOTE onmouseout=QUOTEshowBox('$1')QUOTE"}
+                        {what-happened}
+                    {/exp:low_replace}
                 </p>
 
             </div>
         {/exp:channel:entries}
     </div>
+
+{exp:channel:entries channel="characters"}
+    <div class="profile-box hidden" id="{url_title}">
+        <h2>{title}</h2>
+        <p>{standfirst}</p>
+    </div>
+{/exp:channel:entries}
 
 </body>
 </html>
