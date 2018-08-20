@@ -33,7 +33,7 @@ function moveDivs(event)
         
     {exp:channel:entries channel="characters"}
         document.getElementById("{url_title}").style.left=x+"px";
-        document.getElementById("{url_title}").style.top=y+"px";
+        document.getElementById("{url_title}").style.top=(y-80)+"px";
     {/exp:channel:entries}
     }
 </script>
@@ -62,7 +62,7 @@ function moveDivs(event)
                 <h3>{title}</h3>
 
                 <p>
-                    test test <a onmouseover="showBox('addam-westbeard')" onmouseout="showBox('addam-westbeard')">Addam</a> tesst
+                    test test <a href="characters/profile/addam-westbeard" onmouseover="showBox('addam-westbeard')" onmouseout="showBox('addam-westbeard')">Addam</a> tesst
                 </p>
 
             </div>
@@ -71,7 +71,8 @@ function moveDivs(event)
 
         {exp:channel:entries channel="characters"}
             <div class="profile-box hidden" id="{url_title}">
-                {title}
+                <h2>{title}</h2>
+                <p>{standfirst}</p>
             </div>
         {/exp:channel:entries}
     </div>
