@@ -1,0 +1,28 @@
+h1{
+    float: none;
+    margin: 25px auto 20px auto;
+}
+.h1-container{
+    text-align: center;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 25px;
+}
+h2{
+    font-weight: 900;
+    font-size: 21px;
+    letter-spacing: -0.5px
+}
+h3{
+    font-size: 43px;
+    font-family: 'Roboto',sans-serif;
+    margin: 0;
+    margin-bottom: 20px;
+}
+.chapter{
+    padding-bottom: 30px;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 30px;
+}
+em{
+    margin-left: 35px;
+}
