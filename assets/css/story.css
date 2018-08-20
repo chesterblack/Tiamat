@@ -62,3 +62,13 @@ em{
     text-decoration: none;
     font-weight: 100;
 }
+
+
+/* POPUP PROFILE BOXES */
+.hidden{
+    display: none;
+}
+.profile-box{
+    border:1px solid #000000;
+    position: absolute;
+}

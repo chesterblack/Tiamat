@@ -18,7 +18,28 @@
 </head>
 
 <body>
-    <div class="container">
+
+<script>
+
+function showBox(profile){
+    console.log(profile);
+    document.getElementById(profile).classList.toggle("hidden");
+}
+
+function moveDivs(event)
+    {
+        x=event.screenX;
+        y=event.screenY;
+        
+    {exp:channel:entries channel="characters"}
+        document.getElementById("{url_title}").style.left=x+"px";
+        document.getElementById("{url_title}").style.top=y+"px";
+    {/exp:channel:entries}
+    }
+</script>
+
+
+    <div class="container" onmousemove="moveDivs(event)">
         <div class="h1-container" id="top">
             <h1>The Story So Far...</h1>
         </div>
@@ -41,7 +62,7 @@
                 <h3>{title}</h3>
 
                 <p>
-                    test test <a href="/characters/profile/addam-westbeard">Addam</a> tesst
+                    test test <a onmouseover="showBox('addam-westbeard')" onmouseout="showBox('addam-westbeard')">Addam</a> tesst
                 </p>
 
             </div>
@@ -49,8 +70,8 @@
 
 
         {exp:channel:entries channel="characters"}
-            <div class="profile-box" id="{url_title}">
-                
+            <div class="profile-box hidden" id="{url_title}">
+                {title}
             </div>
         {/exp:channel:entries}
     </div>
