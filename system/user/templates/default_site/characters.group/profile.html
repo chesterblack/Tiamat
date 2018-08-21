@@ -1,4 +1,15 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+	{embed=/_includes/dnd-header}
+	{exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
+		<title>{title}</title>
+	{/exp:channel:entries}
+</head>
+<body>
+	
+</body>
+</html>
 
 {exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
 	<h1>{title}</h1>
