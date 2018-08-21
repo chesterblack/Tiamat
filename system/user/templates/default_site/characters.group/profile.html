@@ -7,10 +7,20 @@
 	{/exp:channel:entries}
 </head>
 <body>
-	
+	<div class="container profile">
+		{exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
+			<h1>
+				{title}
+			</h1>
+			<h3>
+				{standfirst}
+			</h3>
+			{key-points}
+			<h2 class="key-points">
+				{key-points:info}
+			</h2>
+			{/key-points}
+		{/exp:channel:entries}
+	</div>
 </body>
 </html>
-
-{exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
-	<h1>{title}</h1>
-{/exp:channel:entries}
