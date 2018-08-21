@@ -70,7 +70,7 @@ em{
 }
 .profile-box{
     border:1px solid #000000;
-    position: absolute;
+    position: fixed;
     padding: 10px;
     background-color: rgba(212, 212, 212, 0.9)
 }
