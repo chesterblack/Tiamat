@@ -1,3 +1,6 @@
+.clearfix{
+    clear: both;
+}
 h1{
     float: none;
     margin: 25px auto 20px auto;
@@ -33,19 +36,20 @@ em{
 .menu{
     text-align: center;
     margin-bottom: 40px;
-}
-.menu li{
-    display: inline-block;
-    margin-bottom: 10px;
-}
-.menu a{
-    font-weight: 100;
-    text-decoration: none;
-    border-bottom: 1px solid #000000;
-    margin: 0 15px;
-}
-.menu a:hover{
-    border-bottom: 2px solid #000000;
+
+    li{
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+    a{
+        font-weight: 100;
+        text-decoration: none;
+        border-bottom: 1px solid #000000;
+        margin: 0 15px;
+    }
+    a:hover{
+        border-bottom: 2px solid #000000;
+    }
 }
 .top-arrow{
     text-align: center;
@@ -55,13 +59,14 @@ em{
     border: 1px solid #000000;
     float: right;
     padding-top: 4px;
-}
-.top-arrow a:hover{
-    font-weight: 900;
-}
-.top-arrow a{
-    text-decoration: none;
-    font-weight: 100;
+
+    a:hover{
+        font-weight: 900;
+    }
+    a{
+        text-decoration: none;
+        font-weight: 100;
+    }
 }
 
 
@@ -73,19 +78,13 @@ em{
     border:1px solid #000000;
     position: fixed;
     padding: 10px;
-    background-color: rgba(212, 212, 212, 0.9)
+    background-color: rgba(212, 212, 212, 0.9);
+
+    p{
+        font-size: 18px;
+    }
 }
-.profile-box p{
-    font-size: 18px;
-}
-h4{
-    font-family: 'Roboto', sans-serif;
-    color:#ffffff;
-    font-size: 18px;
-    text-transform: uppercase;
-    margin: 0;
-}
-.profile-box{
+.categories{
     ul{
         float: right;
         margin: 0;
@@ -96,10 +95,43 @@ h4{
         padding: 0 5px;
         border-radius: 5px;
     }
+    h4{
+        font-family: 'Roboto', sans-serif;
+        color:#ffffff;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin: 0;
+    }
 }
 
 /* PROFILE */
-.key-points:nth-last-child(n+2)::after{
-    content: "•";
-    margin: 0 10px;
+.profile{
+    .key-point:nth-last-child(n+2)::after{
+        content: "•";
+        margin: 0 10px;
+    }
+    .left{
+        max-width: 60%;
+        float: left;
+    }
+    .right{
+        max-width: 39%;
+        float: right;
+    }
+    img{
+        margin-top: 25px;
+        max-width: 100%;
+    }
+    .key-points{
+        padding: 10px;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        margin: 10px 0 20px 0;
+    }
+    .extra-padding{
+        padding-bottom: 30px;
+    }
+    .center{
+        text-align: center;
+    }
 }
