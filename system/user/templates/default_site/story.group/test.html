@@ -2,9 +2,21 @@
 
 <html lang="en">
 <head>
-    {embed=/_includes/dnd-header}
-    <title>The story so far...</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/tiamat-new.png">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+    <meta charset="utf-8">
+
+    <title>T I A M A T</title>
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/dnd.css">
+    <link rel="stylesheet" href="/assets/css/responsive.css">
+
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
 </head>
+
 <body>
 
 <script>
@@ -21,11 +33,11 @@ function moveDivs(event)
         
     {exp:channel:entries channel="characters"}
         document.getElementById("{url_title}").style.left=x+"px";
-        document.getElementById("{url_title}").style.top=(y-60)+"px";
+        document.getElementById("{url_title}").style.top=(y-80)+"px";
     {/exp:channel:entries}
-
     }
 </script>
+
 
     <div class="container" onmousemove="moveDivs(event)">
         <div class="h1-container" id="top">
@@ -50,28 +62,22 @@ function moveDivs(event)
                 <h3>{title}</h3>
 
                 <p>
-                    {exp:low_replace regex="yes" find="a class=QUOTE(.*?)QUOTE" replace="a href='/characters/profile/$1' target='_blank' onmouseover=QUOTEshowBox('$1')QUOTE onmouseout=QUOTEshowBox('$1')QUOTE"}
-                        {what-happened}
+                    {exp:low_replace regex="yes" find="class='(.+)'" replace="href='/characters/profile/$1' onmouseover=QUOTEshowBox('$1')QUOTE onmouseout=QUOTEshowBox('$1')QUOTE"}
+                        test <a class='addam-westbeard'>Addam Westbeard</a>
                     {/exp:low_replace}
                 </p>
 
             </div>
         {/exp:channel:entries}
-    </div>
 
-{exp:channel:entries channel="characters"}
-    <div class="profile-box hidden categories" id="{url_title}">
-        <ul>    
-            {categories orderby="asc"}
-            <li style="background-color:{colour}">
-                <h4>{category_name}</h4>
-            </li>
-            {/categories}
-        </ul>
-        <h2>{title}</h2>
-        <p>{standfirst}</p>
+
+        {exp:channel:entries channel="characters"}
+            <div class="profile-box hidden" id="{url_title}">
+                <h2>{title}</h2>
+                <p>{standfirst}</p>
+            </div>
+        {/exp:channel:entries}
     </div>
-{/exp:channel:entries}
 
 </body>
 </html>
