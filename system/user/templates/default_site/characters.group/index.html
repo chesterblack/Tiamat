@@ -1,6 +1,30 @@
-{exp:channel:entries channel="characters"}
+<!DOCTYPE html>
+<html>
+<head>
+    {embed=/_includes/dnd-header}
+    <title>Characters</title>
+</head>
+<body class="characters">
 
-    <a href="profile/{url_title}">{title}</a>
+    <div class="container">
+        <h1>Characters</h1>
 
-{/exp:channel:entries}
+        {exp:channel:entries channel="characters" orderby="title" sort="asc"}
+        <div class="profile-box categories" id="{url_title}">
+            <ul>    
+                {categories orderby="asc"}
+                <li style="background-color:{colour}">
+                    <h4>{category_name}</h4>
+                </li>
+                {/categories}
+            </ul>
+            <a href="/{segment_1}/profile/{url_title}">
+                <h2>{title}</h2>
+            </a>
+            <p>{standfirst}</p>
+        </div>
+        {/exp:channel:entries}
+    </div>
 
+</body>
+</html>

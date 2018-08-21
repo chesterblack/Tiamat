@@ -10,8 +10,8 @@
 	<div class="container profile">
 		{exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
 
-		<div class="top{if !image} center{/if}">
-		<div {if image}class="left"{/if}>
+		<div class="top">
+		<div class="{if image}left{if:else}center{/if}">
 				<h1>
 					{title}
 				</h1>

@@ -22,6 +22,8 @@ h3{
     margin: 0;
     margin-bottom: 20px;
 }
+
+/* STORY */
 .chapter{
     padding-bottom: 30px;
     border-bottom: 1px solid #000000;
@@ -133,5 +135,19 @@ em{
     }
     .center{
         text-align: center;
+    }
+}
+
+/* CHARACTERS */
+.characters{
+    a{
+        font-size: initial;
+    }
+    .profile-box{
+        position: static;
+        margin: -1px auto;
+        border-left: none;
+        border-right: none;
+        background-color: #ffffff;
     }
 }
