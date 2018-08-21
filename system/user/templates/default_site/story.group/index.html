@@ -34,7 +34,7 @@ function moveDivs(event)
         
     {exp:channel:entries channel="characters"}
         document.getElementById("{url_title}").style.left=x+"px";
-        document.getElementById("{url_title}").style.top=(y-50)+"px";
+        document.getElementById("{url_title}").style.top=(y-60)+"px";
     {/exp:channel:entries}
 
     }
@@ -74,6 +74,13 @@ function moveDivs(event)
 
 {exp:channel:entries channel="characters"}
     <div class="profile-box hidden" id="{url_title}">
+        <ul>    
+            {categories orderby="asc"}
+            <li style="background-color:{colour}">
+                <h4>{category_name}</h4>
+            </li>
+            {/categories}
+        </ul>
         <h2>{title}</h2>
         <p>{standfirst}</p>
     </div>
