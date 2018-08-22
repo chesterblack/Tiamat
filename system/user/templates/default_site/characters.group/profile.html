@@ -54,6 +54,25 @@
 				{description}
 			</p>
 
+			{if appears-in}
+			<div class="menu{if description}{if:else} no-desc{/if}">
+				<ul>
+					<li>
+						<h2>
+							Appears in:
+						</h2>
+					</li>
+					{appears-in orderby="chapter" sort="asc"}
+					<li>
+						<a href="/story#{appears-in:url_title}">
+							{appears-in:title}
+						</a>
+					</li>
+					{/appears-in}
+				</ul>
+			</div>
+			{/if}
+
 		{/exp:channel:entries}
 	</div>
 </body>

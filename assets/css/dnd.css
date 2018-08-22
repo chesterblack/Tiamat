@@ -149,12 +149,22 @@ em {
 .profile .center {
   text-align: center; }
 
-/* CHARACTERS */
+/* line 139, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
+.profile .menu {
+  border-top: 1px solid #000000;
+  margin-top: 50px; }
+
 /* line 143, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
+.profile .no-desc {
+  border-top: none;
+  margin-top: 0; }
+
+/* CHARACTERS */
+/* line 151, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
 .characters a {
   font-size: initial; }
 
-/* line 146, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
+/* line 154, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
 .characters .profile-box {
   position: static;
   margin: -1px auto;
