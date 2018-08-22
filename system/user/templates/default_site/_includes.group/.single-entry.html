@@ -22,11 +22,9 @@
 
 			{if image}
 			<div class="right">
-				<div class="enlarge">
-					<a href="{image}" target="_blank">
-						<img src="{image}" />
-					</a>
-				</div>
+                <a href="{image}" target="_blank">
+                    <img src="{image}" />
+                </a>
 			</div>
 			{/if}
 			<div class="clearfix"></div>
@@ -50,12 +48,48 @@
 			</div>
 			</div>
 
+            {if abilities OR owner}
+            <div class="box{if description} sidebar{/if}">
+                {if owner}
+                <div class="owner">
+                    <h2>
+                        Current owner:
+                    </h2>
+                    {owner}
+                    <a class="thin" href="/characters/profile/{owner:url_title}">
+                        {owner:title}
+                    </a>
+                    {/owner}
+                </div>
+                {/if}
+
+                {if abilities AND owner}
+                <div class="dividing-line"></div>
+                {/if}
+
+                {if abilities}
+                <div class="abilities">
+                    <h2>
+                        Abilities:
+                    </h2>
+                    <ul>
+                        {abilities}
+                            <li>
+                                - {abilities:ability}
+                            </li>
+                        {/abilities}
+                    </ul>
+                </div>
+                {/if}
+            </div>
+            {/if}
+
 			<p>
 				{description}
 			</p>
 
 			{if appears-in}
-			<div class="menu{if description}{if:else} no-desc{/if}">
+			<div class="menu{if description OR abilities OR owner}{if:else} no-desc{/if}">
 				<ul>
 					<li>
 						<h2>
@@ -64,7 +98,7 @@
 					</li>
 					{appears-in orderby="chapter" sort="asc"}
 					<li>
-						<a href="/story#{appears-in:url_title}">
+						<a class="thin" href="/story#{appears-in:url_title}">
 							{appears-in:title}
 						</a>
 					</li>
