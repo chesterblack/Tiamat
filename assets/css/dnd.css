@@ -161,11 +161,11 @@ em {
 
 /* CHARACTERS */
 /* line 151, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
-.characters a {
+.archive a {
   font-size: initial; }
 
 /* line 154, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
-.characters .profile-box {
+.archive .profile-box {
   position: static;
   margin: -1px auto;
   border-left: none;
