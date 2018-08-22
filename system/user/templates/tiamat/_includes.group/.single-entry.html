@@ -108,6 +108,19 @@
 			{/if}
 
 		{/exp:channel:entries}
+
+		{if logged_in}
+		{exp:comment:form channel="{layout:page-channel}"}
+		<label for="comment">Comment:</label><br />
+  		<textarea name="comment" cols="70" rows="10">{comment}</textarea> 
+
+		<input type="submit" name="submit" value="Submit" />
+		{/if}
+		{/exp:comment:form}
+
+		{exp:comment:entries sort="asc" limit="20"}
+			<p>{comment}</p>
+		{/exp:comment:entries}
 	</div>
 </body>
 </html>
