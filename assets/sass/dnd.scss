@@ -136,10 +136,18 @@ em{
     .center{
         text-align: center;
     }
+    .menu{
+        border-top: 1px solid #000000;
+        margin-top: 50px;
+    }
+    .no-desc{
+        border-top: none;
+        margin-top:0;
+    }
 }
 
 /* CHARACTERS */
-.characters{
+.archive{
     a{
         font-size: initial;
     }

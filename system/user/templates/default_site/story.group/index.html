@@ -33,12 +33,12 @@ function moveDivs(event)
         </div>
         
         <div class="menu">
-            {exp:channel:entries channel="story" status="not closed" sort="asc"}
+            {exp:channel:entries channel="story" status="not closed" orderby="chapter" sort="asc"}
                 <li><a href="#{url_title}">{title}</a></li>
             {/exp:channel:entries}
         </div>
 
-        {exp:channel:entries channel="story" status="not closed" sort="asc"}
+        {exp:channel:entries channel="story" status="not closed" orderby="chapter" sort="asc"}
             <div class="chapter" id="{url_title}">
 
                 <h2>Chapter {chapter}</h2>
