@@ -231,3 +231,30 @@ em{
         background-color: #ffffff;
     }
 }
+
+/* NAV */
+.dnd-header{
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+    background: #ffffff;
+    position: sticky;
+    width: 100%;
+    top: 0;
+
+    ul{
+        width: 100%;
+
+        li{
+            float: right;
+            
+        }
+        .left{
+            float: left;
+        }
+    }
+    a{
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 100;
+    }
+}
