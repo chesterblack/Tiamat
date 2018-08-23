@@ -51,7 +51,7 @@ h1{
 }
 p, a, li{
     font-family: Roboto, sans-serif;
-    font-size: 20px;
+    font-size: 26px;
     margin: 0;
     color: var(--lightnesscolor);
 }
