@@ -111,7 +111,7 @@
 		{/exp:channel:entries}
 
 		{if logged_in}
-		{exp:comment:form channel="{layout:page-channel}"}
+		{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
 		<label for="comment">Comment:</label><br />
   		<textarea name="comment" cols="70" rows="10">{comment}</textarea> 
 
@@ -119,9 +119,41 @@
 		{/if}
 		{/exp:comment:form}
 
-		{exp:comment:entries sort="asc" limit="20"}
-			<p>{comment}</p>
-		{/exp:comment:entries}
+		<div class="all-comments">
+
+			<div class="comments-box">
+				<h2>
+					Lloyd's notes:
+				</h2>
+				{exp:comment:entries sort="asc" limit="20" author_id="2" channel="{layout:page-channel}" url_title="{last_segment}"}
+				<p>
+					{comment}
+				</p>
+				{/exp:comment:entries}
+			</div>
+
+			<div class="comments-box">
+				<h2>
+					Harry's notes:
+				</h2>
+				{exp:comment:entries sort="asc" limit="20" author_id="3" channel="{layout:page-channel}" url_title="{last_segment}"}
+				<p>
+					{comment}
+				</p>
+				{/exp:comment:entries}
+			</div>
+
+			<div class="comments-box">
+				<h2>
+					Holly's notes:
+				</h2>
+				{exp:comment:entries sort="asc" limit="20" author_id="4" channel="{layout:page-channel}" url_title="{last_segment}"}
+				<p>
+					{comment}
+				</p>
+				{/exp:comment:entries}
+			</div>
+		</div>
 	</div>
 </body>
 </html>

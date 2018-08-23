@@ -215,6 +215,28 @@ em{
             border-bottom:1px solid #000000;
         }
     }
+    .all-comments{
+        text-align: center;
+        width: 100%;
+        margin-bottom: 45px;
+
+        .comments-box{
+            border-right: 1px solid #000000;
+            border-left: 1px solid #000000;
+            display: inline-block;
+            width: 100%;
+            max-width: 30%;
+            vertical-align: top;
+            padding: 0 10px;
+
+            h2{
+                margin-bottom: 10px;
+            }
+            p{
+                text-align: left;
+            }
+        }
+    }
 }
 
 /* ARCHIVE */
