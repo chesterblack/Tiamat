@@ -1,6 +1,10 @@
 .clearfix{
     clear: both;
 }
+p{
+    font-weight: 300;
+    font-size: 19px;
+}
 h1{
     float: none;
     margin: 25px auto 20px auto;
@@ -77,10 +81,10 @@ a.thin:hover{
     padding-bottom: 30px;
     border-bottom: 1px solid #000000;
     margin-bottom: 30px;
-}
-p{
-    font-weight: 300;
-    font-size: 20px;
+
+    p a{
+        font-size: 19px;
+    }
 }
 em{
     margin-left: 35px;
