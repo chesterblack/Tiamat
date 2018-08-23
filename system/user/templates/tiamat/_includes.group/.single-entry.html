@@ -110,15 +110,6 @@
 
 		{/exp:channel:entries}
 
-		{if logged_in}
-		{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
-		<label for="comment">Comment:</label><br />
-  		<textarea name="comment" cols="70" rows="10">{comment}</textarea> 
-
-		<input type="submit" name="submit" value="Submit" />
-		{/if}
-		{/exp:comment:form}
-
 		<div class="all-comments">
 
 			<div class="comments-box">
@@ -130,6 +121,17 @@
 					{comment}
 				</p>
 				{/exp:comment:entries}
+
+				{if logged_in_member_id == "2"}
+				{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
+				<div class="new-comment">
+					<label for="comment"><h2>New note:</h2></label><br />
+					<textarea name="comment" rows="4">{comment}</textarea> 
+
+					<input class="button" type="submit" name="submit" value="Submit" />
+				</div>
+				{/exp:comment:form}
+				{/if}
 			</div>
 
 			<div class="comments-box">
@@ -141,6 +143,17 @@
 					{comment}
 				</p>
 				{/exp:comment:entries}
+
+				{if logged_in_member_id == "3"}
+				{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
+				<div class="new-comment">
+					<label for="comment"><h2>New note:</h2></label><br />
+					<textarea name="comment" rows="4">{comment}</textarea> 
+
+					<input class="button" type="submit" name="submit" value="Submit" />
+				</div>
+				{/exp:comment:form}
+				{/if}
 			</div>
 
 			<div class="comments-box">
@@ -152,6 +165,17 @@
 					{comment}
 				</p>
 				{/exp:comment:entries}
+
+				{if logged_in_member_id == "4"}
+				{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
+				<div class="new-comment">
+					<label for="comment"><h2>New note:</h2></label><br />
+					<textarea name="comment" rows="4">{comment}</textarea> 
+
+					<input class="button" type="submit" name="submit" value="Submit" />
+				</div>
+				{/exp:comment:form}
+				{/if}
 			</div>
 		</div>
 	</div>

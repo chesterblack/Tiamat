@@ -235,6 +235,39 @@ em{
             p{
                 text-align: left;
             }
+            .new-comment{
+                margin-top: 20px;
+                text-align: left;
+
+                h2{
+                    margin-bottom: 0;
+                }
+                textarea{
+                    width:98%;
+                    font-family: 'Roboto',sans-serif;
+                    font-size: 19px;
+                    font-weight: 300;
+                    resize: none;
+                    resize: vertical;
+                    outline: none;
+                    border: 1px solid #000000;
+                }
+                .button{
+                    position: relative;
+                    top: -35px;
+                    left: 220px;
+                    border-radius: 0;
+                    background: none;
+                    font-family: 'Roboto',sans-serif;
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    border: 1px solid #000000;
+                    font-size: 16px;
+                }
+                .button:hover{
+                    background-color: rgba(212, 212, 212, 0.9);
+                }
+            }
         }
     }
 }
