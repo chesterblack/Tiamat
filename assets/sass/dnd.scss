@@ -45,22 +45,25 @@ a.thin:hover{
     }
     .story{
         border-bottom: 1px solid #000000;
-        padding: 65px 0 40px 0;
+        padding: 30px 0 30px 0;
 
         img{
-            margin-bottom:20px;
+            margin-bottom:15px;
         }
     }
     .channel{
         border: 1px solid #000000;
         width: 40%;
         padding: 30px 20px;
-        margin: 20px;
+        margin: 15px;
         display: inline-block;
 
         img{
             margin-bottom: 20px;
         }
+    }
+    ul{
+        margin-bottom: 0;
     }
     h2{
         font-weight: 100;
@@ -213,6 +216,61 @@ em{
 
         .dividing-line{
             border-bottom:1px solid #000000;
+        }
+    }
+    .all-comments{
+        text-align: center;
+        width: 100%;
+        margin-bottom: 45px;
+
+        .comments-box{
+            border-right: 1px solid #000000;
+            border-left: 1px solid #000000;
+            display: inline-block;
+            width: 100%;
+            max-width: 30%;
+            vertical-align: top;
+            padding: 0 10px;
+
+            h2{
+                margin-bottom: 10px;
+            }
+            p{
+                text-align: left;
+            }
+            .new-comment{
+                margin-top: 20px;
+                text-align: left;
+
+                h2{
+                    margin-bottom: 0;
+                }
+                textarea{
+                    width:98%;
+                    font-family: 'Roboto',sans-serif;
+                    font-size: 19px;
+                    font-weight: 300;
+                    resize: none;
+                    resize: vertical;
+                    outline: none;
+                    border: 1px solid #000000;
+                }
+                .button{
+                    position: relative;
+                    top: -35px;
+                    left: 220px;
+                    border-radius: 0;
+                    background: none;
+                    font-family: 'Roboto',sans-serif;
+                    text-transform: uppercase;
+                    font-weight: 300;
+                    border: 1px solid #000000;
+                    font-size: 16px;
+                }
+                .button:hover{
+                    background-color: rgba(212, 212, 212, 0.9);
+                }
+            }
         }
     }
 }
