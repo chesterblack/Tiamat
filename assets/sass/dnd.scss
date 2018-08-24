@@ -45,22 +45,25 @@ a.thin:hover{
     }
     .story{
         border-bottom: 1px solid #000000;
-        padding: 65px 0 40px 0;
+        padding: 30px 0 30px 0;
 
         img{
-            margin-bottom:20px;
+            margin-bottom:15px;
         }
     }
     .channel{
         border: 1px solid #000000;
         width: 40%;
         padding: 30px 20px;
-        margin: 20px;
+        margin: 15px;
         display: inline-block;
 
         img{
             margin-bottom: 20px;
         }
+    }
+    ul{
+        margin-bottom: 0;
     }
     h2{
         font-weight: 100;
