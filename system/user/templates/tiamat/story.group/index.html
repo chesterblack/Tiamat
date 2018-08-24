@@ -25,9 +25,10 @@ function moveDivs(event)
     {/exp:channel:entries}
 
     }
+
 </script>
 
-    <div class="container" onmousemove="moveDivs(event)">
+    <div class="container" id="top" onmousemove="moveDivs(event)">
         <div class="h1-container" id="top">
             <h1>The Story So Far...</h1>
         </div>
@@ -43,10 +44,6 @@ function moveDivs(event)
 
                 <h2>Chapter {chapter}</h2>
 
-                {!--<div class="top-arrow">
-                    <a href="#top">^</a>
-                </div>--}
-
                 <h3>{title}</h3>
 
                 <p>
@@ -55,9 +52,14 @@ function moveDivs(event)
                     {/exp:low_replace}
                 </p>
 
-            </div>
+           </div>
+
         {/exp:channel:entries}
     </div>
+
+    <a href="#top" class="top-arrow">
+        <img src="/assets/images/arrow-up.svg" />
+    </a>
 
 {exp:channel:entries channel="characters"}
     <div class="profile-box hidden categories" id="{url_title}">
