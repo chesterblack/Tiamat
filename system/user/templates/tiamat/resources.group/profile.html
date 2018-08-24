@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{embed=/_includes/dnd-header}
+	{exp:channel:entries channel='{layout:page-channel}' limit='1' url_title="{last_segment}"}
+		<title>{title}</title>
+	{/exp:channel:entries}
+</head>
+<body>
+	{embed="/_includes/nav"}
+	<div class="container profile">
+		{exp:channel:entries channel='{layout:page-channel}' limit='1' url_title="{last_segment}"}
+
+		<div class="top">
+		<div class="{if image}left{if:else}center{/if}">
+				<h1>
+					{title}
+				</h1>
+				<h3>
+					{standfirst}
+				</h3>
+			</div>
+
+			{if image}
+			<div class="right">
+                <a href="{image}" target="_blank">
+                    <img src="{image}" />
+                </a>
+			</div>
+			{/if}
+			<div class="clearfix"></div>
+
+			<div class="key-points{if key-points}{if:else} extra-padding{/if}">
+				<div class="categories">
+					<ul>    
+						{categories orderby="asc"}
+						<li style="background-color:{colour}">
+							<h4>{category_name}</h4>
+						</li>
+						{/categories}
+					</ul>
+				</div>
+
+				{key-points}
+				<h2 class="key-point">
+					{key-points:info}
+				</h2>
+				{/key-points}
+			</div>
+
+			<p>
+				{description}
+			</p>
+
+		</div>
+	</div>
+</body>
+</html>
