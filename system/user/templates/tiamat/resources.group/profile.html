@@ -2,17 +2,17 @@
 <html>
 <head>
 	{embed=/_includes/dnd-header}
-	{exp:channel:entries channel='{layout:page-channel}' limit='1' url_title="{last_segment}"}
+	{exp:channel:entries channel='resources' limit='1' url_title="{last_segment}"}
 		<title>{title}</title>
 	{/exp:channel:entries}
 </head>
 <body>
 	{embed="/_includes/nav"}
-	<div class="container profile">
-		{exp:channel:entries channel='{layout:page-channel}' limit='1' url_title="{last_segment}"}
+	<div class="container profile resources">
+		{exp:channel:entries channel='resources' limit='1' url_title="{last_segment}"}
 
 		<div class="top">
-		<div class="{if image}left{if:else}center{/if}">
+		    <div class="{if image}left{if:else}center{/if}">
 				<h1>
 					{title}
 				</h1>
@@ -27,7 +27,8 @@
                     <img src="{image}" />
                 </a>
 			</div>
-			{/if}
+            {/if}
+            
 			<div class="clearfix"></div>
 
 			<div class="key-points{if key-points}{if:else} extra-padding{/if}">
@@ -50,9 +51,25 @@
 
 			<p>
 				{description}
-			</p>
+            </p>
+            
+            <div class="buttons">
+                <button>
+                    <a class="button" href="/resources/download/{url_title}">
+                        View
+                    </a>
+                </button>
 
-		</div>
+                <button>
+                    <a href="{resource-file}" download>
+                        Download
+                    </a>
+                </button>
+            </div>
+
+        </div>
+        
+        {/exp:channel:entries}
 	</div>
 </body>
 </html>
