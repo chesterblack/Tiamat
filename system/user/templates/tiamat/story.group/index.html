@@ -26,6 +26,10 @@ function moveDivs(event)
 
     }
 
+    window.addEventListener("hashchange", function(){
+    window.scrollTo(window.scrollX, window.scrollY - 75);
+});
+
 </script>
 
     <div class="container" id="top" onmousemove="moveDivs(event)">
