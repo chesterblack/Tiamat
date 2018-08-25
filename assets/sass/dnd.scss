@@ -193,6 +193,8 @@ em{
         }
         li{
             font-weight: 100;
+            font-size: 21px;
+            margin: 5px 0;
         }
         .dividing-line{
             margin: 15px 0;
@@ -201,7 +203,7 @@ em{
     .sidebar{
         border: 1px solid #000000;
         padding: 15px;
-        background-color: rgba(212, 212, 212, 0.9);
+        background-color: rgba(212, 212, 212, 0.45);
         max-width: 50%;
         float: right;
         margin-left: 20px;
