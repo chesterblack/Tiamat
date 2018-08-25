@@ -6,31 +6,37 @@
     <title>The story so far...</title>
 </head>
 <body>
-    {embed="/_includes/nav"}
-<script>
 
-function showBox(profile){
-    console.log(profile);
-    document.getElementById(profile).classList.toggle("hidden");
-}
+    <?php
+        $profileBoxes['test-channel'] = "test-profile";
+        $testChannel = "characters";
+        $testProfile = "addam-westbeard";
+    ?>
+    <script>
 
-function moveDivs(event)
-    {
-        x=event.screenX;
-        y=event.screenY;
-        
-    {exp:channel:entries channel="characters"}
-        document.getElementById("{url_title}").style.left=x+"px";
-        document.getElementById("{url_title}").style.top=(y-60)+"px";
-    {/exp:channel:entries}
-
+    function showBox(profile){
+        console.log(profile);
+        document.getElementById(profile).classList.toggle("hidden");
     }
 
-    window.addEventListener("hashchange", function(){
-    window.scrollTo(window.scrollX, window.scrollY - 75);
-});
+    function moveDivs(event)
+        {
+            x=event.screenX;
+            y=event.screenY;
+            
+        {exp:channel:entries channel="characters"}
+            document.getElementById("{url_title}").style.left=x+"px";
+            document.getElementById("{url_title}").style.top=(y-60)+"px";
+        {/exp:channel:entries}
 
-</script>
+        }
+
+        window.addEventListener("hashchange", function(){
+        window.scrollTo(window.scrollX, window.scrollY - 75);
+    });
+    </script>
+
+    {embed="/_includes/nav"}
 
     <div class="container" id="top" onmousemove="moveDivs(event)">
         <div class="h1-container" id="top">
@@ -51,7 +57,11 @@ function moveDivs(event)
                 <h3>{title}</h3>
 
                 <p>
-                    {exp:low_replace regex="yes" find="a class=QUOTE(.*?)QUOTE" replace="a href='/characters/profile/$1' target='_blank' onmouseover=QUOTEshowBox('$1')QUOTE onmouseout=QUOTEshowBox('$1')QUOTE"}
+                    {exp:low_replace
+                        regex="yes"
+                        find="<a channel=QUOTE(.*?)QUOTE profile=QUOTE(.*?)QUOTE>"
+                        replace="<a href='/$1/profile/$2' target='_blank' onmouseover=QUOTEshowBox('$2')QUOTE onmouseout=QUOTEshowBox('$2')QUOTE> <?php $profileBoxes['$1'] = '$2'; ?>"
+                    }
                         {what-happened}
                     {/exp:low_replace}
                 </p>
@@ -64,20 +74,39 @@ function moveDivs(event)
     <a href="#top" class="top-arrow">
         <img src="/assets/images/arrow-up.svg" />
     </a>
+    
+    {exp:channel:entries channel='<?php $testChannel ?>' url_title='<?php $testProfile ?>'}
+    <div class='profile-box hidden categories' id='{url_title}'>
+                    <ul>    
+                        {categories orderby='asc'}
+                        <li style='background-color:{colour}'>
+                            <h4>{category_name}</h4>
+                        </li>
+                        {/categories}
+                    </ul>
+                    <h2>{title}</h2>
+                    <p>{standfirst}</p>
+                </div>
+    {/exp:channel:entries}
 
-{exp:channel:entries channel="characters"}
-    <div class="profile-box hidden categories" id="{url_title}">
-        <ul>    
-            {categories orderby="asc"}
-            <li style="background-color:{colour}">
-                <h4>{category_name}</h4>
-            </li>
-            {/categories}
-        </ul>
-        <h2>{title}</h2>
-        <p>{standfirst}</p>
-    </div>
-{/exp:channel:entries}
-
+    <?php 
+    var_dump($profileBoxes);
+    foreach ($profileBoxes as $boxChannel => $boxProfile) {
+        echo "{exp:channel:entries channel='<?php $boxChannel ?>' url_title='<?php $boxProfile ?>'}
+                <div class='profile-box hidden categories' id='{url_title}'>
+                    <ul>    
+                        {categories orderby='asc'}
+                        <li style='background-color:{colour}'>
+                            <h4>{category_name}</h4>
+                        </li>
+                        {/categories}
+                    </ul>
+                    <h2>{title}</h2>
+                    <p>{standfirst}</p>
+                </div>
+        {/exp:channel:entries}"; 
+    }
+    ?>
+    
 </body>
 </html>
