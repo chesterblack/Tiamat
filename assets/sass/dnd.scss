@@ -35,6 +35,15 @@ a.thin{
 a.thin:hover{
     border-bottom: 2px solid #000000;
 }
+button{
+    border-radius: 0;
+    background: none;
+    font-family: 'Roboto',sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    border: 1px solid #000000;
+    font-size: 16px;
+}
 
 /* HOMEPAGE */
 .homepage{
@@ -249,21 +258,6 @@ em{
                     outline: none;
                     border: 1px solid #000000;
                 }
-                .button{
-                    position: relative;
-                    top: -35px;
-                    left: 220px;
-                    border-radius: 0;
-                    background: none;
-                    font-family: 'Roboto',sans-serif;
-                    text-transform: uppercase;
-                    font-weight: 300;
-                    border: 1px solid #000000;
-                    font-size: 16px;
-                }
-                .button:hover{
-                    background-color: rgba(212, 212, 212, 0.9);
-                }
             }
         }
     }
@@ -325,10 +319,19 @@ em{
 
         li{
             float: right;
-            
         }
         .left{
             float: left;
+        }
+        button{
+            padding: 5px 10px;
+
+            p{
+                font-weight: 100;
+            }
+        }
+        button:focus{
+            outline: none;
         }
     }
     a{
