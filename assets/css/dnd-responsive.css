@@ -51,7 +51,21 @@
   /* line 56, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .extra-padding {
     padding-bottom: 5px; }
-  /* line 61, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 59, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  .profile h2 {
+    font-size: 17px; }
+  /* line 62, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  .profile .key-points {
+    text-align: center; }
+  /* line 65, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  .profile .key-point:nth-last-child(n+2)::after {
+    margin: 0; }
+  /* line 68, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  .profile .sidebar {
+    max-width: 80%;
+    float: none;
+    margin: 0 auto 15px auto; }
+  /* line 75, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .categories ul {
     float: none;
     margin-bottom: 5px; } }

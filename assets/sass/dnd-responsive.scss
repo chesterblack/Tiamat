@@ -56,6 +56,20 @@
         .extra-padding{
             padding-bottom: 5px;
         }
+        h2{
+            font-size: 17px;
+        }
+        .key-points{
+            text-align: center;
+        }
+        .key-point:nth-last-child(n+2)::after{
+            margin: 0;
+        }
+        .sidebar{
+            max-width: 80%;
+            float: none;
+            margin: 0 auto 15px auto;
+        }
     }
     .categories{
         ul{
