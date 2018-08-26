@@ -1,0 +1,52 @@
+<div class="menu-inner">
+    <ul class="header-list">
+        <li>
+            <a href="/dungeons-and-dragons">
+                Home
+            </a>
+        </li>
+        <li>
+            <a href="/story">
+                The Story So Far...
+            </a>
+        </li>
+        <li>
+            <a href="/characters">
+                Characters
+            </a>
+        </li>
+        <li>
+            <a href="/items">
+                Items
+            </a>
+        </li>
+        <li>
+            <a href="/locations">
+                Locations
+            </a>
+        </li>
+        <li>
+            <a href="/resources">
+                Resources
+            </a>
+        </li>
+        {if !logged_in}
+        <li>
+            <button>
+                <a href="/admin.php">
+                    Login
+                </a>
+            </button>
+        </li>
+        {if:else}
+        <li>
+            <button>
+                <p>
+                    {logged_in_screen_name}
+                </p>
+            </button>
+        </li>
+        {/if}
+    </ul>
+</div>
+      
