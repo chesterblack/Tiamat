@@ -1,4 +1,12 @@
 @media screen and (max-width: 830px) {
+    input{
+        position: initial;
+        margin-left: 0;
+        width: 100%;
+    }
+    textarea{
+        margin-top: 10px;
+    }
     .homepage{
         .channel{
             width: 80%;
@@ -9,7 +17,11 @@
     }
     .hamburger {
         display: block;
-        padding: 10px 0 0 10px;
+        margin: 0 auto;
+        padding: 10px 0 0 0;
+    }
+    .is-active{
+        margin: 0 0 20px 75px;
     }
     #mobile-menu.open-menu{
         display: block;
@@ -18,7 +30,7 @@
         width: 200px;
         height: 100vh;
         background: rgba(255,255,255,0.95);
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         border-right: 1px solid #000000;
@@ -27,7 +39,7 @@
         width: 100%;
 
         ul{
-            margin-top:45px;
+            margin-top:60px;
         }
         li{
             float: none;
@@ -69,6 +81,18 @@
             max-width: 80%;
             float: none;
             margin: 0 auto 15px auto;
+        }
+        .all-comments{
+            .comments-box{
+                max-width: 80%;
+                margin-bottom: 20px;
+                border: none;
+                border-bottom: 1px solid #000000;
+
+                h2{
+                    border-bottom: 1px solid #000000;
+                }
+            }
         }
     }
     .categories{

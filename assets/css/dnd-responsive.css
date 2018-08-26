@@ -1,71 +1,92 @@
 @media screen and (max-width: 830px) {
-  /* line 3, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 2, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  input {
+    position: initial;
+    margin-left: 0;
+    width: 100%; }
+  /* line 7, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  textarea {
+    margin-top: 10px; }
+  /* line 11, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .homepage .channel {
     width: 80%; }
-  /* line 7, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 15, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .dnd-header {
     display: none; }
-  /* line 10, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 18, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .hamburger {
     display: block;
-    padding: 10px 0 0 10px; }
-  /* line 14, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+    margin: 0 auto;
+    padding: 10px 0 0 0; }
+  /* line 23, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  .is-active {
+    margin: 0 0 20px 75px; }
+  /* line 26, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   #mobile-menu.open-menu {
     display: block; }
-  /* line 17, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 29, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   #mobile-menu {
     width: 200px;
     height: 100vh;
     background: rgba(255, 255, 255, 0.95);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     border-right: 1px solid #000000; }
-  /* line 26, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 38, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .menu-inner {
     width: 100%; }
-    /* line 29, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+    /* line 41, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
     .menu-inner ul {
-      margin-top: 45px; }
-    /* line 32, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+      margin-top: 60px; }
+    /* line 44, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
     .menu-inner li {
       float: none;
       margin: 15px; }
-      /* line 36, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+      /* line 48, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
       .menu-inner li a {
         font-size: 25px;
         text-decoration: none; }
-  /* line 42, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 54, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   h1 {
     font-size: 35px;
     letter-spacing: 9px; }
-  /* line 46, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 58, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   h3 {
     font-size: 35px; }
-  /* line 50, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 62, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .left {
     max-width: 100%; }
-  /* line 53, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 65, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .right {
     max-width: 100%; }
-  /* line 56, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 68, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .extra-padding {
     padding-bottom: 5px; }
-  /* line 59, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 71, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile h2 {
     font-size: 17px; }
-  /* line 62, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 74, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .key-points {
     text-align: center; }
-  /* line 65, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 77, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .key-point:nth-last-child(n+2)::after {
     margin: 0; }
-  /* line 68, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 80, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .profile .sidebar {
     max-width: 80%;
     float: none;
     margin: 0 auto 15px auto; }
-  /* line 75, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  /* line 86, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+  .profile .all-comments .comments-box {
+    max-width: 80%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #000000; }
+    /* line 92, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
+    .profile .all-comments .comments-box h2 {
+      border-bottom: 1px solid #000000; }
+  /* line 99, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd-responsive.scss */
   .categories ul {
     float: none;
     margin-bottom: 5px; } }
