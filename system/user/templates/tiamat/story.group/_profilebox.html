@@ -1,0 +1,13 @@
+{exp:channel:entries channel='{embed:profilechannel}' url_title='{embed:profileurl}'}
+    <div class='profile-box hidden categories' id='{url_title}'>
+                    <ul>    
+                        {categories orderby='asc'}
+                        <li style='background-color:{colour}'>
+                            <h4>{category_name}</h4>
+                        </li>
+                        {/categories}
+                    </ul>
+                    <h2>{title}</h2>
+                    <p>{standfirst}</p>
+                </div>
+{/exp:channel:entries}

@@ -6,6 +6,23 @@
                     Home
                 </a>
             </li>
+            {if !logged_in}
+            <li>
+                <button>
+                    <a href="/admin.php">
+                        Login
+                    </a>
+                </button>
+            </li>
+            {if:else}
+            <li>
+                <button>
+                    <p>
+                        {logged_in_screen_name}
+                    </p>
+                </button>
+            </li>
+            {/if}
             <li>
                 <a href="/story">
                     The Story So Far...

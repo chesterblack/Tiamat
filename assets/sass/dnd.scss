@@ -30,10 +30,19 @@ a.thin{
     font-weight: 100;
     text-decoration: none;
     border-bottom: 1px solid #000000;
-    margin: 0 15px;
+    margin: 0 10px;
 }
 a.thin:hover{
     border-bottom: 2px solid #000000;
+}
+button{
+    border-radius: 0;
+    background: none;
+    font-family: 'Roboto',sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    border: 1px solid #000000;
+    font-size: 16px;
 }
 
 /* HOMEPAGE */
@@ -193,6 +202,8 @@ em{
         }
         li{
             font-weight: 100;
+            font-size: 21px;
+            margin: 5px 0;
         }
         .dividing-line{
             margin: 15px 0;
@@ -201,8 +212,9 @@ em{
     .sidebar{
         border: 1px solid #000000;
         padding: 15px;
-        background-color: rgba(212, 212, 212, 0.9);
-        max-width: 50%;
+        background-color: rgba(212, 212, 212, 0.45);
+        max-width: 36%;
+        width: 100%;
         float: right;
         margin-left: 20px;
 
@@ -246,21 +258,6 @@ em{
                     resize: vertical;
                     outline: none;
                     border: 1px solid #000000;
-                }
-                .button{
-                    position: relative;
-                    top: -35px;
-                    left: 220px;
-                    border-radius: 0;
-                    background: none;
-                    font-family: 'Roboto',sans-serif;
-                    text-transform: uppercase;
-                    font-weight: 300;
-                    border: 1px solid #000000;
-                    font-size: 16px;
-                }
-                .button:hover{
-                    background-color: rgba(212, 212, 212, 0.9);
                 }
             }
         }
@@ -323,10 +320,19 @@ em{
 
         li{
             float: right;
-            
         }
         .left{
             float: left;
+        }
+        button{
+            padding: 5px 10px;
+
+            p{
+                font-weight: 100;
+            }
+        }
+        button:focus{
+            outline: none;
         }
     }
     a{
