@@ -1,0 +1,10 @@
+<?php
+    $find = "/<a channel='(.*?)' profile='(.*?)'>(.*?)<\/a>/";
+
+    $replace = "<a href=\"/$1/profile/$2\" target=\"_blank\" onmouseover=\"showBox('$2')\" onmouseout=\"showBox('$2')\">$3</a> <?php \$profileBoxes['$1'] = '$2'; ?>";
+
+    $search = "{embed:searchsource}";
+
+    echo preg_replace($find,$replace,$search);
+?>
+

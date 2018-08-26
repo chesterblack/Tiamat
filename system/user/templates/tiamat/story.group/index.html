@@ -57,15 +57,8 @@
                 <h3>{title}</h3>
 
                 <p>
-                    {exp:low_replace
-                        regex="yes"
-                        find="<a channel=QUOTE(.*?)QUOTE profile=QUOTE(.*?)QUOTE>"
-                        replace="<a href='/$1/profile/$2' target='_blank' onmouseover=QUOTEshowBox('$2')QUOTE onmouseout=QUOTEshowBox('$2')QUOTE> <?php $profileBoxes['$1'] = '$2'; ?>"
-                    }
-                        {what-happened}
-                    {/exp:low_replace}
+                    {embed="/story/php-test" searchsource="{what-happened}"}
                 </p>
-
            </div>
 
         {/exp:channel:entries}
@@ -74,37 +67,25 @@
     <a href="#top" class="top-arrow">
         <img src="/assets/images/arrow-up.svg" />
     </a>
-    
-    {exp:channel:entries channel='<?php $testChannel ?>' url_title='<?php $testProfile ?>'}
-    <div class='profile-box hidden categories' id='{url_title}'>
-                    <ul>    
-                        {categories orderby='asc'}
-                        <li style='background-color:{colour}'>
-                            <h4>{category_name}</h4>
-                        </li>
-                        {/categories}
-                    </ul>
-                    <h2>{title}</h2>
-                    <p>{standfirst}</p>
-                </div>
-    {/exp:channel:entries}
 
     <?php 
     var_dump($profileBoxes);
     foreach ($profileBoxes as $boxChannel => $boxProfile) {
-        echo "{exp:channel:entries channel='<?php $boxChannel ?>' url_title='<?php $boxProfile ?>'}
-                <div class='profile-box hidden categories' id='{url_title}'>
-                    <ul>    
-                        {categories orderby='asc'}
-                        <li style='background-color:{colour}'>
-                            <h4>{category_name}</h4>
-                        </li>
-                        {/categories}
-                    </ul>
-                    <h2>{title}</h2>
-                    <p>{standfirst}</p>
-                </div>
-        {/exp:channel:entries}"; 
+        echo "$boxChannel";
+        echo "$boxProfile \n";
+        echo "{exp:channel:entries channel='$boxChannel' url_title='{embed:profileurl}'}
+        <div class='profile-box hidden categories' id='{url_title}'>
+                        <ul>    
+                            {categories orderby='asc'}
+                            <li style='background-color:{colour}'>
+                                <h4>{category_name}</h4>
+                            </li>
+                            {/categories}
+                        </ul>
+                        <h2>{title}</h2>
+                        <p>{standfirst}</p>
+                    </div>
+    {/exp:channel:entries}"; 
     }
     ?>
     
