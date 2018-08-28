@@ -31,7 +31,7 @@
         }
         
         function doesOldUrlExist($urlIn){
-            $query = "SELECT * FROM url_redirector WHERE old_url = '$urlIn'";
+            $query = "SELECT * FROM `url_redirector` WHERE old_url = '$urlIn'";
             $result = $this->connect()->query($query);
             if($result->rowCount() > 0){
                 return true;
@@ -42,7 +42,7 @@
 
         //Check to see if the generated string is already in the database
         function doesStringExist($string){
-            $query = "SELECT * FROM url_redirector WHERE new_url = '$string'";
+            $query = "SELECT * FROM `url_redirector` WHERE new_url = '$string'";
             $result = $this->connect()->query($query);
             if($result->rowCount() > 0){
                 return true;
@@ -56,7 +56,7 @@
             $connect = $this->connect();
 
             //Preparing the statement that we'll bind the parameters to later so people can't sneak their own code in and mess up the db
-            $stmt = $connect->prepare("INSERT INTO urls (old_url, new_url)
+            $stmt = $connect->prepare("INSERT INTO `url_redirector` (old_url, new_url)
             VALUES (:urlIn, :newUrl)");
 
             try {
@@ -92,12 +92,21 @@
                             // ^ Randomly decides a number between 0 and the length of $characters
                 }
 
-                $inDB = doesStringExist($string);
+                $inDB = $this->doesStringExist($string);
             }
 
             $newUrl = "ACE-" . $string;
 
             return $newUrl;
+        }
+
+        function createRedirect($newUrl, $urlIn){
+            $redirectString = "Redirect 301 /" . $newUrl . " " . $urlIn . "\n";
+            $htaccess = fopen(".htaccess", "a");
+
+            fwrite($htaccess, $redirectString);
+
+            fclose($htaccess);
         }
 
     }
