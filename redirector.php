@@ -98,8 +98,7 @@
                 $inDB = doesStringExist($string);
             }
 
-            //This does basically nothing but I kept getting confused later on with it called $string
-            $newUrl = $string;
+            $newUrl = "ACE-" . $string;
 
             return $newUrl;
         }
