@@ -1,0 +1,65 @@
+body{
+    background: #dcfbff;
+}
+img{
+    margin-top: 45px;
+    max-width: 100%;
+}
+.container{
+    width:90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+h1{
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 60px;
+}
+h1 span{
+    font-weight: 100;
+}
+h2{
+    font-family: 'Roboto',sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+form{
+    font-family: 'Roboto',sans-serif;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 35px;
+}
+input{
+    vertical-align: top;
+    border:1px solid rgba(0,0,0,0.95);;
+    font-family: 'Roboto',sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
+input[type="text"]{
+    width: 50%;
+}
+input[type="submit"]{
+    text-transform: uppercase;
+    font-weight: 100;
+    background: none;
+}
+input[type="submit"]:hover{
+    background: #000000;
+    color: #fbef4d;
+}
+p, a{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 30px;
+}
+a{
+    font-weight: 900;
+    text-decoration: none;
+    color:#000000;
+}
+a:hover{
+    border-bottom: 1px solid #000000;
+}
