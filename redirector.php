@@ -1,8 +1,5 @@
 <?php
 
-    //Get database details that haven't been committed to git
-    require_once "details.php";
-
     class redirector{
 
         public $pdo;
@@ -11,10 +8,10 @@
         //Connect to the database
         function connect(){
             try {
-                $host = $details->$host;
-                $name = $details->$name;
-                $user = $details->$user;
-                $pass = $details->$pass;
+                $host = "db751175462.db.1and1.com";
+                $name = "db751175462";
+                $user = "dbo751175462";
+                $pass = "h6bcA)+]";
 
                 //Create a new PDO to connect to database
                 $this->pdo = new PDO("mysql:host=$host;dbname=$name", $user, $pass);
@@ -34,7 +31,7 @@
         }
         
         function doesOldUrlExist($urlIn){
-            $query = "SELECT $urlIn FROM old_url";
+            $query = "SELECT * FROM url_redirector WHERE old_url = '$urlIn'";
             $result = $this->connect()->query($query);
             if($result->rowCount() > 0){
                 return true;
@@ -45,7 +42,7 @@
 
         //Check to see if the generated string is already in the database
         function doesStringExist($string){
-            $query = "SELECT $string FROM new_url";
+            $query = "SELECT * FROM url_redirector WHERE new_url = '$string'";
             $result = $this->connect()->query($query);
             if($result->rowCount() > 0){
                 return true;
@@ -59,7 +56,7 @@
             $connect = $this->connect();
 
             //Preparing the statement that we'll bind the parameters to later so people can't sneak their own code in and mess up the db
-            $stmt = $connect->prepare("INSERT INTO url_redirector (old_url, new_url)
+            $stmt = $connect->prepare("INSERT INTO urls (old_url, new_url)
             VALUES (:urlIn, :newUrl)");
 
             try {

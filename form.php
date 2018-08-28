@@ -12,7 +12,7 @@
     
     require_once "redirector.php";
 
-    if(!isset($_POST['urlIn'])){
+    if(isset($_POST['urlIn'])){
         $urlIn = $_POST['urlIn'];
 
         $alreadyInputted = $redirector->doesOldUrlExist($urlIn);
@@ -28,8 +28,10 @@
     
     ?>
 
-    <form action="welcome.php" method="post">
+    <form action="" method="post">
     URL: <input type="text" name="urlIn">
+    <input type="submit">
+    
     </form>
 </body>
 </html>
