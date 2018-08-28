@@ -32,6 +32,7 @@
     
     ?>
 
+    <p>Please include http://</p>
     <form action="" method="post">
     URL: <input type="text" name="urlIn">
     <input type="submit">
