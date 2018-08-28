@@ -48,20 +48,28 @@
 
         }
         
-        //Create random alphanumeric string to serve as the shortened URL
+        //Create random alphanumeric string to serve as the shortened URL and returns it if it's not already in the db
         function generateString(){
-            //Characters to use in the string
-            $characters = "qwertyuiopasdfghjklzxcvbnm1234567890";
+            $inDB = TRUE;
 
-            $string = "";
+            //Loops over until the string is unique
+            while($inDB){
+                //Characters to use in the string
+                $characters = "qwertyuiopasdfghjklzxcvbnm1234567890";
+                $string = "";
 
-            //For loop - $i = 0 defines $i as 0 to start off with. $i < 6 means that it loops until this is met, so once $i isn't less than 6 any more. $i++ increases $i by 1 every time
-            for($i = 0; $i < 6; $i++){
+                //For loop - $i = 0 defines $i as 0 to start off with. $i < 6 means that it loops until this is met, so once $i isn't less than 6 any more. $i++ increases $i by 1 every time
+                for($i = 0; $i < 6; $i++){
 
-                // v Appends this next bit to $string
-                $string .= $characters[rand(0, strlen($characters))];
-                           // ^ Randomly decides a number between 0 and the length of $characters
+                    // v Appends this next bit to $string
+                    $string .= $characters[rand(0, strlen($characters))];
+                            // ^ Randomly decides a number between 0 and the length of $characters
+                }
+
+                $inDB = doesStringExist($string);
             }
+
+            return $string;
         }
 
     }
