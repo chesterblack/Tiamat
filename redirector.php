@@ -100,12 +100,23 @@
             return $newUrl;
         }
 
+        function findNewUrl($urlIn){
+            $query = "SELECT new_url FROM url_redirector WHERE old_url = '$urlIn'";
+
+            $result = $this->connect()->query($query)->fetch(PDO::FETCH_ASSOC);
+            $stringUrl = $result['new_url'];
+
+            return $stringUrl;
+        }
+
         function createRedirect($newUrl, $urlIn){
+            //Defines what is going to be written to the file
             $redirectString = "Redirect 301 /" . $newUrl . " " . $urlIn . "\n";
+            //Opens up the .htaccess file at the end
             $htaccess = fopen(".htaccess", "a");
-
+            //Writes the statement to the file
             fwrite($htaccess, $redirectString);
-
+            //Closes the file
             fclose($htaccess);
         }
 
