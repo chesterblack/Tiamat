@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>URL Redirector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <?php
+    
+    require_once "redirector.php";
+    
+    if(!isset($_POST['url_in'])){
+       $redirector->checkDatabase();
+    }
+    
+    ?>
+
+    <form action="welcome.php" method="post">
+    URL: <input type="text" name="url_in">
+    </form>
+</body>
+</html>
