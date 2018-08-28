@@ -11,15 +11,15 @@
     <?php
     
     require_once "redirector.php";
-    
-    if(!isset($_POST['url_in'])){
+
+    if(!isset($_POST['urlIn'])){
        $redirector->checkDatabase();
     }
     
     ?>
 
     <form action="welcome.php" method="post">
-    URL: <input type="text" name="url_in">
+    URL: <input type="text" name="urlIn">
     </form>
 </body>
 </html>

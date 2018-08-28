@@ -35,7 +35,7 @@
         
         //Check to see if the generated string is already in the database
         function doesStringExist($string){
-            $query = "SELECT $string FROM shortened";
+            $query = "SELECT $string FROM new_url";
             $result = $this->connect()->query($query);
             if($result->rowCount()> 0){
                 return true;
@@ -44,8 +44,20 @@
             }
         }
 
-        function enterData(){
+        //Enter the new and old URLs into the database
+        function enterData($newUrl, $urlIn){
+            $connect = $this->connect();
 
+            //Preparing the statement that we'll bind the parameters to later so people can't sneak their own code in and mess up the db
+            $stmt = $connect->prepare("INSERT INTO url_redirector (old_url, new_url)
+            VALUES (:urlIn, :newUrl)");
+
+            try {
+                $stmt->bindParam(':urlIn', $urlIn);
+                $stmt->bindParam(':newUrl', $newUrl);
+            } catch(PDOException $e) {
+                echo($e->getMessage());
+            }
         }
         
         //Create random alphanumeric string to serve as the shortened URL and returns it if it's not already in the db
@@ -69,7 +81,10 @@
                 $inDB = doesStringExist($string);
             }
 
-            return $string;
+            //This does basically nothing but I kept getting confused later on with it called $string
+            $newUrl = $string;
+
+            return $newUrl;
         }
 
     }
