@@ -123,6 +123,14 @@
             fclose($htaccess);
         }
 
+        function validateURL($urlIn){
+            if(filter_var($urlIn, FILTER_VALIDATE_URL)){
+                return TRUE;
+            }else{
+                return FALSE;
+            }
+        }
+
     }
 
     $redirector = new redirector();

@@ -19,20 +19,27 @@
     require_once "redirector.php";
 
     $message = "";
+    $valid = TRUE;
 
     if(isset($_POST['urlIn'])){
         $urlIn = htmlentities($_POST['urlIn']);
 
-        $alreadyInputted = $redirector->doesOldUrlExist($urlIn);
+        $valid = $redirector->validateURL($urlIn);
 
-        if($alreadyInputted){
-            $message = "<p>You've already shortened this to " . "<a href='" . $redirector->findNewUrl($urlIn) . "'>tiamat.uk/" . $redirector->findNewUrl($urlIn) . "</a></p>";
-        } else {
-            $newUrl = $redirector->generateString();
-            $redirector->enterData($newUrl, $urlIn);
-            $redirector->createRedirect($newUrl, $urlIn);
+        if(!$valid){
+            $message = "<p>Please enter a valid URL</p>";
+        }else{
+            $alreadyInputted = $redirector->doesOldUrlExist($urlIn);
 
-            $message = "<p>Your new URL is <a href='" . $newUrl . "'>tiamat.uk/" . $newUrl . "</a></p>";
+            if($alreadyInputted){
+                $message = "<p>You've already shortened this to " . "<a href='" . $redirector->findNewUrl($urlIn) . "'>tiamat.uk/" . $redirector->findNewUrl($urlIn) . "</a></p>";
+            } else {
+                $newUrl = $redirector->generateString();
+                $redirector->enterData($newUrl, $urlIn);
+                $redirector->createRedirect($newUrl, $urlIn);
+
+                $message = "<p>Your new URL is <a href='" . $newUrl . "'>tiamat.uk/" . $newUrl . "</a></p>";
+            }
         }
     }
     
