@@ -33,11 +33,21 @@
             return $this->pdo;
         }
         
+        function doesOldUrlExist($urlIn){
+            $query = "SELECT $urlIn FROM old_url";
+            $result = $this->connect()->query($query);
+            if($result->rowCount() > 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         //Check to see if the generated string is already in the database
         function doesStringExist($string){
             $query = "SELECT $string FROM new_url";
             $result = $this->connect()->query($query);
-            if($result->rowCount()> 0){
+            if($result->rowCount() > 0){
                 return true;
             } else {
                 return false;
@@ -53,8 +63,15 @@
             VALUES (:urlIn, :newUrl)");
 
             try {
+                //Binding the parameters that are used in the statement
                 $stmt->bindParam(':urlIn', $urlIn);
                 $stmt->bindParam(':newUrl', $newUrl);
+
+                //Executing the statement, almost forgot this
+                $stmt->execute();
+
+                //Returning the new short URL so we can display it
+                return $newUrl;
             } catch(PDOException $e) {
                 echo($e->getMessage());
             }

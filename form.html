@@ -13,7 +13,9 @@
     require_once "redirector.php";
 
     if(!isset($_POST['urlIn'])){
-       $redirector->checkDatabase();
+        $urlIn = $_POST['urlIn'];
+
+        $redirector->doesOldUrlExist($urlIn);
     }
     
     ?>
