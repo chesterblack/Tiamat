@@ -33,8 +33,15 @@
             return $this->pdo;
         }
         
+        //Check to see if the generated string is already in the database
         function doesStringExist($string){
-            
+            $query = "SELECT $string FROM shortened";
+            $result = $this->connect()->query($query);
+            if($result->rowCount()> 0){
+                return true;
+            } else {
+                return false;
+            }
         }
 
         function enterData(){
