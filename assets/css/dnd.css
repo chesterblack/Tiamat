@@ -351,16 +351,17 @@ em {
 /* 404 PAGE */
 /* line 345, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
 .fourohfour {
-  padding-top: 55px; }
+  padding-top: 75px; }
   /* line 348, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
   .fourohfour .left {
     max-width: 50%;
-    float: left; }
-  /* line 352, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
+    float: left;
+    margin-top: 130px; }
+  /* line 353, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
   .fourohfour .right {
     float: right;
     text-align: center; }
-  /* line 356, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
+  /* line 357, /Users/chesterblack/Documents/Development/Tiamat/assets/sass/dnd.scss */
   .fourohfour p {
     font-size: 26px; }
 
