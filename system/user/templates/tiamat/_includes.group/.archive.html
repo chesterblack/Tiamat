@@ -10,7 +10,7 @@
         <h1>{layout:page-title}</h1>
 
         {exp:channel:entries channel="{layout:page-channel}" orderby="appeared-in" sort="asc"}
-        {if no_results}
+        {if last_segment != "{layout:page-channel}"}
             {redirect="404"}
         {/if}
         <div class="profile-box categories" id="{url_title}">
