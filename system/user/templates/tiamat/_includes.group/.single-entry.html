@@ -16,6 +16,24 @@
         {/if}
 
 		<div class="top">
+			{if level}
+				<div class="level">
+					<h2>
+						Level
+					</h2>
+				</div>
+				<ul class="experience">
+					<li class="current level">
+						{level}
+					</li>
+					<li class="xp-bar">
+						<div class="inner-xp" style="width:{exp}%;"></div>
+					</li>
+					<li class="next level">
+						<?php echo {level}+1 ?>
+					</li>
+				</ul>
+			{/if}
 		<div class="{if image}left{if:else}center{/if}">
 				<h1>
 					{title}
