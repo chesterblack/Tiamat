@@ -1,0 +1,429 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,900" rel="stylesheet">
+ 
+<title>D&D Newsletter</title>                                                                                                                                                     
+<style type="text/css">
+  .ReadMsgBody {width: 100%; background-color: #ffffff;}
+  .ExternalClass {width: 100%; background-color: #ffffff;}
+  body   {width: 100%; background-color: #ffffff; margin:0; padding:0; -webkit-font-smoothing: antialiased;font-family: Georgia, Times, serif}
+  table {border-collapse: collapse;}
+  
+  p.welcomeMsg a {color:#ffffff;}
+  
+    @media only screen and (max-width: 604px)  {    
+        .deviceWidth {width:90%!important; padding:0;} 
+        .deviceWidthfull {width:100%!important; padding:0;} 
+        .spacer {width:10px;}
+        .center {text-align: center!important;}
+        .innerWidth {width:100%!important; padding:0;}   
+    }
+    
+    @media only screen and (max-width: 479px) {
+        .displaynon {display:none;}
+    }
+    
+</style>
+</head>
+ 
+ 
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix">
+
+<table width="100%" align="center" cellpadding="0" cellspacing="0">
+    <tr><td height="30" class="displaynon"></td></tr>
+    <tr>
+        <td>
+            <table width="700" align="center" cellpadding="0" cellspacing="0" class="innerWidth" bgcolor="#ffffff" style="border:1px solid #000000;">
+                <tr>
+                    <td>     
+                        <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth">
+                            <tr><td height="25"></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <a href="/dungeons-and-dragons" target="_blank" style="font-family:'Roboto','Arial',sans-serif; font-weight: lighter; font-size: 40px; text-transform: uppercase; font-weight: 100; letter-spacing: 12px; margin:0; color:#000000; text-decoration: none;">
+                                        D&amp;D Update
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr><td height="25" style="border-bottom: 1px solid #000000;"></td></tr>
+                            <tr><td height="25"></td></tr>
+
+                            <!-- STORY SECTION BEGIN -->
+
+                            {exp:channel:entries channel="newsletter" status="not closed" limit="1"}
+                            {latest-story}
+                            <tr>
+                                <td class="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; text-transform: uppercase;">
+                                        Story update: Chapter {latest-story:chapter}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="center">
+                                    <a href="https://www.tiamat.uk/story#{latest-story:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size: 40px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                        {latest-story:title}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 100; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif;">
+                                        {exp:chopper words="150" append="..." allow="<br>"}
+                                            {latest-story:what-happened}
+                                        {/exp:chopper}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="20"></td></tr>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;" align="center">
+                                        <tr><td height="10"></td></tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="https://www.tiamat.uk/story#{latest-story:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;Click here to continue reading&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="10"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            {/latest-story}
+
+                            <!-- STORY SECTION END -->
+                            <!-- CHARACTERS SECTION BEGIN -->
+                            
+                            {if latest-characters}
+                            <tr><td height="25" style="border-bottom:1px solid #000000;"></td></tr>
+                            <tr><td height="25"></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; text-transform: uppercase;">
+                                        New Characters
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            {/if}
+                            {latest-characters}
+                            <tr>
+                                <td>
+                                    <a href="https://www.tiamat.uk/characters/profile/{latest-characters:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color:#000000; text-decoration: none;">
+                                        {latest-characters:title}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 100; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif;">
+                                        {latest-characters:standfirst}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="5"></td></tr>
+                            <tr>
+                                <td>
+                                    {exp:channel:categories 
+                                        show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
+                                        <tr>
+                                            <td>
+                                                <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                    &nbsp;{category_name}&nbsp;
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {/exp:channel:categories}
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/characters/profile/{latest-characters:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td height="25"></td></tr>
+                            {/latest-characters}
+
+                            <!-- CHARACTERS SECTION END -->
+                            <!-- ITEMS SECTION BEGIN -->
+
+                            {if latest-items}
+                            <tr><td height="25" style="border-top: 1px solid #000000;"></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; text-transform: uppercase;">
+                                        New Items
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            {/if}
+                            {latest-items}
+                            <tr>
+                                <td>
+                                    <a href="https://www.tiamat.uk/items/profile/{latest-items:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color:#000000; text-decoration: none;">
+                                        {latest-items:title}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 100; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif;">
+                                        {latest-items:standfirst}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="5"></td></tr>
+                            <tr>
+                                <td>
+                                    {exp:channel:categories 
+                                        show="{latest-items:categories}{category_id}|{/latest-items:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
+                                            <tr>
+                                                <td>
+                                                    <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                        &nbsp;{category_name}&nbsp;
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    {/exp:channel:categories}
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/items/profile/{latest-items:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td height="25"></td></tr>
+                            {/latest-items}
+
+                            <!-- ITEMS SECTION END -->
+                            <!-- LOCATIONS SECTION BEGIN -->
+
+                            {if latest-locations}
+                            <tr><td height="25" style="border-top: 1px solid #000000;"></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; text-transform: uppercase;">
+                                        New Locations
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            {/if}
+                            {latest-locations}
+                            <tr>
+                                <td>
+                                    <a href="https://www.tiamat.uk/items/profile/{latest-items:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color:#000000; text-decoration: none;">
+                                        {latest-locations:title}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 100; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif;">
+                                        {latest-locations:standfirst}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="5"></td></tr>
+                            <tr>
+                                <td>
+                                    {exp:channel:categories 
+                                        show="{latest-locations:categories}{category_id}|{/latest-locations:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
+                                        <tr>
+                                            <td>
+                                                <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                    &nbsp;{category_name}&nbsp;
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {/exp:channel:categories}
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/locations/profile/{latest-locations:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td height="25"></td></tr>
+                            {/latest-locations}
+
+                            <!-- LOCATIONS SECTION END -->
+                            <!-- RESOURCES SECTION BEGIN -->
+
+                            {if latest-resources}
+                            <tr><td height="25" style="border-top: 1px solid #000000;"></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; text-transform: uppercase;">
+                                        New Resources
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="10"></td></tr>
+                            {/if}
+                            {latest-resources}
+                            <tr>
+                                <td>
+                                    <a href="https://www.tiamat.uk/items/profile/{latest-resources:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color:#000000; text-decoration: none;">
+                                        {latest-resources:title}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 100; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif;">
+                                        {latest-resources:standfirst}
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="5"></td></tr>
+                            <tr>
+                                <td>
+                                    {exp:channel:categories 
+                                        show="{latest-resources:categories}{category_id}|{/latest-resources:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
+                                        <tr>
+                                            <td>
+                                                <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                    &nbsp;{category_name}&nbsp;
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {/exp:channel:categories}
+                                </td>
+                            </tr>
+                            <tr><td height="5"></td></tr>
+                            <tr>
+                                <td>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/resources/profile/{latest-resources:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr><td height="25"></td></tr>
+                            {/latest-resources}
+                            {/exp:channel:entries}
+
+                            <!-- RESOURCES SECTION END -->
+                            <!-- NEW FEATURES SECTION START -->
+
+                            <tr><td height="25" style="border-top:1px solid #000000;"></td></tr>
+                            <tr>
+                                <td align="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 40px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                        Site changes
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <p style="margin:0; font-weight: 900; font-size: 21px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; text-transform: uppercase;">
+                                        Improvements and new features
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="25"></td></tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 900; font-size: 30px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color:#000000; text-decoration: none;">
+                                        Levels and EXP
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin:0; font-weight: 100; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif;">
+                                        If you go to any Player Character you should now be able to see their level and how close you are to levelling up!
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr><td height="25"></td></tr>
+
+                            <!-- NEW FEATURES SECTION START -->
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr><td height="30" class="displaynon"></td></tr>
+</table>
+      
+</body>
+</html>
