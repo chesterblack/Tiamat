@@ -1,12 +1,19 @@
+{exp:channel:entries channel="newsletter" status="not closed" limit="1"}
+{latest-characters}
+{latest-characters:title} <br>
+
+
 {exp:channel:categories 
-  show="8|11"
+  show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
   show_empty="yes" 
   show_expired="yes" 
   show_future_entries="yes" 
   style="linear"
-}{if parent_id != 0}
-{category_name} - {category_id} - {colour}
-{/if}{/exp:channel:categories}
+}
+{category_name} - {category_id} - {colour}<br /><br />
+{/exp:channel:categories}
+{/latest-characters}
+{/exp:channel:entries}
           
           <hr><hr>
           
