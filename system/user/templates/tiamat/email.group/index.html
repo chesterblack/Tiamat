@@ -1,37 +1,3 @@
-{exp:channel:entries channel="newsletter" status="not closed" limit="1"}
-{latest-characters}
-{latest-characters:title} <br>
-
-
-{exp:channel:categories 
-  show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
-  show_empty="yes" 
-  show_expired="yes" 
-  show_future_entries="yes" 
-  style="linear"
-}
-{category_name} - {category_id} - {colour}<br /><br />
-{/exp:channel:categories}
-{/latest-characters}
-{/exp:channel:entries}
-          
-          <hr><hr>
-          
-{exp:channel:entries channel="newsletter" status="not closed" limit="1"}
-{latest-characters}
-{latest-characters:title} <br>
- 	{latest-characters:categories}
-          {category_name} <br>
-          - {category_id} - <br>
-          {exp:channel:categories show="{category_id}" style="linear"}
-              {category_name} - <br>
-          {/exp:channel:categories}
- 	{/latest-characters:categories}
-    <hr>
-{/latest-characters}
-{/exp:channel:entries}
-
- 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -147,21 +113,23 @@
                             <tr><td height="5"></td></tr>
                             <tr>
                                 <td>
-                                    {latest-characters:categories orderby='asc'}
-                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px;">
-                                        <tr>
-                                            <td>
-                                                <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000; text-transform: uppercase;">
-                                                    colour: {colour}<br>
-                                                    &nbsp;{category_name}&nbsp;
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="5" align="left">
-                                        <tr><td height="5"></td></tr>
-                                    </table>
-                                    {/latest-characters:categories}
+                                        {exp:channel:categories 
+                                          show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
+                                          show_empty="yes" 
+                                          show_expired="yes" 
+                                          show_future_entries="yes" 
+                                          style="linear"
+                                        }
+                                        <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px;">
+                                                <tr>
+                                                    <td>
+                                                        <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                            &nbsp;{category_name}&nbsp;
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        {/exp:channel:categories}
                                 </td>
                             </tr>
                             <tr><td height="5"></td></tr>
