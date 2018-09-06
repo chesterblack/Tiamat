@@ -33,7 +33,7 @@
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" bgcolor="#f0efee" style="background-color:#f0efee;">
 
 <table width="100%" align="center" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
-    <tr><td height="30"></td></tr>
+    <tr><td height="30" class="displaynon"></td></tr>
     <tr>
         <td>
             <table width="700" align="center" cellpadding="0" cellspacing="0" class="innerWidth" style="border:1px solid #000000;">
@@ -82,9 +82,17 @@
                             <tr><td height="20"></td></tr>
                             <tr>
                                 <td>
-                                    <a href="https://www.tiamat.uk/story#{latest-story:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000;">
-                                        Click here to continue reading
-                                    </a>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;" align="center">
+                                        <tr><td height="10"></td></tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="https://www.tiamat.uk/story#{latest-story:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;Click here to continue reading&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="10"></td></tr>
+                                    </table>
                                 </td>
                             </tr>
                             {/latest-story}
@@ -141,12 +149,20 @@
                                     {/exp:channel:categories}
                                 </td>
                             </tr>
-                            <tr><td height="5"></td></tr>
+                            <tr><td height="10"></td></tr>
                             <tr>
                                 <td>
-                                    <a href="https://www.tiamat.uk/characters/profile/{latest-characters:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000;">
-                                        View Profile
-                                    </a>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/characters/profile/{latest-characters:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr><td height="25"></td></tr>
@@ -203,12 +219,20 @@
                                     {/exp:channel:categories}
                                 </td>
                             </tr>
-                            <tr><td height="5"></td></tr>
+                            <tr><td height="10"></td></tr>
                             <tr>
                                 <td>
-                                    <a href="https://www.tiamat.uk/items/profile/{latest-items:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000;">
-                                        View Profile
-                                    </a>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/items/profile/{latest-items:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr><td height="25"></td></tr>
@@ -247,7 +271,7 @@
                             <tr>
                                 <td>
                                     {exp:channel:categories 
-                                        show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
+                                        show="{latest-locations:categories}{category_id}|{/latest-locations:categories}"
                                         show_empty="yes" 
                                         show_expired="yes" 
                                         show_future_entries="yes" 
@@ -265,12 +289,20 @@
                                     {/exp:channel:categories}
                                 </td>
                             </tr>
-                            <tr><td height="5"></td></tr>
+                            <tr><td height="10"></td></tr>
                             <tr>
                                 <td>
-                                    <a href="https://www.tiamat.uk/items/profile/{latest-locations:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000;">
-                                        View Profile
-                                    </a>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/locations/profile/{latest-locations:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr><td height="25"></td></tr>
@@ -308,8 +340,14 @@
                             <tr><td height="5"></td></tr>
                             <tr>
                                 <td>
-                                    {latest-resources:categories orderby='asc'}
-                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px;">
+                                    {exp:channel:categories 
+                                        show="{latest-resources:categories}{category_id}|{/latest-resources:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
                                         <tr>
                                             <td>
                                                 <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
@@ -318,18 +356,23 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="5" align="left">
-                                        <tr><td height="5"></td></tr>
-                                    </table>
-                                    {/latest-resources:categories}
+                                    {/exp:channel:categories}
                                 </td>
                             </tr>
                             <tr><td height="5"></td></tr>
                             <tr>
                                 <td>
-                                    <a href="https://www.tiamat.uk/items/profile/{latest-resources:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size:21px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000;">
-                                        View Profile
-                                    </a>
+                                    <table cellpadding="0" cellspacing="0" border="0" style="border:1px solid #000000;">
+                                        <tr><td height="5"></td></tr>
+                                        <tr>
+                                            <td>
+                                                <a href="https://www.tiamat.uk/resources/profile/{latest-resources:url_title}" target="_blank" style="margin:0; font-weight: 100; text-transform: uppercase; font-size:18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
+                                                    &nbsp;&nbsp;View profile&nbsp;&nbsp;
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr><td height="5"></td></tr>
+                                    </table>
                                 </td>
                             </tr>
                             <tr><td height="25"></td></tr>
@@ -344,7 +387,7 @@
             </table>
         </td>
     </tr>
-    <tr><td height="30"></td></tr>
+    <tr><td height="30" class="displaynon"></td></tr>
 </table>
       
 </body>
