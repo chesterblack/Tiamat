@@ -42,12 +42,17 @@
                         <table width="600" border="0" cellpadding="0" cellspacing="0" align="center" class="deviceWidth">
                             <tr><td height="25"></td></tr>
                             <tr>
-                                <td align="center" style="font-family:'Roboto','Arial',sans-serif; font-weight: lighter; font-size: 40px; text-transform: uppercase; font-weight: 100; letter-spacing: 12px; margin:0;">
-                                    D&amp;D Update
+                                <td align="center">
+                                    <a href="/dungeons-and-dragons" target="_blank" style="font-family:'Roboto','Arial',sans-serif; font-weight: lighter; font-size: 40px; text-transform: uppercase; font-weight: 100; letter-spacing: 12px; margin:0; color:#000000; text-decoration: none;">
+                                        D&amp;D Update
+                                    </a>
                                 </td>
                             </tr>
                             <tr><td height="25" style="border-bottom: 1px solid #000000;"></td></tr>
                             <tr><td height="25"></td></tr>
+
+                            <!-- STORY SECTION BEGIN -->
+
                             {exp:channel:entries channel="newsletter" status="not closed" limit="1"}
                             {latest-story}
                             <tr>
@@ -61,7 +66,7 @@
                                 <td class="center">
                                     <a href="https://www.tiamat.uk/story#{latest-story:url_title}" target="_blank" style="margin:0; font-weight: 900; font-size: 40px; letter-spacing: -0.5px; font-family: 'Roboto', 'Arial', sans-serif; color: #000000; text-decoration: none;">
                                         {latest-story:title}
-                                    </p>
+                                    </a>
                                 </td>
                             </tr>
                             <tr><td height="10"></td></tr>
@@ -83,6 +88,10 @@
                                 </td>
                             </tr>
                             {/latest-story}
+
+                            <!-- STORY SECTION END -->
+                            <!-- CHARACTERS SECTION BEGIN -->
+                            
                             {if latest-characters}
                             <tr><td height="25" style="border-bottom:1px solid #000000;"></td></tr>
                             <tr><td height="25"></td></tr>
@@ -113,23 +122,23 @@
                             <tr><td height="5"></td></tr>
                             <tr>
                                 <td>
-                                        {exp:channel:categories 
-                                          show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
-                                          show_empty="yes" 
-                                          show_expired="yes" 
-                                          show_future_entries="yes" 
-                                          style="linear"
-                                        }
-                                        <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px;">
-                                                <tr>
-                                                    <td>
-                                                        <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
-                                                            &nbsp;{category_name}&nbsp;
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        {/exp:channel:categories}
+                                    {exp:channel:categories 
+                                        show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
+                                        <tr>
+                                            <td>
+                                                <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                    &nbsp;{category_name}&nbsp;
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    {/exp:channel:categories}
                                 </td>
                             </tr>
                             <tr><td height="5"></td></tr>
@@ -142,6 +151,10 @@
                             </tr>
                             <tr><td height="25"></td></tr>
                             {/latest-characters}
+
+                            <!-- CHARACTERS SECTION END -->
+                            <!-- ITEMS SECTION BEGIN -->
+
                             {if latest-items}
                             <tr><td height="25" style="border-top: 1px solid #000000;"></td></tr>
                             <tr>
@@ -171,20 +184,23 @@
                             <tr><td height="5"></td></tr>
                             <tr>
                                 <td>
-                                    {latest-items:categories orderby='asc'}
-                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px;">
-                                        <tr>
-                                            <td>
-                                                <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
-                                                    &nbsp;{category_name}&nbsp;
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="5" align="left">
-                                        <tr><td height="5"></td></tr>
-                                    </table>
-                                    {/latest-items:categories}
+                                    {exp:channel:categories 
+                                        show="{latest-items:categories}{category_id}|{/latest-items:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
+                                            <tr>
+                                                <td>
+                                                    <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
+                                                        &nbsp;{category_name}&nbsp;
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    {/exp:channel:categories}
                                 </td>
                             </tr>
                             <tr><td height="5"></td></tr>
@@ -197,6 +213,10 @@
                             </tr>
                             <tr><td height="25"></td></tr>
                             {/latest-items}
+
+                            <!-- ITEMS SECTION END -->
+                            <!-- LOCATIONS SECTION BEGIN -->
+
                             {if latest-locations}
                             <tr><td height="25" style="border-top: 1px solid #000000;"></td></tr>
                             <tr>
@@ -226,8 +246,14 @@
                             <tr><td height="5"></td></tr>
                             <tr>
                                 <td>
-                                    {latest-locations:categories orderby='asc'}
-                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px;">
+                                    {exp:channel:categories 
+                                        show="{latest-characters:categories}{category_id}|{/latest-characters:categories}"
+                                        show_empty="yes" 
+                                        show_expired="yes" 
+                                        show_future_entries="yes" 
+                                        style="linear"
+                                    }
+                                    <table cellpadding="0" cellspacing="0" border="0" bgcolor="{colour}" align="left" style="padding:0 5px; border-radius:5px; margin-right: 5px;">
                                         <tr>
                                             <td>
                                                 <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #ffffff; text-transform: uppercase;">
@@ -236,10 +262,7 @@
                                             </td>
                                         </tr>
                                     </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="5" align="left">
-                                        <tr><td height="5"></td></tr>
-                                    </table>
-                                    {/latest-locations:categories}
+                                    {/exp:channel:categories}
                                 </td>
                             </tr>
                             <tr><td height="5"></td></tr>
@@ -252,6 +275,10 @@
                             </tr>
                             <tr><td height="25"></td></tr>
                             {/latest-locations}
+
+                            <!-- LOCATIONS SECTION END -->
+                            <!-- RESOURCES SECTION BEGIN -->
+
                             {if latest-resources}
                             <tr><td height="25" style="border-top: 1px solid #000000;"></td></tr>
                             <tr>
@@ -308,6 +335,9 @@
                             <tr><td height="25"></td></tr>
                             {/latest-resources}
                             {/exp:channel:entries}
+
+                            <!-- RESOURCES SECTION END -->
+
                         </table>
                     </td>
                 </tr>
