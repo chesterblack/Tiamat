@@ -1,4 +1,29 @@
- 
+{exp:channel:categories 
+  show="8|11"
+  show_empty="yes" 
+  show_expired="yes" 
+  show_future_entries="yes" 
+  style="linear"
+}{if parent_id != 0}
+{category_name} - {category_id} - {colour}
+{/if}{/exp:channel:categories}
+          
+          <hr><hr>
+          
+{exp:channel:entries channel="newsletter" status="not closed" limit="1"}
+{latest-characters}
+{latest-characters:title} <br>
+ 	{latest-characters:categories}
+          {category_name} <br>
+          - {category_id} - <br>
+          {exp:channel:categories show="{category_id}" style="linear"}
+              {category_name} - <br>
+          {/exp:channel:categories}
+ 	{/latest-characters:categories}
+    <hr>
+{/latest-characters}
+{/exp:channel:entries}
+
  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -120,7 +145,7 @@
                                         <tr>
                                             <td>
                                                 <p style="margin:0; font-weight: 900; font-size: 18px; font-family: 'Roboto', 'Arial', sans-serif; color: #000; text-transform: uppercase;">
-                                                    {colour}
+                                                    colour: {colour}<br>
                                                     &nbsp;{category_name}&nbsp;
                                                 </p>
                                             </td>
