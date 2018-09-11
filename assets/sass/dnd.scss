@@ -1,6 +1,18 @@
 .clearfix{
     clear: both;
 }
+.container{
+    max-width: 1000px;
+    padding: 0 20px;
+    margin: 0 auto;
+    width: 90%;
+}
+.hamburger{
+    display:none;
+}
+#mobile-menu{
+    display: none;
+}
 p{
     font-weight: 300;
     font-size: 19px;
@@ -42,6 +54,21 @@ button{
     font-weight: 300;
     border: 1px solid #000000;
     font-size: 16px;
+}
+input{
+    background: none;
+    border: 1px solid #000000;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    width: 250px;
+    max-width: 100%;
+    text-transform: uppercase;
+    font-weight: 100;
+    position: relative;
+    bottom: 60px;
+    left: 155px;
+    width: initial;
 }
 
 /* HOMEPAGE */
@@ -357,31 +384,25 @@ em{
     position: sticky;
     width: 100%;
     top: 0;
+}
+.header-list{
+    width: 100%;
 
-    ul{
-        width: 100%;
+    li{
+        float: right;
+    }
+    .left{
+        float: left;
+    }
+    button{
+        padding: 5px 10px;
 
-        li{
-            float: right;
-        }
-        .left{
-            float: left;
-        }
-        button{
-            padding: 5px 10px;
-
-            p{
-                font-weight: 100;
-            }
-        }
-        button:focus{
-            outline: none;
+        p{
+            font-weight: 100;
         }
     }
-    a{
-        text-transform: uppercase;
-        font-size: 20px;
-        font-weight: 100;
+    button:focus{
+        outline: none;
     }
 }
 
@@ -401,4 +422,5 @@ em{
     p{
         font-size: 26px;
     }
+
 }

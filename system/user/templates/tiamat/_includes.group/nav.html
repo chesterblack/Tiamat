@@ -1,6 +1,8 @@
+<script src="/assets/js/hamburger.js"></script>
+
 <nav class="dnd-header">
     <div class="container">
-        <ul>
+        <ul class="header-list">
             <li class="left">
                 <a href="/">
                     Home
@@ -52,3 +54,13 @@
     </div>
     <div class="clearfix"></div>
 </nav>
+
+<div id="mobile-menu">
+    {embed="/_includes/dnd-mobile-menu"}
+</div>
+
+<button class="hamburger hamburger--collapse" id="hamburger" type="button" onclick="expand()">
+    <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+    </span>
+</button>

@@ -1,0 +1,104 @@
+@media screen and (max-width: 830px) {
+    input{
+        position: initial;
+        margin-left: 0;
+        width: 100%;
+    }
+    textarea{
+        margin-top: 10px;
+    }
+    .homepage{
+        .channel{
+            width: 80%;
+        }
+    }
+    .dnd-header{
+        display: none;
+    }
+    .hamburger {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 0 0 0;
+    }
+    .is-active{
+        margin: 0 0 20px 75px;
+    }
+    #mobile-menu.open-menu{
+        display: block;
+    }
+    #mobile-menu{
+        width: 200px;
+        height: 100vh;
+        background: rgba(255,255,255,0.95);
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-right: 1px solid #000000;
+    }
+    .menu-inner{
+        width: 100%;
+
+        ul{
+            margin-top:60px;
+        }
+        li{
+            float: none;
+            margin: 15px;
+
+            a{
+                font-size: 25px;
+                text-decoration: none;
+            }
+        }
+    }
+    h1{
+        font-size: 35px;
+        letter-spacing: 9px;
+    }
+    h3{
+        font-size: 35px;
+    }
+    .profile{
+        .left{
+            max-width: 100%;
+        }
+        .right{
+            max-width:100%;
+        }
+        .extra-padding{
+            padding-bottom: 5px;
+        }
+        h2{
+            font-size: 17px;
+        }
+        .key-points{
+            text-align: center;
+        }
+        .key-point:nth-last-child(n+2)::after{
+            margin: 0;
+        }
+        .sidebar{
+            max-width: 80%;
+            float: none;
+            margin: 0 auto 15px auto;
+        }
+        .all-comments{
+            .comments-box{
+                max-width: 80%;
+                margin-bottom: 20px;
+                border: none;
+                border-bottom: 1px solid #000000;
+
+                h2{
+                    border-bottom: 1px solid #000000;
+                }
+            }
+        }
+    }
+    .categories{
+        ul{
+            float: none;
+            margin-bottom: 5px;
+        }
+    }
+}

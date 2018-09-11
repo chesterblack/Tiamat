@@ -3,3 +3,6 @@
 /assets/images
 /logs
 .vscode/
+*.css
+*.map
+/assets/css
