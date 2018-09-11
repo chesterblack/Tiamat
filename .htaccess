@@ -17,9 +17,10 @@
         RewriteRule ^(.*)$ https://www.tiamat.uk/$1 [R=301,L]
 
         RewriteCond %{QUERY_STRING} ^/cp/redirect-me$ 
-        RewriteRule ^admin\.php$ /characters? [R=301,L] 
+        RewriteRule ^admin\.php$ /dungeons-and-dragons? [R=301,L] 
 
         Redirect 301 /admin.php?/cp/redirect-me https://www.tiamat.uk/dungeons-and-dragons
+
 
 
 </IfModule>
