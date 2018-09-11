@@ -290,6 +290,7 @@ em{
         width: 100%;
         float: right;
         margin-left: 20px;
+        box-sizing: border-box;
 
         .dividing-line{
             border-bottom:1px solid #000000;
@@ -308,6 +309,7 @@ em{
             max-width: 30%;
             vertical-align: top;
             padding: 0 10px;
+            box-sizing: border-box;
 
             h2{
                 margin-bottom: 10px;

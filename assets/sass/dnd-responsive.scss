@@ -15,6 +15,9 @@
     .dnd-header{
         display: none;
     }
+    .profile .experience .xp-bar{
+        width: 70%;
+    }
     .hamburger {
         display: block;
         padding: 10px 0 0 0;
@@ -92,13 +95,13 @@
             margin: 0;
         }
         .sidebar{
-            max-width: 80%;
             float: none;
             margin: 0 auto 15px auto;
+            max-width: 100%;
         }
         .all-comments{
             .comments-box{
-                max-width: 80%;
+                max-width: 100%;
                 margin-bottom: 20px;
                 border: none;
                 border-bottom: 1px solid #000000;
