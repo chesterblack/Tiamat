@@ -10,6 +10,9 @@
 .hamburger{
     display:none;
 }
+.showme{
+    display: none;
+}
 #mobile-menu{
     display: none;
 }
@@ -186,6 +189,10 @@ em{
 
 /* PROFILE */
 .profile{
+    .desc{
+        width: 100%;
+        max-width: 600px;
+    }
     div.level{
         text-align: center;
         margin-bottom: -26px;
@@ -287,6 +294,7 @@ em{
         width: 100%;
         float: right;
         margin-left: 20px;
+        box-sizing: border-box;
 
         .dividing-line{
             border-bottom:1px solid #000000;
@@ -305,6 +313,7 @@ em{
             max-width: 30%;
             vertical-align: top;
             padding: 0 10px;
+            box-sizing: border-box;
 
             h2{
                 margin-bottom: 10px;
@@ -390,6 +399,12 @@ em{
 
     li{
         float: right;
+
+        a{
+            text-transform: uppercase; 
+            font-weight: 100;
+            font-size: 19px;
+        }
     }
     .left{
         float: left;

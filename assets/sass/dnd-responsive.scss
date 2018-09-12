@@ -15,10 +15,27 @@
     .dnd-header{
         display: none;
     }
+    .profile .experience .xp-bar{
+        width: 70%;
+    }
     .hamburger {
         display: block;
-        margin: 0 auto;
         padding: 10px 0 0 0;
+        margin: 10px 0 0 20px;
+    }
+    .showme{
+        display: block;
+        float: right;
+        margin: 6px 20px 0 0;
+
+        p, a{
+            font-weight: 100;
+            text-decoration: none;
+        }
+    }
+    .mobile-nav{
+        border-bottom: 1px solid #000000;
+        padding-bottom: 13px; 
     }
     .is-active{
         margin: 0 0 20px 75px;
@@ -64,6 +81,7 @@
         }
         .right{
             max-width:100%;
+            float: none;
         }
         .extra-padding{
             padding-bottom: 5px;
@@ -78,13 +96,13 @@
             margin: 0;
         }
         .sidebar{
-            max-width: 80%;
             float: none;
             margin: 0 auto 15px auto;
+            max-width: 100%;
         }
         .all-comments{
             .comments-box{
-                max-width: 80%;
+                max-width: 100%;
                 margin-bottom: 20px;
                 border: none;
                 border-bottom: 1px solid #000000;

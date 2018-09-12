@@ -59,8 +59,24 @@
     {embed="/_includes/dnd-mobile-menu"}
 </div>
 
-<button class="hamburger hamburger--collapse" id="hamburger" type="button" onclick="expand()">
-    <span class="hamburger-box">
-        <span class="hamburger-inner"></span>
-    </span>
-</button>
+<div class="mobile-nav">
+    {if !logged_in}
+    <button class="showme">
+        <a href="/admin.php">
+            Login
+        </a>
+    </button>
+    {if:else}
+    <button class="showme">
+        <p>
+            {logged_in_screen_name}
+        </p>
+    </button>
+    {/if}
+
+    <button class="hamburger hamburger--collapse" id="hamburger" type="button" onclick="expand()">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+</div>
