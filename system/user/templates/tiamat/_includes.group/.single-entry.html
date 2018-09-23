@@ -43,11 +43,16 @@
 				</h3>
 			</div>
 
+			<div class="testimg"></div>
 			{if image}
 			<div class="right">
-                <a href="{image}" target="_blank">
-                    <img src="{image}" />
-                </a>
+				<details>
+					<summary>
+						<div class="bg"></div>
+						<img src="{image}" class="trigger" />
+					</summary>
+					<img class="popup" src="{image}" />
+				</details>
 			</div>
 			{/if}
 			<div class="clearfix"></div>
