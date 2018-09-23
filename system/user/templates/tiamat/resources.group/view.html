@@ -1,3 +1,7 @@
 {exp:channel:entries channel='resources' limit='1' url_title="{last_segment}"}
-    {resource-html}
+    {if resource-html}
+        {resource-html}
+    {if:else}
+        <img src="{image}" style="max-width:100%;">
+    {/if}
 {/exp:channel:entries}

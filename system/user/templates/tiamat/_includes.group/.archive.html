@@ -9,7 +9,7 @@
     <div class="container">
         <h1>{layout:page-title}</h1>
 
-        {exp:channel:entries channel="{layout:page-channel}" orderby="appeared-in" sort="asc"}
+        {exp:channel:entries channel="{layout:page-channel}" orderby="title" sort="asc"}
         {if last_segment != "{layout:page-channel}"}
             {redirect="404"}
         {/if}
