@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {embed=/_includes/dnd-header}
-    <title>{layout:page-title}</title>
+    {embed="/_includes/dnd-header"}
+    <title>{embed:page-title}</title>
 </head>
 <body class="archive">
     {embed="/_includes/nav"}
     <div class="container">
-        <h1>{layout:page-title}</h1>
+        <h1>{embed:page-title}</h1>
 
-        {exp:channel:entries channel="{layout:page-channel}" orderby="title" sort="asc"}
-        {if last_segment != "{layout:page-channel}"}
+        {exp:channel:entries channel="{embed:page-channel}" orderby="title" sort="asc"}
+        {if last_segment != "{embed:page-channel}"}
             {redirect="404"}
         {/if}
         <div class="profile-box categories" id="{url_title}">
@@ -21,7 +21,7 @@
                 </li>
                 {/categories}
             </ul>
-            <a href="/{segment_1}/profile/{url_title}">
+            <a href="/{segment_1}/{url_title}">
                 <h2>{title}</h2>
             </a>
             <p>{standfirst}</p>
