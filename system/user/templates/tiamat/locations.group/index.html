@@ -1,3 +1,5 @@
-{layout="/_includes/.archive"}
-{layout:set name='page-title'}Locations{/layout:set}
-{layout:set name='page-channel'}locations{/layout:set}
+{if last_segment == "locations"}
+    {embed="/_includes/.archive" page-title="Locations" page-channel="locations"}
+{if:else}
+    {embed="/_includes/.single-entry" page-channel="locations"}
+{/if}

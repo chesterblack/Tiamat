@@ -2,14 +2,14 @@
 <html>
 <head>
 	{embed=/_includes/dnd-header}
-	{exp:channel:entries channel='{layout:page-channel}' limit='1' url_title="{last_segment}"}
+	{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}
 		<title>{title}</title>
 	{/exp:channel:entries}
 </head>
 <body>
 	{embed="/_includes/nav"}
 	<div class="container profile">
-		{exp:channel:entries channel='{layout:page-channel}' limit='1' url_title="{last_segment}"}
+		{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}
 		
 		{if no_results}
             {redirect="404"}
@@ -145,14 +145,14 @@
 				<h2>
 					Lloyd's notes:
 				</h2>
-				{exp:comment:entries sort="asc" limit="20" author_id="2" channel="{layout:page-channel}" url_title="{last_segment}"}
+				{exp:comment:entries sort="asc" limit="20" author_id="2" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
 				</p>
 				{/exp:comment:entries}
 
 				{if logged_in_member_id == "2"}
-				{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
+				{exp:comment:form channel="{embed:page-channel}" url_title={last_segment}}
 				<div class="new-comment">
 					<label for="comment"><h2>New note:</h2></label><br />
 					<textarea name="comment" rows="4">{comment}</textarea> 
@@ -167,14 +167,14 @@
 				<h2>
 					Harry's notes:
 				</h2>
-				{exp:comment:entries sort="asc" limit="20" author_id="3" channel="{layout:page-channel}" url_title="{last_segment}"}
+				{exp:comment:entries sort="asc" limit="20" author_id="3" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
 				</p>
 				{/exp:comment:entries}
 
 				{if logged_in_member_id == "3"}
-				{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
+				{exp:comment:form channel="{embed:page-channel}" url_title={last_segment}}
 				<div class="new-comment">
 					<label for="comment"><h2>New note:</h2></label><br />
 					<textarea name="comment" rows="4">{comment}</textarea> 
@@ -189,14 +189,14 @@
 				<h2>
 					Holly's notes:
 				</h2>
-				{exp:comment:entries sort="asc" limit="20" author_id="4" channel="{layout:page-channel}" url_title="{last_segment}"}
+				{exp:comment:entries sort="asc" limit="20" author_id="4" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
 				</p>
 				{/exp:comment:entries}
 
 				{if logged_in_member_id == "4"}
-				{exp:comment:form channel="{layout:page-channel}" url_title={last_segment}}
+				{exp:comment:form channel="{embed:page-channel}" url_title={last_segment}}
 				<div class="new-comment">
 					<label for="comment"><h2>New note:</h2></label><br />
 					<textarea name="comment" rows="4">{comment}</textarea> 
