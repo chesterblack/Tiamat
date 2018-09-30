@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {embed="/_includes/dnd-header"}
+    <title>Combat</title>
+    <style>
+        input{
+            position: sticky;
+        }
+    </style>
+    <script src="/assets/js/combat.js"></script>
+</head>
+
+<body>
+    {embed="/_includes/nav"}
+
+    <div class="container">
+        NAME: <input type="text" name="nameInput"/>
+        INITATIVE: <input type="text" name="initInput">
+        <button onclick="formChanged()">DONE</button>
+        <div id="order"></div>
+    </div>
+</body>
+</html>
