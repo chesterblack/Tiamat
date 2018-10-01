@@ -13,15 +13,21 @@ function newCharacter(){
 }
 
 function healthEdit(i){
-    console.log("DAMANGED");
 
-    var damageAmount = document.getElementsByName("damage")[0].value;
+    if(characters[i].health == "DEAD"){}
+    else{
+        var damageAmount = document.getElementsByName("damage")[0].value;
 
-    var newHealth = characters[i].health - damageAmount;
+        var newHealth = characters[i].health - damageAmount;
 
-    characters[i].health = newHealth;
+        if(newHealth < 1){
+            newHealth = "DEAD";
+        }
 
-    displayCharacters();
+        characters[i].health = newHealth;
+
+        displayCharacters();
+    }
 }
 
 function displayCharacters(){
@@ -29,7 +35,7 @@ function displayCharacters(){
 
     var display = "<ul>";
     for (i = 0; i < charactersLength; i++){
-        display += "<li>NAME: " + characters[i].name + "<br /> INITIATIVE: " + characters[i].init + "<br /> HEALTH:" + characters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")'>DAMAGE</button></li><hr>";
+        display += "<li>NAME: " + characters[i].name + "<br /> INITIATIVE: " + characters[i].init + "<br /> HEALTH: " + characters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")'>DAMAGE</button></li><hr>";
     }
     display += "</ul>";
 
