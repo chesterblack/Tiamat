@@ -5,7 +5,7 @@
     <title>Combat</title>
     <style>
         input{
-            position: sticky;
+            position: static;
         }
     </style>
     <script src="/assets/js/combat.js"></script>
@@ -18,7 +18,9 @@
         NAME: <input type="text" name="nameInput"/>
         INITATIVE: <input type="text" name="initInput">
         HEALTH: <input type="text" name="healthInput">
-        <button onclick="newCharacter()">NEW</button>
+        <button onclick="newCharacter()">NEW</button><br />
+        <button onclick="orderCharacters()">ORDER</button>
+        <button onclick="test()">TEST</button>
         <div id="order"></div>
     </div>
 </body>
