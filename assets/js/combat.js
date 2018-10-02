@@ -34,7 +34,12 @@ function displayCharacters(){
 
     var display = "";
     for (i = 0; i < charactersLength; i++){
-        display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[i].name + "</li><li><strong>INITIATIVE:</strong> " + characters[i].init + "</li><li><strong>HEALTH:</strong> " + characters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")' class='damage'>DAMAGE</button></li></ul>";
+        display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[i].name + "</li><li><strong>INITIATIVE:</strong> " + characters[i].init + "</li>";
+        if(characters[i].health){
+            display += "<li><strong>HEALTH:</strong> " + characters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")' class='damage'>DAMAGE</button></li>"
+        } else {
+            display += "</ul>";
+        }
     }
 
     document.getElementById("order").innerHTML = display;
