@@ -32,11 +32,10 @@ function healthEdit(i){
 function displayCharacters(){
     var charactersLength = characters.length;
 
-    var display = "<ul>";
+    var display = "";
     for (i = 0; i < charactersLength; i++){
-        display += "<li>NAME: " + characters[i].name + "<br /> INITIATIVE: " + characters[i].init + "<br /> HEALTH: " + characters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")'>DAMAGE</button></li><hr>";
+        display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[i].name + "</li><li><strong>INITIATIVE:</strong> " + characters[i].init + "</li><li><strong>HEALTH:</strong> " + characters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")' class='damage'>DAMAGE</button></li></ul>";
     }
-    display += "</ul>";
 
     document.getElementById("order").innerHTML = display;
 }
@@ -45,9 +44,9 @@ function orderCharacters(){
 var orderedCharacters = [];
 
     function compare(a,b) {
-        if (a.init < b.init)
-            return -1;
         if (a.init > b.init)
+            return -1;
+        if (a.init < b.init)
             return 1;
         return 0;
     }
@@ -55,11 +54,10 @@ var orderedCharacters = [];
     orderedCharacters = characters.sort(compare);
     var orderedCharactersLength = orderedCharacters.length;
 
-    var display = "<ul>";
+    var display = "";
     for (i = 0; i < orderedCharactersLength; i++){
-        display += "<li>NAME: " + orderedCharacters[i].name + "<br /> INITIATIVE: " + orderedCharacters[i].init + "<br /> HEALTH: " + orderedCharacters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")'>DAMAGE</button></li><hr>";
+        display += "<ul class='characters'><li><strong>NAME:</strong> " + orderedCharacters[i].name + "</li><li><strong>INITIATIVE:</strong> " + orderedCharacters[i].init + "</li><li><strong>HEALTH:</strong> " + orderedCharacters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")' class='damage'>DAMAGE</button></li></ul>";
     }
-    display += "</ul>";
 
     document.getElementById("order").innerHTML = display;  
 }

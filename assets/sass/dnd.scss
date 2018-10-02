@@ -475,3 +475,56 @@ em{
     }
 
 }
+
+/* COMBAT TRACKER */
+.combat-tracker{
+    input{
+        position: static;
+        box-sizing: border-box;
+        text-transform: none;
+        font-size: 26px;
+    }
+    button{
+        font-size: 26px;
+        font-weight: 100;
+    }
+    li{
+        font-weight: 100;
+    }
+    .setup{
+        text-align: center;
+        margin-bottom: 35px;
+
+        .inputs{
+            li{
+                display: inline-block;
+                width: 30%;
+
+                input{
+                    width: 100%;
+                }
+            }
+            li:last-child{
+                width: auto;
+                margin-left: 10px;
+                vertical-align: bottom;
+            }
+        }
+        .combat{
+            padding: 10px 15px;
+        }
+    }
+    .new,.damage{
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .characters{
+        padding: 20px 0 0 0;
+        border-top: 1px solid #000000;
+
+        li:first-child{
+            margin-bottom: 20px;
+        }
+    }
+}
