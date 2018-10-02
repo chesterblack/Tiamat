@@ -40,8 +40,13 @@ function displayCharacters(){
         }
         display += "</ul>";
     }
+    display += "<button class='combat' onclick='resetCombat()'>RESET</button>";
 
     document.getElementById("order").innerHTML = display;
+}
+
+function resetCombat(){
+    location.reload();
 }
 
 function orderCharacters(){
@@ -66,6 +71,14 @@ var orderedCharacters = [];
         }
         display += "</ul>";
     }
+    display += "<button class='combat' onclick='resetCombat()'>RESET</button>";
 
     document.getElementById("order").innerHTML = display;  
+    document.getElementsByClassName("setup")[0].style.display = "none";
 }
+
+document.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    document.getElementById("new").click();
+  }
+});
