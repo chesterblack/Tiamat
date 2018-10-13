@@ -15,7 +15,7 @@ function healthEdit(i){
 
     if(characters[i].health == "DEAD"){}
     else{
-        var damageAmount = document.getElementsByName("damage")[0].value;
+        var damageAmount = document.getElementsByName("damage")[i].value;
 
         var newHealth = characters[i].health - damageAmount;
 
