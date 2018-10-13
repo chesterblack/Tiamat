@@ -48,19 +48,21 @@ function resetCombat(){
 }
 
 function test2(){
+    var display = "";
     for (i=99;i>0;i--){
         for (j=0;j<characters.length;j++){
             if(characters[j].init==i){
-                console.log(characters[j].name);
-                // display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[j].name + "</li><li><strong>INITIATIVE:</strong> " + characters[j].init + "</li>";
-                // if(characters[j].health){
-                //     display += "<li><strong>HEALTH:</strong> " + characters[j].health + "<input type='text' name='damage'><button onclick='healthEdit("+j+")' class='damage'>DAMAGE</button></li>";
-                // }
-                // display += "</ul>";
-                // document.getElementById("order").innerHTML = display;
+                display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[j].name + "</li><li><strong>INITIATIVE:</strong> " + characters[j].init + "</li>";
+                if(characters[j].health){
+                    display += "<li><strong>HEALTH:</strong> " + characters[j].health + "<input type='text' name='damage'><button onclick='healthEdit("+j+")' class='damage'>DAMAGE</button></li>";
+                }
+                display += "</ul>";
             }
         }
     }
+
+    display += "<button class='combat' onclick='resetCombat()'>RESET</button>";
+    document.getElementById("order").innerHTML = display;
 }
 
 function test(){
@@ -78,35 +80,21 @@ function test(){
 }
 
 function orderCharacters(){
-var orderedCharacters = [];
-
-    // function compare(a,b) {
-    //     if (a.init > b.init)
-    //         return -1;
-    //     if (a.init < b.init)
-    //         return 1;
-    //     return 0;
-    // }
-
-    // orderedCharacters = characters.sort(compare);
-
-    var charactersLength = characters.length;
-    var orderedCharacters = [];
-    
-
-    var orderedCharactersLength = orderedCharacters.length;
-
     var display = "";
-    for (i = 0; i < orderedCharactersLength; i++){
-        display += "<ul class='characters'><li><strong>NAME:</strong> " + orderedCharacters[i].name + "</li><li><strong>INITIATIVE:</strong> " + orderedCharacters[i].init + "</li>";
-        if(orderedCharacters[i].health){
-            display += "<li><strong>HEALTH:</strong> " + orderedCharacters[i].health + "<input type='text' name='damage'><button onclick='healthEdit("+i+")' class='damage'>DAMAGE</button></li>";
+    for (i=99;i>0;i--){
+        for (j=0;j<characters.length;j++){
+            if(characters[j].init==i){
+                display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[j].name + "</li><li><strong>INITIATIVE:</strong> " + characters[j].init + "</li>";
+                if(characters[j].health){
+                    display += "<li><strong>HEALTH:</strong> " + characters[j].health + "<input type='text' name='damage'><button onclick='healthEdit("+j+")' class='damage'>DAMAGE</button></li>";
+                }
+                display += "</ul>";
+            }
         }
-        display += "</ul>";
     }
+    
     display += "<button class='combat' onclick='resetCombat()'>RESET</button>";
-
-    document.getElementById("order").innerHTML = display;  
+    document.getElementById("order").innerHTML = display;
     document.getElementsByClassName("setup")[0].style.display = "none";
 }
 
