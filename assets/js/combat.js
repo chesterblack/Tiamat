@@ -1,5 +1,3 @@
-console.log("hello world");
-
 var characters = [];
 
 function newCharacter(){
@@ -49,18 +47,53 @@ function resetCombat(){
     location.reload();
 }
 
+function test2(){
+    for (i=99;i>0;i--){
+        for (j=0;j<characters.length;j++){
+            if(characters[j].init==i){
+                console.log(characters[j].name);
+                // display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[j].name + "</li><li><strong>INITIATIVE:</strong> " + characters[j].init + "</li>";
+                // if(characters[j].health){
+                //     display += "<li><strong>HEALTH:</strong> " + characters[j].health + "<input type='text' name='damage'><button onclick='healthEdit("+j+")' class='damage'>DAMAGE</button></li>";
+                // }
+                // display += "</ul>";
+                // document.getElementById("order").innerHTML = display;
+            }
+        }
+    }
+}
+
+function test(){
+    var finished = 0;
+    for (i = 0; finished < 1; i++){
+        if(i>0){
+            if(characters[i].init > characters[i-1].init){
+                characters[i]
+                finished = 1;
+            } else {
+                finished = 0;
+            }
+        }
+    }
+}
+
 function orderCharacters(){
 var orderedCharacters = [];
 
-    function compare(a,b) {
-        if (a.init > b.init)
-            return -1;
-        if (a.init < b.init)
-            return 1;
-        return 0;
-    }
+    // function compare(a,b) {
+    //     if (a.init > b.init)
+    //         return -1;
+    //     if (a.init < b.init)
+    //         return 1;
+    //     return 0;
+    // }
 
-    orderedCharacters = characters.sort(compare);
+    // orderedCharacters = characters.sort(compare);
+
+    var charactersLength = characters.length;
+    var orderedCharacters = [];
+    
+
     var orderedCharactersLength = orderedCharacters.length;
 
     var display = "";
