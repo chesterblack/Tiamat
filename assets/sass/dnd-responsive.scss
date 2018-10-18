@@ -42,10 +42,10 @@
     }
     #mobile-menu.open-menu{
         display: block;
-    }
-    #mobile-menu{
         width: 200px;
         height: 100vh;
+    }
+    #mobile-menu{
         background: rgba(255,255,255,0.95);
         position: fixed;
         top: 0;
@@ -118,5 +118,8 @@
             float: none;
             margin-bottom: 5px;
         }
+    }
+    .combat-tracker .setup .inputs li{
+        width: 100%;
     }
 }

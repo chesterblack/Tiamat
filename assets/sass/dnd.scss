@@ -17,7 +17,8 @@
     display: none;
 }
 #mobile-menu{
-    display: none;
+    width: 0px;
+    overflow: hidden;
 }
 p{
     font-weight: 300;
