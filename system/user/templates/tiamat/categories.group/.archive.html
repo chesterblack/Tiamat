@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {embed=/_includes/dnd-header}
+        <title>Categories</title>
+    </head>
+<body class="archive">
+    {embed="/_includes/nav"}
+    <div class="container">
+        <h1>Categories</h1>
+
+        {exp:channel:categories}
+        <div class="profile-box categories" style="border-left:5px solid {colour}">
+            <a href="/{segment_1}/{category_id}">
+                <h2>{category_name}</h2>
+            </a>
+        </div>
+        {/exp:channel:categories}
+    </div>
+</body>
+</html>

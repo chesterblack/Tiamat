@@ -62,7 +62,9 @@
 					<ul>    
 						{categories orderby="asc"}
 						<li style="background-color:{colour}">
-							<h4>{category_name}</h4>
+                                <a href="/categories/{category_id}" class="category-link">
+                                    <h4>{category_name}</h4>
+                                </a>
 						</li>
 						{/categories}
 					</ul>
