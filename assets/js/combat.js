@@ -49,7 +49,7 @@ function resetCombat(){
 
 function orderCharacters(){
     var display = "";
-    for (i=99;i>0;i--){
+    for (i=35;i>0;i--){
         for (j=0;j<characters.length;j++){
             if(characters[j].init==i){
                 display += "<ul class='characters'><li><strong>NAME:</strong> " + characters[j].name + "</li><li><strong>INITIATIVE:</strong> " + characters[j].init + "</li>";
