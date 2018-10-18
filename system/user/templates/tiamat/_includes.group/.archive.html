@@ -16,9 +16,11 @@
         <div class="profile-box categories" id="{url_title}">
             <ul>    
                 {categories orderby="asc"}
-                <li style="background-color:{colour}">
-                    <h4>{category_name}</h4>
-                </li>
+                <a href="/categories/{category_id}" class="category-link">
+                    <li style="background-color:{colour}">
+                        <h4>{category_name}</h4>
+                    </li>
+                </a>
                 {/categories}
             </ul>
             <a href="/{segment_1}/{url_title}">
