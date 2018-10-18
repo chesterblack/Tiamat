@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {embed="/_includes/dnd-header"}
+    <title>Combat Tracker</title>
+    <script src="/assets/js/combat.js"></script>
+</head>
+
+<body>
+    {embed="/_includes/nav"}
+    <div class="container combat-tracker">
+        <h1>
+            COMBAT TRACKER
+        </h1>
+        <div class="setup">
+            <ul class="inputs">
+                <li>
+                    NAME: <input type="text" name="nameInput"/>
+                </li>
+                <li>
+                    INITATIVE: <input type="text" name="initInput">
+                </li>
+                <li>
+                    HEALTH: <input type="text" name="healthInput">
+                </li>
+                <li>
+                    <button onclick="newCharacter()" class="new" id="new">NEW</button>
+                </li>
+            </ul>
+            <button onclick="orderCharacters()" class="combat">BEGIN COMBAT</button>
+        </div>
+        <div id="order"></div>
+    </div>
+</body>
+</html>

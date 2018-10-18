@@ -17,7 +17,8 @@
     display: none;
 }
 #mobile-menu{
-    display: none;
+    width: 0px;
+    overflow: hidden;
 }
 p{
     font-weight: 300;
@@ -346,7 +347,7 @@ em{
             border-left: 1px solid #000000;
             display: inline-block;
             width: 100%;
-            max-width: 30%;
+            max-width: 33%;
             vertical-align: top;
             padding: 0 10px;
             box-sizing: border-box;
@@ -474,4 +475,80 @@ em{
         font-size: 26px;
     }
 
+}
+
+/* COMBAT TRACKER */
+.combat-tracker{
+    h1{
+        text-align: center;
+    }
+    input{
+        position: static;
+        box-sizing: border-box;
+        text-transform: none;
+        font-size: 26px;
+    }
+    input:focus, input:hover{
+        padding:9px;
+        border: 2px solid #000000;
+    }
+    button{
+        font-size: 26px;
+        font-weight: 100;
+    }
+    button:hover{
+        border: 2px solid #000000;
+    }
+    li{
+        font-weight: 100;
+    }
+    .setup{
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 35px;
+        border-top: 1px solid #000000;
+
+        .inputs{
+            li{
+                display: inline-block;
+                width: 30%;
+
+                input{
+                    width: 100%;
+                }
+            }
+            li:last-child{
+                width: auto;
+                margin-left: 10px;
+                vertical-align: bottom;
+            }
+        }
+    }
+    .combat{
+        padding: 10px 15px;
+    }
+    .combat:hover{
+        padding: 9px 14px;
+    }
+    .new,.damage{
+        margin-bottom: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .new:hover{
+        padding-top:9px;
+        padding-bottom:9px;
+    }
+    .damage:hover{
+        padding:9px 6px;
+    }
+    .characters{
+        padding: 20px 0;
+        border-top: 1px solid #000000;
+        margin: 0;
+
+        li:first-child{
+            margin-bottom: 20px;
+        }
+    }
 }
