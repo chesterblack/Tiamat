@@ -7,8 +7,7 @@
 <body class="archive">
     {embed="/_includes/nav"}
     <div class="container">
-        
-        {exp:channel:category_archive show="{last_segment}" style="linear" channel="characters"}
+        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="characters"}
         {categories}
             <h1 style="border-left:5px solid {colour}; padding-left:15px;">{category_name}</h1>
         {/categories}
@@ -20,7 +19,7 @@
         </div>
         {/entry_titles}
         {/exp:channel:category_archive}
-        {exp:channel:category_archive show="{last_segment}" style="linear" channel="locations"}
+        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="locations"}
         {entry_titles}
         <div class="profile-box categories" id="{url_title}">
             <a href="/locations/{url_title}">
@@ -29,7 +28,7 @@
         </div>
         {/entry_titles}
         {/exp:channel:category_archive}
-        {exp:channel:category_archive show="{last_segment}" style="linear" channel="items"}
+        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="items"}
         {entry_titles}
         <div class="profile-box categories" id="{url_title}">
             <a href="/items/{url_title}">
