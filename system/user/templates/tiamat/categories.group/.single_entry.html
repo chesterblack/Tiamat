@@ -11,32 +11,16 @@
         {categories}
             <h1 style="border-left:5px solid {colour}; padding-left:15px;">{category_name}</h1>
         {/categories}
-        {entry_titles}
-        <div class="profile-box categories" id="{url_title}">
-            <a href="/characters/{url_title}">
-                <h2>{title}</h2>
-            </a>
-        </div>
-        {/entry_titles}
         {/exp:channel:category_archive}
-        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="locations"}
-        {entry_titles}
-        <div class="profile-box categories" id="{url_title}">
-            <a href="/locations/{url_title}">
-                <h2>{title}</h2>
-            </a>
-        </div>
-        {/entry_titles}
-        {/exp:channel:category_archive}
-        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="items"}
-        {entry_titles}
+
+        {exp:channel:entries category="{last_segment_category_id}"}
         <div class="profile-box categories" id="{url_title}">
             <a href="/items/{url_title}">
                 <h2>{title}</h2>
             </a>
+            <p>{standfirst}</p>
         </div>
-        {/entry_titles}
-        {/exp:channel:category_archive}
+        {/exp:channel:entries}
 
         <div class="view-all-categories">
             <button>
