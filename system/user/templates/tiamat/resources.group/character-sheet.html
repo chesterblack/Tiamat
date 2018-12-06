@@ -6,32 +6,68 @@
 </head>
 <body>
     <?php
-        error_reporting(E_ALL);
+        // error_reporting(E_ALL);
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
 
+        $character_name = $process->getData("character_name","{last_segment}");
+        $character_race = $process->getData("character_race","{last_segment}");        
+        $character_class = $process->getData("character_class","{last_segment}");
+        $strength = $process->getData("strength","{last_segment}");
+        $constitution = $process->getData("constitution","{last_segment}");
+        $dexterity = $process->getData("dexterity","{last_segment}");
+        $intelligence = $process->getData("intelligence","{last_segment}");
+        $wisdom = $process->getData("wisdom","{last_segment}");
+        $charisma = $process->getData("charisma","{last_segment}");
 
     ?>
 
     {embed="/_includes/nav"}
 
     <div class="container">
+        {if last_segment == "character-sheet"}
+        <h1>Character Sheets</h1>
+        <div class="archive">    
+            {exp:channel:entries channel="characters" orderby="title" sort="asc"}
+            <?php if ($process->getData("short_name","{url_title}")){ ?>
+            <div class="profile-box categories" id="{url_title}">
+                <ul>
+                    {categories orderby="asc"}
+                    <a href="/categories/{category_url_title}" class="category-link">
+                        <li style="background-color:{colour}">
+                            <h4>{category_name}</h4>
+                        </li>
+                    </a>
+                    {/categories}
+                </ul>
+                <a href="/resources/character-sheet/{url_title}">
+                    <h2>{title}</h2>
+                </a>
+                <p>{standfirst}</p>
+            </div>
+            <?php } ?>
+            {/exp:channel:entries}
+        </div>
+        {if:else}
+
         <ul>
-            <li>NAME: <?php echo $testName = $process->getData("character_name","{last_segment}"); ?></li>
-            <li>RACE: <?php echo $process->getData("character_race","{last_segment}"); ?></li>
-            <li>CLASS: <?php echo $process->getData("character_class","{last_segment}"); ?></li>
+            <li>NAME: <?php echo $character_name ?></li>
+            <li>RACE: <?php echo $character_race ?></li>
+            <li>CLASS: <?php echo $character_class ?></li>
             <hr>
-            <li>STR: <?php echo $process->getData("strength","{last_segment}"); ?></li>
-            <li>CON: <?php echo $process->getData("constitution","{last_segment}"); ?></li>
-            <li>DEX: <?php echo $process->getData("dexterity","{last_segment}"); ?></li>
-            <li>INT: <?php echo $process->getData("intelligence","{last_segment}"); ?></li>
-            <li>WIS: <?php echo $process->getData("wisdom","{last_segment}"); ?></li>
-            <li>CHA: <?php echo $process->getData("charisma","{last_segment}"); ?></li>
+            <li>STR: <?php echo $strength ?> (<?php echo $process->getModifier($strength); ?>)</li>
+            <li>CON: <?php echo $constitution ?> (<?php echo $process->getModifier($constitution); ?>)</li>
+            <li>DEX: <?php echo $dexterity ?> (<?php echo $process->getModifier($dexterity); ?>)</li>
+            <li>INT: <?php echo $intelligence ?> (<?php echo $process->getModifier($intelligence); ?>)</li>
+            <li>WIS: <?php echo $wisdom ?> (<?php echo $process->getModifier($wisdom); ?>)</li>
+            <li>CHA: <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
         </ul>
     </div>
 
-    <?php if(!$testName){ ?>
+    {/if}
+
+    {!--<?php if(!$character_name){ ?>
     {redirect="404"}
-    <?php } ?>
+    <?php } ?>--}
 
 </body>
 </html>
