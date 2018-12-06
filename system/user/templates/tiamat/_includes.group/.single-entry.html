@@ -7,6 +7,9 @@
 	{/exp:channel:entries}
 </head>
 <body>
+    <?php 
+        require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
+    ?>
 	{embed="/_includes/nav"}
 	<div class="container profile">
 		{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}
@@ -34,13 +37,16 @@
 					</li>
 				</ul>
 			{/if}
-		<div class="{if image}left{if:else}center{/if}">
+        <div class="{if image}left{if:else}center{/if}">
 				<h1>
 					{title}
 				</h1>
 				<h3>
 					{standfirst}
-				</h3>
+                </h3>
+                <?php if ($process->getData("character_name","{last_segment}")){ ?>
+                    <a href="/resources/character-sheet/{last_segment}">View character sheet</a>
+                <?php } ?>
 			</div>
 
 			<div class="testimg"></div>
