@@ -6,3 +6,4 @@
 *.css
 *.map
 /assets/css
+/assets/php/character-generator.php
