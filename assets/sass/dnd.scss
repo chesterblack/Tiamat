@@ -198,6 +198,16 @@ em{
         margin-bottom: -26px;
         margin-top: 22px;
     }
+    button{
+        padding: 10px;
+
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+    }
     .experience{
         width: 100%;
         text-align: center;
