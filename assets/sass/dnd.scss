@@ -203,9 +203,10 @@ em{
 
         a{
             text-decoration: none;
+            font-weight: 200;
         }
         a:hover{
-            text-decoration: underline;
+            border-bottom: 1px solid #000000;
         }
     }
     .experience{
@@ -583,4 +584,37 @@ em{
 }
 .category-link{
     text-decoration: none;
+}
+
+// CHARACTER SHEETS
+.attributes{
+    text-transform: capitalize;
+}
+.inputs{
+    input, select{
+        border: 1px solid #000000;
+        border-radius: 0;
+        -webkit-appearance: none;
+        padding: 10px;
+        background: none;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 200;
+        font-size: 26px;
+        text-transform: none;
+        margin: 10px;
+    }
+    select{
+        padding-right: 30px;
+    }
+    .arrow{
+        border-right: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        width: 10px;
+        height: 10px;
+        position: relative;
+        top: -5px;
+        right: 40px;
+        transform: rotate(45deg);
+        display: inline-block;
+    }
 }

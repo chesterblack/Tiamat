@@ -25,8 +25,9 @@
                 $intelligence = $process->validateText($_POST['intelligence']);
                 $wisdom = $process->validateText($_POST['wisdom']);
                 $charisma = $process->validateText($_POST['charisma']);
+                $character_alignment = ($_POST['character_alignment']);
 
-                $inputs = array("character_name"=>$character_name, "character_race"=>$character_race, "character_class"=>$character_class,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma);
+                $inputs = array("character_name"=>$character_name, "character_race"=>$character_race, "character_class"=>$character_class,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma,"character_alignment"=>$character_alignment);
 
 
                 $process->addData($inputs);
@@ -34,10 +35,22 @@
         ?>
 
         <form action="" method="post">
-            <ul>
+            <ul class="inputs">
                 <li>NAME: <input type="text" name="character_name"></li>
                 <li>RACE: <input type="text" name="character_race"></li>
                 <li>CLASS: <input type="text" name="character_class"></li>
+                <li>ALIGNMENT: <select name="character_alignment">
+                    <option value="lawful_good">Lawful Good</option>
+                    <option value="neutral_good">Neutral Good</option>
+                    <option value="chaotic_good">Chaotic Good</option>
+                    <option value="lawful_neutral">Lawful Neutral</option>
+                    <option value="true_neutral">True Neutral</option>
+                    <option value="chaotic_neutral">Chaotic Neutral</option>
+                    <option value="lawful_evil">Lawful Evil</option>
+                    <option value="neutral_evil">Neutral Evil</option>
+                    <option value="chaotic_evil">Chaotic Evil</option>
+                </select>
+                <div class="arrow"></div></li>
                 <hr>
                 <li>STR: <input type="number" name="strength"></li>
                 <li>CON: <input type="number" name="constitution"></li>

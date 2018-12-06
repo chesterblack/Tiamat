@@ -18,6 +18,8 @@
         $intelligence = $process->getData("intelligence","{last_segment}");
         $wisdom = $process->getData("wisdom","{last_segment}");
         $charisma = $process->getData("charisma","{last_segment}");
+        $alignmentShort = $process->getData("character_alignment","{last_segment}");
+        $character_alignment = $process->unshorten($alignmentShort);
 
     ?>
 
@@ -49,7 +51,8 @@
         </div>
         {if:else}
 
-        {exp:channel:entries channel="characters" orderby="title" sort="asc" url_title={last_segment} limit="1"}
+        {exp:channel:entries channel="characters" orderby="title" sort="asc" url_title=last_segment limit="1"}
+        {if url_title == last_segment}
         <div class="profile">    
             <div class="top">
 			{if level}
@@ -77,6 +80,9 @@
 				<h3>
 					{standfirst}
                 </h3>
+                <?php if($process->checkMatch($character_name)){ ?>
+                    <button><a href="/characters/{last_segment}">View profile</a></button>
+                <?php } ?>
 			</div>
 
 			<div class="testimg"></div>
@@ -93,10 +99,14 @@
 			{/if}
             <div class="clearfix"></div>
         </div>
+        {if:else}
+        <h1><?php echo $character_name ?></h1>
+        {/if}
         {/exp:channel:entries}
-        <ul>
+        <ul class="attributes">
             <li>RACE: <?php echo $character_race ?></li>
             <li>CLASS: <?php echo $character_class ?></li>
+            <li>ALIGNMENT: <?php echo $character_alignment ?></li>
             <hr>
             <li>STR: <?php echo $strength ?> (<?php echo $process->getModifier($strength); ?>)</li>
             <li>CON: <?php echo $constitution ?> (<?php echo $process->getModifier($constitution); ?>)</li>
