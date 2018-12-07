@@ -587,8 +587,26 @@ em{
 }
 
 // CHARACTER SHEETS
-.attributes{
-    text-transform: capitalize;
+.character-sheet{
+    font-weight: 200;
+
+    .core{
+        text-transform: capitalize;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        padding: 10px 0;
+        text-align: center;
+
+        li{
+            display: inline-block;
+            width: 33%;
+            box-sizing: border-box;
+        }
+    }
+    .attributes{
+        display: inline-block;
+        margin-right: 20px;
+    }
 }
 .inputs{
     input, select{

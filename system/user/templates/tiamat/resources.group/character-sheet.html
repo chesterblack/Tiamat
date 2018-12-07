@@ -2,9 +2,11 @@
 <html>
 <head>
     {embed="/_includes/dnd-header"}
-    <title>Character Sheet</title>
+    {exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
+		<title>{title}</title>
+	{/exp:channel:entries}
 </head>
-<body>
+<body class="character-sheet">
     <?php
         // error_reporting(E_ALL);
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
@@ -103,17 +105,22 @@
         <h1><?php echo $character_name ?></h1>
         {/if}
         {/exp:channel:entries}
+        <ul class="core">
+            <li><h2>RACE:</h2> <?php echo $character_race ?></li>
+            <li><h2>CLASS:</h2> <?php echo $character_class ?></li>
+            <li><h2>ALIGNMENT:</h2> <?php echo $character_alignment ?></li>
+        </ul>
+        <h2>Attributes</h2>
+        <div class="clearfix"></div>
         <ul class="attributes">
-            <li>RACE: <?php echo $character_race ?></li>
-            <li>CLASS: <?php echo $character_class ?></li>
-            <li>ALIGNMENT: <?php echo $character_alignment ?></li>
-            <hr>
-            <li>STR: <?php echo $strength ?> (<?php echo $process->getModifier($strength); ?>)</li>
-            <li>CON: <?php echo $constitution ?> (<?php echo $process->getModifier($constitution); ?>)</li>
-            <li>DEX: <?php echo $dexterity ?> (<?php echo $process->getModifier($dexterity); ?>)</li>
-            <li>INT: <?php echo $intelligence ?> (<?php echo $process->getModifier($intelligence); ?>)</li>
-            <li>WIS: <?php echo $wisdom ?> (<?php echo $process->getModifier($wisdom); ?>)</li>
-            <li>CHA: <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
+            <li><h2>STR:</h2> <?php echo $strength ?> (<?php echo $process->getModifier($strength); ?>)</li>
+            <li><h2>CON:</h2> <?php echo $constitution ?> (<?php echo $process->getModifier($constitution); ?>)</li>
+            <li><h2>DEX:</h2> <?php echo $dexterity ?> (<?php echo $process->getModifier($dexterity); ?>)</li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>INT:</h2> <?php echo $intelligence ?> (<?php echo $process->getModifier($intelligence); ?>)</li>
+            <li><h2>WIS:</h2> <?php echo $wisdom ?> (<?php echo $process->getModifier($wisdom); ?>)</li>
+            <li><h2>CHA:</h2> <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
         </ul>
     </div>
 
