@@ -25,10 +25,10 @@
                 $intelligence = $process->validateText($_POST['intelligence']);
                 $wisdom = $process->validateText($_POST['wisdom']);
                 $charisma = $process->validateText($_POST['charisma']);
-                $character_alignment = ($_POST['character_alignment']);
+                $character_alignment = $_POST['character_alignment'];
+                $skills = $_POST['skill'];
 
-                $inputs = array("character_name"=>$character_name, "character_race"=>$character_race, "character_class"=>$character_class,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma,"character_alignment"=>$character_alignment);
-
+                $inputs = array("character_name"=>$character_name, "character_race"=>$character_race, "character_class"=>$character_class,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma,"character_alignment"=>$character_alignment,"skills"=>$skills);
 
                 $process->addData($inputs);
             }
@@ -58,6 +58,28 @@
                 <li>INT: <input type="number" name="intelligence"></li>
                 <li>WIS: <input type="number" name="wisdom"></li>
                 <li>CHA: <input type="number" name="charisma"></li>
+                <hr>
+                <li>
+                    SKILLS:<br />
+                    <input type="checkbox" name="skill[]" value="acrobatics"><span>Acrobatics</span><br />
+                    <input type="checkbox" name="skill[]" value="animal_handling"><span>animal handling</span><br />
+                    <input type="checkbox" name="skill[]" value="arcana"><span>arcana</span><br />
+                    <input type="checkbox" name="skill[]" value="athletics"><span>Athletics</span><br />
+                    <input type="checkbox" name="skill[]" value="deception"><span>deception</span><br />
+                    <input type="checkbox" name="skill[]" value="history"><span>history</span><br />
+                    <input type="checkbox" name="skill[]" value="insight"><span>insight</span><br />
+                    <input type="checkbox" name="skill[]" value="intimidation"><span>intimidation</span><br />
+                    <input type="checkbox" name="skill[]" value="investigation"><span>investigation</span><br />
+                    <input type="checkbox" name="skill[]" value="medicine"><span>medicine</span><br />
+                    <input type="checkbox" name="skill[]" value="nature"><span>nature</span><br />
+                    <input type="checkbox" name="skill[]" value="perception"><span>perception</span><br />
+                    <input type="checkbox" name="skill[]" value="performance"><span>performance</span><br />
+                    <input type="checkbox" name="skill[]" value="persuasion"><span>persuasion</span><br />
+                    <input type="checkbox" name="skill[]" value="religion"><span>religion</span><br />
+                    <input type="checkbox" name="skill[]" value="sleight_of_hand"><span>sleight of hand</span><br />
+                    <input type="checkbox" name="skill[]" value="stealth"><span>stealth</span><br />
+                    <input type="checkbox" name="skill[]" value="survival"><span>survival</span><br />
+                </li>
                 <input type="hidden" name="csrf_token" value="{csrf_token}">
                 <button type="submit" name="entered">SUBMIT</button>
             </ul>
