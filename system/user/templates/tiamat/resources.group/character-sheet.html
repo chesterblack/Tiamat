@@ -12,7 +12,7 @@
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
 
         $character_name = $process->getData("character_name","{last_segment}");
-        $character_race = $process->getData("character_race","{last_segment}");        
+        $character_race = $process->getData("character_race","{last_segment}");
         $character_class = $process->getData("character_class","{last_segment}");
         $strength = $process->getData("strength","{last_segment}");
         $constitution = $process->getData("constitution","{last_segment}");
@@ -23,7 +23,6 @@
         $alignmentShort = $process->getData("character_alignment","{last_segment}");
         $character_alignment = $process->unshorten($alignmentShort);
         $skills = $process->getSkills("{last_segment}");
-
     ?>
 
     {embed="/_includes/nav"}

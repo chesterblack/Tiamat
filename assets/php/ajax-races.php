@@ -7,8 +7,6 @@
 
     $races = $process->getRaces("subrace_name",$mainrace);
 
-    print_r($races);
-
     if($races['subrace_name'] !== "nope"){
         foreach($races as $race){
             $subrace_name = $race['subrace_name'];

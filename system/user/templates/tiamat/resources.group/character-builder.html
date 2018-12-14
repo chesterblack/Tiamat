@@ -12,7 +12,7 @@
         </h1>
 
         <?php 
-            error_reporting(E_ALL);
+            // error_reporting(E_ALL);
             require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
 
             if (isset($_POST['entered'])){
@@ -21,9 +21,14 @@
                 if($_POST['character_subrace']){
                     $character_subrace = $_POST['character_subrace'] . "_";
                 }
+                $character_mainclass = $_POST['character_mainclass'];
+                $character_subclass = "";
+                if($_POST['character_subclass']){
+                    $character_subclass = $_POST['character_subclass'] . "_";
+                }
                 $character_race = $character_subrace . $character_mainrace;
+                $character_class = $character_subclass . $character_mainclass;
                 $character_name = $process->validateText($_POST['character_name']);
-                $character_class = $process->validateText($_POST['character_class']);
                 $strength = $process->validateText($_POST['strength']);
                 $constitution = $process->validateText($_POST['constitution']);
                 $dexterity = $process->validateText($_POST['dexterity']);
@@ -41,6 +46,7 @@
 
         <script>
             showSubraces("dwarf");
+            showSubclasses("barbarian");
 
             function showSubraces(str){
                 console.log(str);
@@ -62,7 +68,27 @@
                     xmlHttp.send();
                 }
             }
-            
+            function showSubclasses(str2){
+                console.log(str2);
+                if(str2.length == 0){
+                    document.getElementById("subclasstest").innerHTML = "";
+                }else{
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function(){
+                        if (this.readyState == 4 && this.status == 200){
+                            console.log(this.responseText);
+                            if(this.responseText[0] != "A"){
+                                document.getElementById("subclassouter").style.display = "inline-block";
+                                document.getElementById("subclasstest").innerHTML = this.responseText;
+                            }else{
+                                document.getElementById("subclassouter").style.display = "none";
+                            }
+                        }
+                    };
+                    xmlHttp.open("GET", "/assets/php/ajax-classes.php?q=" + str2, true);
+                    xmlHttp.send();
+                }
+            }
         </script>
 
         <form action="" method="post">
@@ -84,7 +110,7 @@
                     </select>
                     <div class="arrow"></div>
                 </li>
-                <li>CLASS: <select name="character_mainclass">
+                <li>CLASS: <select name="character_mainclass" onchange='showSubclasses(this.value)'>
                     <?php 
                     $classes = $process->getClasses("class_name","");
                     foreach($classes as $class){
@@ -93,7 +119,13 @@
                     }
                     ?>
                     </select>
-                    <div class="arrow"></div></li>
+                    <div class="arrow"></div>
+                </li>
+                <li id="subclassouter" style="display:none;">
+                    SUBCLASS: <select id="subclasstest" name="character_subclass">
+                    </select>
+                    <div class="arrow"></div>
+                </li>
                 <li>ALIGNMENT: <select name="character_alignment">
                     <option value="lawful_good">Lawful Good</option>
                     <option value="neutral_good">Neutral Good</option>
