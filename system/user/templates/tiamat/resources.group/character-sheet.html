@@ -8,7 +8,7 @@
 </head>
 <body class="character-sheet">
     <?php
-        // error_reporting(E_ALL);
+        error_reporting(E_ALL);
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
 
         $character_name = $process->getData("character_name","{last_segment}");
@@ -22,6 +22,7 @@
         $charisma = $process->getData("charisma","{last_segment}");
         $alignmentShort = $process->getData("character_alignment","{last_segment}");
         $character_alignment = $process->unshorten($alignmentShort);
+        $skills = $process->getSkills("{last_segment}");
 
     ?>
 
@@ -74,7 +75,8 @@
 						<?php echo {level}+1 ?>
 					</li>
 				</ul>
-			{/if}
+            {/if}
+            <h2>Proficiency Bonus: <span>+<?php echo $process->getProficiency("{last_segment}") ?></span></h2>
             <div class="{if image}left{if:else}center{/if}">
 				<h1>
 					{title}
@@ -122,6 +124,34 @@
             <li><h2>WIS:</h2> <?php echo $wisdom ?> (<?php echo $process->getModifier($wisdom); ?>)</li>
             <li><h2>CHA:</h2> <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
         </ul>
+        <hr>
+        <h2>Skills</h2>
+        <div class="clearfix"></div>
+        <ul class="attributes">
+            <li><h2>DEX:</h2> Acrobatics (<?php echo $process->getSkillModifier($skills,"acrobatics","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Animal Handling (<?php echo $process->getSkillModifier($skills,"animal_handling","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Arcana (<?php echo $process->getSkillModifier($skills,"arcana","{last_segment}"); ?>)</li>
+            <li><h2>STR:</h2> Athletics (<?php echo $process->getSkillModifier($skills,"athletics","{last_segment}"); ?>)</li>
+            <li><h2>CHA:</h2> Deception (<?php echo $process->getSkillModifier($skills,"deception","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> History (<?php echo $process->getSkillModifier($skills,"history","{last_segment}"); ?>)</li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>WIS:</h2> Insight (<?php echo $process->getSkillModifier($skills,"insight","{last_segment}"); ?>)</li>
+            <li><h2>CHA:</h2> Intimidation (<?php echo $process->getSkillModifier($skills,"intimidation","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Investigation (<?php echo $process->getSkillModifier($skills,"investigation","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Medicine (<?php echo $process->getSkillModifier($skills,"medicine","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Nature (<?php echo $process->getSkillModifier($skills,"nature","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Perception (<?php echo $process->getSkillModifier($skills,"perception","{last_segment}"); ?>)</li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>CHA:</h2> Performance (<?php echo $process->getSkillModifier($skills,"performance","{last_segment}"); ?>)</li>
+            <li><h2>CHA:</h2> Persuasion (<?php echo $process->getSkillModifier($skills,"persuasion","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Religion (<?php echo $process->getSkillModifier($skills,"religion","{last_segment}"); ?>)</li>
+            <li><h2>DEX:</h2> Sleight Of Hand (<?php echo $process->getSkillModifier($skills,"sleight_of_hand","{last_segment}"); ?>)</li>
+            <li><h2>DEX:</h2> Stealth (<?php echo $process->getSkillModifier($skills,"stealth","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Survival (<?php echo $process->getSkillModifier($skills,"survival","{last_segment}"); ?>)</li>
+        </ul>
+        <hr>
     </div>
 
     {/if}
