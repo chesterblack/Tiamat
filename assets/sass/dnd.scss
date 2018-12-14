@@ -605,7 +605,7 @@ em{
     }
     .attributes{
         display: inline-block;
-        margin: 0 0 0 20px;
+        margin: 0 20px 0 0;
         vertical-align: top;
     }
     .prof{
@@ -625,6 +625,9 @@ em{
         text-align: center;
         box-sizing: border-box;
         border-radius: 0;
+    }
+    input[type=checkbox]:hover{
+        border: 2px solid #000000;
     }
     input[type=checkbox]:checked{
         background-color: #000000;

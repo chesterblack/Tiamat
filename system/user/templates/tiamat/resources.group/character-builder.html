@@ -56,7 +56,8 @@
                     var xmlHttp = new XMLHttpRequest();
                     xmlHttp.onreadystatechange = function(){
                         if (this.readyState == 4 && this.status == 200){
-                            if(this.responseText[0] != "A"){
+                            if(this.responseText[0] != undefined){
+                                console.log(this.responseText[0]);
                                 document.getElementById("subraceouter").style.display = "inline-block";
                                 document.getElementById("subracetest").innerHTML = this.responseText;
                             }else{
@@ -93,40 +94,9 @@
 
         <form action="" method="post">
             <ul class="inputs">
-                <li>NAME: <input type="text" name="character_name"></li>
-                <li>RACE: <select name="character_mainrace" onchange='showSubraces(this.value)'>
-                    <?php 
-                    $races = $process->getRaces("race_name","");
-                    foreach($races as $race){
-                        $race_name = $race['race_name'];
-                        echo "<option value='$race_name'>$race_name</option>\n";
-                    }
-                    ?>
-                </select>
-                <div class="arrow"></div>
-                </li>
-                <li id="subraceouter" style="display:none;">
-                    SUBRACE: <select id="subracetest" name="character_subrace">
-                    </select>
-                    <div class="arrow"></div>
-                </li>
-                <li>CLASS: <select name="character_mainclass" onchange='showSubclasses(this.value)'>
-                    <?php 
-                    $classes = $process->getClasses("class_name","");
-                    foreach($classes as $class){
-                        $class_name = $class['class_name'];
-                        echo "<option value='$class_name'>$class_name</option>\n";
-                    }
-                    ?>
-                    </select>
-                    <div class="arrow"></div>
-                </li>
-                <li id="subclassouter" style="display:none;">
-                    SUBCLASS: <select id="subclasstest" name="character_subclass">
-                    </select>
-                    <div class="arrow"></div>
-                </li>
-                <li>ALIGNMENT: <select name="character_alignment">
+                <hr>
+                <li class="attributes">NAME: <input type="text" name="character_name"></li>
+                <li class="attributes">ALIGNMENT: <select name="character_alignment">
                     <option value="lawful_good">Lawful Good</option>
                     <option value="neutral_good">Neutral Good</option>
                     <option value="chaotic_good">Chaotic Good</option>
@@ -138,6 +108,40 @@
                     <option value="chaotic_evil">Chaotic Evil</option>
                 </select>
                 <div class="arrow"></div></li>
+                <div class="clearfix"></div>
+                <li class="attributes">CLASS: <select name="character_mainclass" onchange='showSubclasses(this.value)'>
+                    <?php 
+                    $classes = $process->getClasses("class_name","");
+                    foreach($classes as $class){
+                        $class_name = $class['class_name'];
+                        echo "<option value='$class_name'>$class_name</option>\n";
+                    }
+                    ?>
+                    </select>
+                    <div class="arrow"></div>
+                </li>
+                <li class="attributes" id="subclassouter" style="display:none;">
+                    SUBCLASS: <select id="subclasstest" name="character_subclass">
+                    </select>
+                    <div class="arrow"></div>
+                </li>
+                <div class="clearfix"></div>
+                <li class="attributes">RACE: <select name="character_mainrace" onchange='showSubraces(this.value)'>
+                    <?php 
+                    $races = $process->getRaces("race_name","");
+                    foreach($races as $race){
+                        $race_name = $race['race_name'];
+                        echo "<option value='$race_name'>$race_name</option>\n";
+                    }
+                    ?>
+                </select>
+                <div class="arrow"></div>
+                </li>
+                <li class="attributes" id="subraceouter" style="display:none;">
+                    SUBRACE: <select id="subracetest" name="character_subrace">
+                    </select>
+                    <div class="arrow"></div>
+                </li>
             </ul>
             <hr>
             <h2>Attributes</h2>
