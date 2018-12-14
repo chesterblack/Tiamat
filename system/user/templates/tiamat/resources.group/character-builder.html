@@ -6,7 +6,7 @@
 </head>
 <body>
     {embed="/_includes/nav"}
-    <div class="container">
+    <div class="container character-sheet">
         <h1>
             Character Builder
         </h1>
@@ -51,37 +51,51 @@
                     <option value="chaotic_evil">Chaotic Evil</option>
                 </select>
                 <div class="arrow"></div></li>
-                <hr>
+            </ul>
+            <hr>
+            <h2>Attributes</h2>
+            <div class="clearfix"></div>
+            <ul class="inputs attributes">
                 <li>STR: <input type="number" name="strength"></li>
                 <li>CON: <input type="number" name="constitution"></li>
                 <li>DEX: <input type="number" name="dexterity"></li>
+            </ul>
+            <ul class="inputs attributes">
                 <li>INT: <input type="number" name="intelligence"></li>
                 <li>WIS: <input type="number" name="wisdom"></li>
                 <li>CHA: <input type="number" name="charisma"></li>
-                <hr>
-                <li>
-                    SKILLS:<br />
-                    <input type="checkbox" name="skill[]" value="acrobatics"><span>Acrobatics</span><br />
-                    <input type="checkbox" name="skill[]" value="animal_handling"><span>animal handling</span><br />
-                    <input type="checkbox" name="skill[]" value="arcana"><span>arcana</span><br />
-                    <input type="checkbox" name="skill[]" value="athletics"><span>Athletics</span><br />
-                    <input type="checkbox" name="skill[]" value="deception"><span>deception</span><br />
-                    <input type="checkbox" name="skill[]" value="history"><span>history</span><br />
-                    <input type="checkbox" name="skill[]" value="insight"><span>insight</span><br />
-                    <input type="checkbox" name="skill[]" value="intimidation"><span>intimidation</span><br />
-                    <input type="checkbox" name="skill[]" value="investigation"><span>investigation</span><br />
-                    <input type="checkbox" name="skill[]" value="medicine"><span>medicine</span><br />
-                    <input type="checkbox" name="skill[]" value="nature"><span>nature</span><br />
-                    <input type="checkbox" name="skill[]" value="perception"><span>perception</span><br />
-                    <input type="checkbox" name="skill[]" value="performance"><span>performance</span><br />
-                    <input type="checkbox" name="skill[]" value="persuasion"><span>persuasion</span><br />
-                    <input type="checkbox" name="skill[]" value="religion"><span>religion</span><br />
-                    <input type="checkbox" name="skill[]" value="sleight_of_hand"><span>sleight of hand</span><br />
-                    <input type="checkbox" name="skill[]" value="stealth"><span>stealth</span><br />
-                    <input type="checkbox" name="skill[]" value="survival"><span>survival</span><br />
-                </li>
-                <input type="hidden" name="csrf_token" value="{csrf_token}">
-                <button type="submit" name="entered">SUBMIT</button>
+            </ul>
+            <hr>
+            <h2>Skills</h2>
+            <div class="clearfix"></div>
+            <ul class="inputs attributes">
+                <li><input type="checkbox" name="skill[]" value="acrobatics"><span>Acrobatics</li><li>
+                <input type="checkbox" name="skill[]" value="animal_handling"><span>animal handling</li><li>
+                <input type="checkbox" name="skill[]" value="arcana"><span>arcana</li><li>
+                <input type="checkbox" name="skill[]" value="athletics"><span>Athletics</li><li>
+                <input type="checkbox" name="skill[]" value="deception"><span>deception</li><li>
+                <input type="checkbox" name="skill[]" value="history"><span>history</li>
+            </ul>
+            <ul class="inputs attributes">
+                <li><input type="checkbox" name="skill[]" value="insight"><span>insight</li><li>
+                <input type="checkbox" name="skill[]" value="intimidation"><span>intimidation</li><li>
+                <input type="checkbox" name="skill[]" value="investigation"><span>investigation</li><li>
+                <input type="checkbox" name="skill[]" value="medicine"><span>medicine</li><li>
+                <input type="checkbox" name="skill[]" value="nature"><span>nature</li><li>
+                <input type="checkbox" name="skill[]" value="perception"><span>perception</li>
+            </ul>
+            <ul class="inputs attributes"> 
+                <li><input type="checkbox" name="skill[]" value="performance"><span>performance</li>
+                <li><input type="checkbox" name="skill[]" value="persuasion"><span>persuasion</li><li>
+                <input type="checkbox" name="skill[]" value="religion"><span>religion</li><li>
+                <input type="checkbox" name="skill[]" value="sleight_of_hand"><span>sleight of hand</li><li>
+                <input type="checkbox" name="skill[]" value="stealth"><span>stealth</li><li>
+                <input type="checkbox" name="skill[]" value="survival"><span>survival</li>
+            </ul>
+            <div class="clearfix"></div>
+            <hr>
+            <input type="hidden" name="csrf_token" value="{csrf_token}">
+            <button type="submit" name="entered">SUBMIT</button>
             </ul>
         </form>
     </div>
