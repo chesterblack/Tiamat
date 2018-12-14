@@ -34,10 +34,50 @@
             }
         ?>
 
+        <script>
+            showSubraces("dwarf");
+
+            function showSubraces(str){
+                console.log(str);
+                if(str.length == 0){
+                    document.getElementById("subracetest").innerHTML = "";
+                }else{
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function(){
+                        if (this.readyState == 4 && this.status == 200){
+                            if(this.responseText[0] != "A"){
+                                document.getElementById("subraceouter").style.display = "inline-block";
+                                document.getElementById("subracetest").innerHTML = this.responseText;
+                            }else{
+                                document.getElementById("subraceouter").style.display = "none";
+                            }
+                        }
+                    };
+                    xmlHttp.open("GET", "/assets/php/ajax-character-builder.php?q=" + str, true);
+                    xmlHttp.send();
+                }
+            }
+        </script>
+
         <form action="" method="post">
             <ul class="inputs">
                 <li>NAME: <input type="text" name="character_name"></li>
-                <li>RACE: <input type="text" name="character_race"></li>
+                <li>RACE: <select name="character_mainrace" onchange='showSubraces(this.value)'>
+                    <?php 
+                    $races = $process->getRaces("race_name","");
+                    foreach($races as $race){
+                        $race_name = $race['race_name'];
+                        echo "<option value='$race_name'>$race_name</option>\n";
+                    }
+                    ?>
+                </select>
+                <div class="arrow"></div>
+                </li>
+                <li id="subraceouter" style="display:none;">
+                    SUBRACE: <select id="subracetest" name="character_subrace">
+                    </select>
+                    <div class="arrow"></div>
+                </li>
                 <li>CLASS: <input type="text" name="character_class"></li>
                 <li>ALIGNMENT: <select name="character_alignment">
                     <option value="lawful_good">Lawful Good</option>
