@@ -16,8 +16,13 @@
             require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
 
             if (isset($_POST['entered'])){
+                $character_mainrace = $_POST['character_mainrace'];
+                $character_subrace = "";
+                if($_POST['character_subrace']){
+                    $character_subrace = $_POST['character_subrace'] . "_";
+                }
+                $character_race = $character_subrace . $character_mainrace;
                 $character_name = $process->validateText($_POST['character_name']);
-                $character_race = $process->validateText($_POST['character_race']);
                 $character_class = $process->validateText($_POST['character_class']);
                 $strength = $process->validateText($_POST['strength']);
                 $constitution = $process->validateText($_POST['constitution']);
