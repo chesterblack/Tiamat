@@ -58,10 +58,11 @@
                             }
                         }
                     };
-                    xmlHttp.open("GET", "/assets/php/ajax-character-builder.php?q=" + str, true);
+                    xmlHttp.open("GET", "/assets/php/ajax-races.php?q=" + str, true);
                     xmlHttp.send();
                 }
             }
+            
         </script>
 
         <form action="" method="post">
@@ -83,7 +84,16 @@
                     </select>
                     <div class="arrow"></div>
                 </li>
-                <li>CLASS: <input type="text" name="character_class"></li>
+                <li>CLASS: <select name="character_mainclass">
+                    <?php 
+                    $classes = $process->getClasses("class_name","");
+                    foreach($classes as $class){
+                        $class_name = $class['class_name'];
+                        echo "<option value='$class_name'>$class_name</option>\n";
+                    }
+                    ?>
+                    </select>
+                    <div class="arrow"></div></li>
                 <li>ALIGNMENT: <select name="character_alignment">
                     <option value="lawful_good">Lawful Good</option>
                     <option value="neutral_good">Neutral Good</option>
