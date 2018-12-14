@@ -606,6 +606,10 @@ em{
     .attributes{
         display: inline-block;
         margin: 0 0 0 20px;
+        vertical-align: top;
+    }
+    .prof{
+        margin-top: 10px;
     }
     hr{
         margin: 15px 0;
@@ -613,7 +617,18 @@ em{
     }
 }
 .inputs{
-
+    input[type=checkbox]{
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #000000;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+    input[type=checkbox]:checked{
+        background-color: #000000;
+    }
     input:not([type=checkbox]), select{
         border: 1px solid #000000;
         border-radius: 0;

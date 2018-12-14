@@ -76,7 +76,7 @@
 					</li>
 				</ul>
             {/if}
-            <h2>Proficiency Bonus: <span>+<?php echo $process->getProficiency("{last_segment}") ?></span></h2>
+
             <div class="{if image}left{if:else}center{/if}">
 				<h1>
 					{title}
@@ -123,6 +123,10 @@
             <li><h2>INT:</h2> <?php echo $intelligence ?> (<?php echo $process->getModifier($intelligence); ?>)</li>
             <li><h2>WIS:</h2> <?php echo $wisdom ?> (<?php echo $process->getModifier($wisdom); ?>)</li>
             <li><h2>CHA:</h2> <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
+        </ul>
+        <div class="clearfix"></div>
+        <ul class="attributes prof">
+            <li><h2>Proficiency Bonus:</h2> +<?php echo $process->getProficiency("{last_segment}") ?></li>
         </ul>
         <hr>
         <h2>Skills</h2>
