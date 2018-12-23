@@ -5,13 +5,18 @@
 
     $mainrace = $_REQUEST['q'];
 
-    $races = $process->getRaces("subrace_name",$mainrace);
+    $arrays = $process->getRaces("subrace_name",$mainrace);
 
-    if($races['subrace_name'] !== "nope"){
-        foreach($races as $race){
-            $subrace_name = $race['subrace_name'];
+    $has_subraces = FALSE;
+
+    foreach ($arrays as $array){
+        if(is_array($array)){
+            $subrace_name = $array['subrace_name'];
+            $has_subraces = TRUE;
             echo "<option value='$subrace_name'>$subrace_name</option>\n";
         }
+    }
+    if($has_subraces){
         echo "<option value=''>None</option>";
     }
     ?>
