@@ -46,7 +46,7 @@
                 </h3>
                 {if segment_1 == "characters"}
                 <?php if ($process->getData("character_name","{last_segment}")){ ?>
-                    <button><a href="/resources/character-sheet/{last_segment}">View character sheet</a></button>
+                    <button><a href="/characters/sheet/{last_segment}">View character sheet</a></button>
                 <?php }else{ ?>
                     <h2>No character sheet - <button><a href="/resources/character-builder">build one?</a></button></h2>
                 <?php } ?>
