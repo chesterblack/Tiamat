@@ -136,9 +136,6 @@
             <li><h2>CHA:</h2> <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
         </ul>
         <div class="clearfix"></div>
-        <ul class="attributes prof">
-            <li><h2>Proficiency Bonus:</h2> +<?php echo $process->getProficiency("{last_segment}") ?></li>
-        </ul>
         <hr>
         <h2>Skills</h2>
         <div class="clearfix"></div>
@@ -178,6 +175,11 @@
             <li><h2>INT:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","intelligence"); ?></li>
             <li><h2>WIS:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","wisdom"); ?></li>
             <li><h2>CHA:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","charisma"); ?></li>
+        </ul>
+        <ul class="core">
+            <li><h2>Proficiency Bonus:</h2> +<?php echo $process->getProficiency("{last_segment}") ?></li>
+            <li><h2>Passive Perception:</h2> <?php echo $process->getPassivePerception("{last_segment}") ?></li>
+            <li><h2>Initiative:</h2> <?php echo $process->getModifier($dexterity); ?>
         </ul>
     </div>
 
