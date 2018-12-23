@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {embed="/_includes/dnd-header"}
+    <title>Character Builder</title>
+</head>
+<body>
+    {embed="/_includes/nav"}
+    <div class="container character-sheet">
+        <h1>
+            Character Builder
+        </h1>
+
+        <?php 
+            // error_reporting(E_ALL);
+            require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
+
+            if (isset($_POST['entered'])){
+                $character_subrace = $_POST['character_subrace'];
+                $character_class = $_POST['character_mainclass'];
+                $character_subclass = $_POST['character_subclass'];
+                $character_race = $_POST['character_mainrace'];
+                $character_subrace = $_POST['character_subrace'];
+                $character_name = $process->validateText($_POST['character_name']);
+                $strength = $process->validateText($_POST['strength']);
+                $constitution = $process->validateText($_POST['constitution']);
+                $dexterity = $process->validateText($_POST['dexterity']);
+                $intelligence = $process->validateText($_POST['intelligence']);
+                $wisdom = $process->validateText($_POST['wisdom']);
+                $charisma = $process->validateText($_POST['charisma']);
+                $character_alignment = $_POST['character_alignment'];
+                $skills = $_POST['skill'];
+
+                $inputs = array("character_name"=>$character_name, "character_race"=>$character_race,"character_subrace"=>$character_subrace, "character_class"=>$character_class,"character_subclass"=>$character_subclass,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma,"character_alignment"=>$character_alignment,"skills"=>$skills);
+
+                $process->addData($inputs);
+            }
+        ?>
+
+        <script>
+            showSubraces("dwarf");
+            showSubclasses("barbarian");
+
+            function showSubraces(str){
+                if(str.length == 0){
+                    document.getElementById("subrace").innerHTML = "";
+                }else{
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function(){
+                        if (this.readyState == 4 && this.status == 200){
+                            if(this.responseText[0] != undefined){
+                                console.log(this.responseText);
+                                document.getElementById("subraceouter").style.display = "inline-block";
+                                document.getElementById("subrace").innerHTML = this.responseText;
+                            }else{
+                                document.getElementById("subraceouter").style.display = "none";
+                                document.getElementById("subrace").innerHTML = "<option value=''></option>";
+                            }
+                        }
+                    };
+                    xmlHttp.open("GET", "/assets/php/ajax-races.php?q=" + str, true);
+                    xmlHttp.send();
+                }
+            }
+            function showSubclasses(str2){
+                if(str2.length == 0){
+                    document.getElementById("subclasstest").innerHTML = "";
+                }else{
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function(){
+                        if (this.readyState == 4 && this.status == 200){
+                            console.log(this.responseText);
+                            if(this.responseText[0] != "A"){
+                                document.getElementById("subclassouter").style.display = "inline-block";
+                                document.getElementById("subclasstest").innerHTML = this.responseText;
+                            }else{
+                                document.getElementById("subclassouter").style.display = "none";
+                            }
+                        }
+                    };
+                    xmlHttp.open("GET", "/assets/php/ajax-classes.php?q=" + str2, true);
+                    xmlHttp.send();
+                }
+            }
+        </script>
+
+        <form action="" method="post">
+            <ul class="inputs">
+                <hr>
+                <li class="attributes">NAME: <input type="text" name="character_name"></li>
+                <li class="attributes">ALIGNMENT: <select name="character_alignment">
+                    <option value="lawful_good">Lawful Good</option>
+                    <option value="neutral_good">Neutral Good</option>
+                    <option value="chaotic_good">Chaotic Good</option>
+                    <option value="lawful_neutral">Lawful Neutral</option>
+                    <option value="true_neutral">True Neutral</option>
+                    <option value="chaotic_neutral">Chaotic Neutral</option>
+                    <option value="lawful_evil">Lawful Evil</option>
+                    <option value="neutral_evil">Neutral Evil</option>
+                    <option value="chaotic_evil">Chaotic Evil</option>
+                </select>
+                <div class="arrow"></div></li>
+                <div class="clearfix"></div>
+                <li class="attributes">CLASS: <select name="character_mainclass" onchange='showSubclasses(this.value)'>
+                    <?php 
+                    $classes = $process->getClasses("class_name","");
+                    foreach($classes as $class){
+                        $class_name = $class['class_name'];
+                        echo "<option value='$class_name'>$class_name</option>\n";
+                    }
+                    ?>
+                    </select>
+                    <div class="arrow"></div>
+                </li>
+                <li class="attributes" id="subclassouter" style="display:none;">
+                    SUBCLASS: <select id="subclasstest" name="character_subclass">
+                    </select>
+                    <div class="arrow"></div>
+                </li>
+                <div class="clearfix"></div>
+                <li class="attributes">RACE: <select name="character_mainrace" onchange='showSubraces(this.value)'>
+                    <?php 
+                    $races = $process->getRaces("race_name","");
+                    foreach($races as $race){
+                        $race_name = $race['race_name'];
+                        echo "<option value='$race_name'>$race_name</option>\n";
+                    }
+                    ?>
+                </select>
+                <div class="arrow"></div>
+                </li>
+                <li class="attributes" id="subraceouter" style="display:none;">
+                    SUBRACE: <select id="subrace" name="character_subrace">
+                    </select>
+                    <div class="arrow"></div>
+                </li>
+            </ul>
+            <hr>
+            <h2>Attributes</h2>
+            <div class="clearfix"></div>
+            <ul class="inputs attributes">
+                <li>STR: <input type="number" name="strength" value="10"></li>
+                <li>CON: <input type="number" name="constitution" value="10"></li>
+                <li>DEX: <input type="number" name="dexterity" value="10"></li>
+            </ul>
+            <ul class="inputs attributes">
+                <li>INT: <input type="number" name="intelligence" value="10"></li>
+                <li>WIS: <input type="number" name="wisdom" value="10"></li>
+                <li>CHA: <input type="number" name="charisma" value="10"></li>
+            </ul>
+            <hr>
+            <h2>Skills</h2>
+            <div class="clearfix"></div>
+            <ul class="inputs attributes">
+                <li><label><input type="checkbox" name="skill[]" value="acrobatics"><span>acrobatics</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="animal_handling"><span>animal handling</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="arcana"><span>arcana</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="athletics"><span>Athletics</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="deception"><span>deception</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="history"><span>history</span></label></li>
+            </ul>
+            <ul class="inputs attributes">
+                <li><label><input type="checkbox" name="skill[]" value="insight"><span>insight</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="intimidation"><span>intimidation</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="investigation"><span>investigation</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="medicine"><span>medicine</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="nature"><span>nature</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="perception"><span>perception</span></label></li>
+            </ul>
+            <ul class="inputs attributes"> 
+                <li><label><input type="checkbox" name="skill[]" value="performance"><span>performance</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="persuasion"><span>persuasion</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="religion"><span>religion</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="sleight_of_hand"><span>sleight of hand</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="stealth"><span>stealth</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="survival"><span>survival</span></label></li>
+            </ul>
+            <div class="clearfix"></div>
+            <hr>
+            <input type="hidden" name="csrf_token" value="{csrf_token}">
+            <button type="submit" name="entered">SUBMIT</button>
+            </ul>
+        </form>
+    </div>
+</body>
+</html>

@@ -62,7 +62,7 @@ button{
     border: 1px solid #000000;
     font-size: 16px;
 }
-input{
+input:not([type=checkbox]){
     background: none;
     border: 1px solid #000000;
     padding: 10px;
@@ -72,10 +72,6 @@ input{
     max-width: 100%;
     text-transform: uppercase;
     font-weight: 100;
-    position: relative;
-    bottom: 60px;
-    left: 155px;
-    width: initial;
 }
 
 /* HOMEPAGE */
@@ -201,6 +197,17 @@ em{
         text-align: center;
         margin-bottom: -26px;
         margin-top: 22px;
+    }
+    button{
+        padding: 10px;
+
+        a{
+            text-decoration: none;
+            font-weight: 200;
+        }
+        a:hover{
+            border-bottom: 1px solid #000000;
+        }
     }
     .experience{
         width: 100%;
@@ -362,6 +369,12 @@ em{
                 margin-top: 20px;
                 text-align: left;
 
+                input{
+                    position: relative;
+                    bottom: 60px;
+                    left: 155px;
+                    width: initial;
+                }
                 h2{
                     margin-bottom: 0;
                 }
@@ -571,4 +584,84 @@ em{
 }
 .category-link{
     text-decoration: none;
+}
+
+// CHARACTER SHEETS
+.character-sheet{
+    font-weight: 200;
+
+    .core{
+        text-transform: capitalize;
+        border-top: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        padding: 10px 0;
+        text-align: center;
+
+        li{
+            display: inline-block;
+            width: 33%;
+            box-sizing: border-box;
+        }
+    }
+    .attributes{
+        display: inline-block;
+        margin: 0 20px 0 0;
+        vertical-align: top;
+    }
+    .prof{
+        margin-top: 10px;
+    }
+    hr{
+        margin: 15px 0;
+        border-top: 1px solid #000000;
+    }
+}
+.inputs{
+    input[type=checkbox]{
+        -webkit-appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 1px solid #000000;
+        text-align: center;
+        box-sizing: border-box;
+        border-radius: 0;
+    }
+    input[type=checkbox]:hover{
+        border: 2px solid #000000;
+    }
+    input[type=checkbox]:checked{
+        background-color: #000000;
+    }
+    input:not([type=checkbox]), select{
+        border: 1px solid #000000;
+        border-radius: 0;
+        -webkit-appearance: none;
+        padding: 10px;
+        background: none;
+        font-family: 'Roboto',sans-serif;
+        font-weight: 200;
+        font-size: 26px;
+        text-transform: none;
+        margin: 10px;
+    }
+    span{
+        font-weight: 200;
+        text-transform: capitalize;
+        margin-left: 5px;
+    }
+    select{
+        padding-right: 30px;
+        text-transform: capitalize;
+    }
+    .arrow{
+        border-right: 1px solid #000000;
+        border-bottom: 1px solid #000000;
+        width: 10px;
+        height: 10px;
+        position: relative;
+        top: -5px;
+        right: 40px;
+        transform: rotate(45deg);
+        display: inline-block;
+    }
 }

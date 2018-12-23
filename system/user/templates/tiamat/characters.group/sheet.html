@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {embed="/_includes/dnd-header"}
+    {exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
+		<title>{title}</title>
+	{/exp:channel:entries}
+</head>
+<body class="character-sheet">
+    <?php
+        error_reporting(E_ALL);
+        require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
+
+        $character_name = $process->getData("character_name","{last_segment}");
+        $character_mainrace = $process->getData("character_race","{last_segment}");
+        $character_subrace = $process->getData("character_subrace","{last_segment}");
+        if($character_subrace){
+            $character_race = $character_subrace . " " . $character_mainrace;
+        }else{
+            $character_race = $character_mainrace;
+        };
+        $character_mainclass = $process->getData("character_class","{last_segment}");
+        $character_subclass = $process->getData("character_subclass","{last_segment}");
+        if($character_subclass){
+            $character_class = $character_subclass . " " . $character_mainclass;
+        }else{
+            $character_class = $character_mainclass;
+        };
+        $strength = $process->getData("strength","{last_segment}");
+        $constitution = $process->getData("constitution","{last_segment}");
+        $dexterity = $process->getData("dexterity","{last_segment}");
+        $intelligence = $process->getData("intelligence","{last_segment}");
+        $wisdom = $process->getData("wisdom","{last_segment}");
+        $charisma = $process->getData("charisma","{last_segment}");
+        $alignmentShort = $process->getData("character_alignment","{last_segment}");
+        $character_alignment = $process->unshorten($alignmentShort);
+        $skills = $process->getSkills("{last_segment}");
+    ?>
+
+    {embed="/_includes/nav"}
+
+    <div class="container">
+        {if last_segment == "character-sheet"}
+        <h1>Character Sheets</h1>
+        <div class="archive">    
+            {exp:channel:entries channel="characters" orderby="title" sort="asc"}
+            <?php if ($process->getData("short_name","{url_title}")){ ?>
+            <div class="profile-box categories" id="{url_title}">
+                <ul>
+                    {categories orderby="asc"}
+                    <a href="/categories/{category_url_title}" class="category-link">
+                        <li style="background-color:{colour}">
+                            <h4>{category_name}</h4>
+                        </li>
+                    </a>
+                    {/categories}
+                </ul>
+                <a href="/resources/character-sheet/{url_title}">
+                    <h2>{title}</h2>
+                </a>
+                <p>{standfirst}</p>
+            </div>
+            <?php } ?>
+            {/exp:channel:entries}
+        </div>
+        {if:else}
+
+        {exp:channel:entries channel="characters" orderby="title" sort="asc" url_title=last_segment limit="1"}
+        {if url_title == last_segment}
+        <div class="profile">    
+            <div class="top">
+			{if level}
+				<div class="level">
+					<h2>
+						Level
+					</h2>
+				</div>
+				<ul class="experience">
+					<li class="current level">
+						{level}
+					</li>
+					<li class="xp-bar">
+						<div class="inner-xp" style="width:{exp}%;"></div>
+					</li>
+					<li class="next level">
+						<?php echo {level}+1 ?>
+					</li>
+				</ul>
+            {/if}
+
+            <div class="{if image}left{if:else}center{/if}">
+				<h1>
+					{title}
+				</h1>
+				<h3>
+					{standfirst}
+                </h3>
+                <?php if($process->checkMatch($character_name)){ ?>
+                    <button><a href="/characters/{last_segment}">View profile</a></button>
+                <?php } ?>
+			</div>
+
+			<div class="testimg"></div>
+			{if image}
+			<div class="right">
+				<details>
+					<summary>
+						<div class="bg"></div>
+						<img src="{image}" class="trigger" />
+					</summary>
+					<img class="popup" src="{image}" />
+				</details>
+			</div>
+			{/if}
+            <div class="clearfix"></div>
+        </div>
+        {if:else}
+        <h1><?php echo $character_name ?></h1>
+        {/if}
+        {/exp:channel:entries}
+        <ul class="core">
+            <li><h2>RACE:</h2> <?php echo $character_race ?></li>
+            <li><h2>CLASS:</h2> <?php echo $character_class ?></li>
+            <li><h2>ALIGNMENT:</h2> <?php echo $character_alignment ?></li>
+        </ul>
+        <h2>Attributes</h2>
+        <div class="clearfix"></div>
+        <ul class="attributes">
+            <li><h2>STR:</h2> <?php echo $strength ?> (<?php echo $process->getModifier($strength); ?>)</li>
+            <li><h2>CON:</h2> <?php echo $constitution ?> (<?php echo $process->getModifier($constitution); ?>)</li>
+            <li><h2>DEX:</h2> <?php echo $dexterity ?> (<?php echo $process->getModifier($dexterity); ?>)</li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>INT:</h2> <?php echo $intelligence ?> (<?php echo $process->getModifier($intelligence); ?>)</li>
+            <li><h2>WIS:</h2> <?php echo $wisdom ?> (<?php echo $process->getModifier($wisdom); ?>)</li>
+            <li><h2>CHA:</h2> <?php echo $charisma ?> (<?php echo $process->getModifier($charisma); ?>)</li>
+        </ul>
+        <div class="clearfix"></div>
+        <hr>
+        <h2>Skills</h2>
+        <div class="clearfix"></div>
+        <ul class="attributes">
+            <li><h2>DEX:</h2> Acrobatics (<?php echo $process->getSkillModifier($skills,"acrobatics","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Animal Handling (<?php echo $process->getSkillModifier($skills,"animal_handling","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Arcana (<?php echo $process->getSkillModifier($skills,"arcana","{last_segment}"); ?>)</li>
+            <li><h2>STR:</h2> Athletics (<?php echo $process->getSkillModifier($skills,"athletics","{last_segment}"); ?>)</li>
+            <li><h2>CHA:</h2> Deception (<?php echo $process->getSkillModifier($skills,"deception","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> History (<?php echo $process->getSkillModifier($skills,"history","{last_segment}"); ?>)</li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>WIS:</h2> Insight (<?php echo $process->getSkillModifier($skills,"insight","{last_segment}"); ?>)</li>
+            <li><h2>CHA:</h2> Intimidation (<?php echo $process->getSkillModifier($skills,"intimidation","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Investigation (<?php echo $process->getSkillModifier($skills,"investigation","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Medicine (<?php echo $process->getSkillModifier($skills,"medicine","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Nature (<?php echo $process->getSkillModifier($skills,"nature","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Perception (<?php echo $process->getSkillModifier($skills,"perception","{last_segment}"); ?>)</li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>CHA:</h2> Performance (<?php echo $process->getSkillModifier($skills,"performance","{last_segment}"); ?>)</li>
+            <li><h2>CHA:</h2> Persuasion (<?php echo $process->getSkillModifier($skills,"persuasion","{last_segment}"); ?>)</li>
+            <li><h2>INT:</h2> Religion (<?php echo $process->getSkillModifier($skills,"religion","{last_segment}"); ?>)</li>
+            <li><h2>DEX:</h2> Sleight Of Hand (<?php echo $process->getSkillModifier($skills,"sleight_of_hand","{last_segment}"); ?>)</li>
+            <li><h2>DEX:</h2> Stealth (<?php echo $process->getSkillModifier($skills,"stealth","{last_segment}"); ?>)</li>
+            <li><h2>WIS:</h2> Survival (<?php echo $process->getSkillModifier($skills,"survival","{last_segment}"); ?>)</li>
+        </ul>
+        <hr>
+        <h2>Saving throws</h2>
+        <div class="clearfix"></div>
+        <ul class="attributes">
+            <li><h2>STR:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","strength"); ?></li>
+            <li><h2>CON:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","constitution"); ?></li>
+            <li><h2>DEX:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","dexterity"); ?></li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>INT:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","intelligence"); ?></li>
+            <li><h2>WIS:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","wisdom"); ?></li>
+            <li><h2>CHA:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","charisma"); ?></li>
+        </ul>
+        <ul class="core">
+            <li><h2>Proficiency Bonus:</h2> +<?php echo $process->getProficiency("{last_segment}") ?></li>
+            <li><h2>Passive Perception:</h2> <?php echo $process->getPassivePerception("{last_segment}") ?></li>
+            <li><h2>Initiative:</h2> <?php echo $process->getModifier($dexterity); ?>
+        </ul>
+    </div>
+
+    {/if}
+
+    {!--<?php if(!$character_name){ ?>
+    {redirect="404"}
+    <?php } ?>--}
+
+</body>
+</html>
