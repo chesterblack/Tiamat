@@ -12,5 +12,6 @@
             $subrace_name = $race['subrace_name'];
             echo "<option value='$subrace_name'>$subrace_name</option>\n";
         }
+        echo "<option value=''>None</option>";
     }
-?>
+    ?>

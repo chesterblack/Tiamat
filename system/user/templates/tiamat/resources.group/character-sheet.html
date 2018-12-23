@@ -12,8 +12,20 @@
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
 
         $character_name = $process->getData("character_name","{last_segment}");
-        $character_race = $process->getData("character_race","{last_segment}");
-        $character_class = $process->getData("character_class","{last_segment}");
+        $character_mainrace = $process->getData("character_race","{last_segment}");
+        $character_subrace = $process->getData("character_subrace","{last_segment}");
+        if($character_subrace){
+            $character_race = $character_subrace . " " . $character_mainrace;
+        }else{
+            $character_race = $character_mainrace;
+        };
+        $character_mainclass = $process->getData("character_class","{last_segment}");
+        $character_subclass = $process->getData("character_subclass","{last_segment}");
+        if($character_subclass){
+            $character_class = $character_subclass . " " . $character_mainclass;
+        }else{
+            $character_class = $character_mainclass;
+        };
         $strength = $process->getData("strength","{last_segment}");
         $constitution = $process->getData("constitution","{last_segment}");
         $dexterity = $process->getData("dexterity","{last_segment}");
@@ -155,6 +167,18 @@
             <li><h2>WIS:</h2> Survival (<?php echo $process->getSkillModifier($skills,"survival","{last_segment}"); ?>)</li>
         </ul>
         <hr>
+        <h2>Saving throws</h2>
+        <div class="clearfix"></div>
+        <ul class="attributes">
+            <li><h2>STR:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","strength"); ?></li>
+            <li><h2>CON:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","constitution"); ?></li>
+            <li><h2>DEX:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","dexterity"); ?></li>
+        </ul>
+        <ul class="attributes">
+            <li><h2>INT:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","intelligence"); ?></li>
+            <li><h2>WIS:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","wisdom"); ?></li>
+            <li><h2>CHA:</h2> <?php echo $process->getSave($character_mainclass,"{last_segment}","charisma"); ?></li>
+        </ul>
     </div>
 
     {/if}
