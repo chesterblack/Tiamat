@@ -11,16 +11,15 @@
         {categories}
             <h1 style="border-left:5px solid {colour}; padding-left:15px;">{category_name}</h1>
         {/categories}
-        {/exp:channel:category_archive}
-
         {exp:channel:entries category="{last_segment_category_id}"}
         <div class="profile-box categories" id="{url_title}">
-            <a href="/items/{url_title}">
+            <a href="/{channel}/{url_title}">
                 <h2>{title}</h2>
             </a>
             <p>{standfirst}</p>
         </div>
         {/exp:channel:entries}
+        {/exp:channel:category_archive}
 
         <div class="view-all-categories">
             <button>
