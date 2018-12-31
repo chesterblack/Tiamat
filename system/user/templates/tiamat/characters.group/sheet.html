@@ -95,7 +95,7 @@
 				<h3>
 					{standfirst}
                 </h3>
-                <?php if($process->checkMatch($character_name)){ ?>
+                <?php if($process->alreadyExists($character_name)){ ?>
                     <button><a href="/characters/{last_segment}">View profile</a></button>
                 <?php } ?>
 			</div>

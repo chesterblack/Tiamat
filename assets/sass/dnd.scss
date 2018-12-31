@@ -443,6 +443,7 @@ em{
     position: sticky;
     width: 100%;
     top: 0;
+    z-index: 100;
 }
 .header-list{
     width: 100%;
@@ -615,6 +616,23 @@ em{
         margin: 15px 0;
         border-top: 1px solid #000000;
     }
+    button{
+        padding: 10px;
+        text-transform: uppercase;
+        font-weight: 100;
+        font-size: 26px;
+        margin: 10px 0 25px 0;
+        min-width: 30%;
+    }
+    button:hover{
+        cursor: pointer;
+    }
+    button:hover span{
+        border-bottom: 1px solid #000000;
+    }
+}
+div.submit{
+    text-align: center;
 }
 .inputs{
     input[type=checkbox]{
