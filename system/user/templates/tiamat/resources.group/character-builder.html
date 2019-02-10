@@ -177,6 +177,62 @@
             </ul>
             <div class="clearfix"></div>
             <hr>
+            <h2>
+                Equipment
+            </h2>
+            <ul class="inputs">
+                <li>WEAPON:
+                    <select id="weapon" name="weapon" onchange="showWeaponProperties()">
+                        <?php
+                            $weapons = $process->getEquipment('weapons','name,short_name','');
+                            foreach($weapons as $weapon){
+                                $weaponShortName = $weapon['short_name'];
+                                $weaponName = $weapon['name'];
+                                echo "<option value='$weaponShortName'>$weaponName</option>";
+                            }
+                        ?>
+                    </select>
+                <div class='arrow'></div>
+                </li>
+            </ul>
+            <table>
+                <tr>
+                    <td>
+                        Type
+                    </td>
+                    <td>
+                        Damage
+                    </td>
+                    <td>
+                        Weight
+                    </td>
+                    <td>
+                        Price
+                    </td>
+                    <td>
+                        Properties
+                    </td>
+                    <td>
+                        Range
+                    </td>
+                </tr>
+                <script>
+                    function showWeaponProperties(){
+                        var xmlHttp = new XMLHttpRequest();
+                        xmlHttp.onreadystatechange = function(){
+                            if (this.readyState == 4 && this.status == 200){   
+                                document.getElementById('weapon-properties').innerHTML = this.responseText;
+                            }
+                        };
+                        var selectedWeapon = document.getElementById('weapon');
+                        xmlHttp.open("GET", "/assets/php/ajax-weapons.php?q=" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true);
+                        xmlHttp.send();
+                    }
+                </script>
+                <tr id="weapon-properties">
+                </tr>
+            </table>
+            <hr>
             <input type="hidden" name="csrf_token" value="{csrf_token}">
             <div class="submit">
                 <button type="submit" name="entered"><span>SUBMIT</span></button>
