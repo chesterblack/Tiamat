@@ -195,8 +195,22 @@
                 <div class='arrow'></div>
                 </li>
             </ul>
-            <table>
-                <tr>
+            <script>
+                function showWeaponProperties(){
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function(){
+                        if (this.readyState == 4 && this.status == 200){   
+                            document.getElementById('weapon-properties').innerHTML = this.responseText;
+                        }
+                    };
+                    var selectedWeapon = document.getElementById('weapon');
+                    xmlHttp.open("GET", "/assets/php/ajax-weapons.php?q=" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true);
+                    xmlHttp.send();
+                }
+                showWeaponProperties()
+            </script>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tr class="titles">
                     <td>
                         Type
                     </td>
@@ -216,19 +230,6 @@
                         Range
                     </td>
                 </tr>
-                <script>
-                    function showWeaponProperties(){
-                        var xmlHttp = new XMLHttpRequest();
-                        xmlHttp.onreadystatechange = function(){
-                            if (this.readyState == 4 && this.status == 200){   
-                                document.getElementById('weapon-properties').innerHTML = this.responseText;
-                            }
-                        };
-                        var selectedWeapon = document.getElementById('weapon');
-                        xmlHttp.open("GET", "/assets/php/ajax-weapons.php?q=" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true);
-                        xmlHttp.send();
-                    }
-                </script>
                 <tr id="weapon-properties">
                 </tr>
             </table>

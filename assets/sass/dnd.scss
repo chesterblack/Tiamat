@@ -1,5 +1,15 @@
+:root{
+    --color-primary: #000000;
+    --color-secondary: rgba(212, 212, 212, 0.45);
+    --font-main: 'Roboto', sans-serif;
+    --weight-main: 100;
+    --line-main: 1px solid;
+}
 :focus{
     outline: none;
+}
+body{
+    margin: 0;
 }
 .clearfix{
     clear: both;
@@ -19,52 +29,87 @@
 #mobile-menu{
     width: 0px;
     overflow: hidden;
+    display: none;
+}
+table{
+    padding: 15px;
+    background-color: var(--color-secondary);
+    border: var(--line-main) var(--color-primary);
+}
+td{
+    padding: 5px 10px 0 5px;
+    max-width: 210px;
+}
+p,a,li,td,button,span,input,select{
+    font-family: var(--font-main);
+    font-size: 26px;
+    margin: 0;
+    color: var(--color-primary);
+}
+ul{
+    padding: 0;
+}
+li{
+    list-style: none;
 }
 p{
     font-weight: 300;
     font-size: 19px;
 }
 h1{
+    display: inline-block;
+    color: var(--color-primary);
+    font-family: var(--font-main);
+    font-weight: var(--weight-main);
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    font-size: 50px;
     float: none;
     margin: 25px auto 20px auto;
     display: block;
 }
 .h1-container{
     text-align: center;
-    border-bottom: 1px solid #000000;
+    border-bottom: var(--line-main) var(--color-primary);
     margin-bottom: 25px;
 }
 h2{
+    display: inline-block;
+    font-family: var(--font-main);
+    text-transform: uppercase;
+    color: var(--color-primary);
     font-weight: 900;
     font-size: 21px;
     letter-spacing: -0.5px;
+    margin: 0;
 }
 h3{
     font-size: 43px;
-    font-family: 'Roboto',sans-serif;
+    color: var(--color-primary);
+    font-family: var(--font-main);
     margin: 0;
     margin-bottom: 20px;
 }
 a.thin{
     font-weight: 100;
     text-decoration: none;
-    border-bottom: 1px solid #000000;
+    border-bottom: var(--line-main) var(--color-primary);
 }
 a.thin:hover{
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid var(--color-primary);
 }
 button{
     border-radius: 0;
     background: none;
-    font-family: 'Roboto',sans-serif;
+    font-family: var(--font-main);
     text-transform: uppercase;
     font-weight: 300;
-    border: 1px solid #000000;
+    border: var(--line-main) var(--color-primary);
     font-size: 16px;
 }
 input:not([type=checkbox]){
     background: none;
-    border: 1px solid #000000;
+    border: var(--line-main) var(--color-primary);
     padding: 10px;
     margin: 10px;
     display: inline-block;
@@ -79,10 +124,10 @@ input:not([type=checkbox]){
     text-align: center;
 
     .top{
-        border-bottom: 1px solid #000000;
+        border-bottom: var(--line-main) var(--color-primary);
     }
     .story{
-        border-bottom: 1px solid #000000;
+        border-bottom: var(--line-main) var(--color-primary);
         padding: 30px 0 30px 0;
 
         img{
@@ -90,7 +135,7 @@ input:not([type=checkbox]){
         }
     }
     .channel{
-        border: 1px solid #000000;
+        border: var(--line-main) var(--color-primary);
         width: 40%;
         padding: 30px 20px;
         margin: 15px;
@@ -101,7 +146,7 @@ input:not([type=checkbox]){
         }
     }
     .channel:hover{
-        border: 2px solid #000000;
+        border: 2px solid var(--color-primary);
         padding: 29px 19px;
     }
     ul{
@@ -113,7 +158,7 @@ input:not([type=checkbox]){
         margin-bottom:1px;
     }
     h2:hover{
-        border-bottom: 1px solid #000000;
+        border-bottom: var(--line-main) var(--color-primary);
         margin-bottom:0;
     }
     a{
@@ -127,7 +172,7 @@ a.thin{
 }
 .chapter{
     padding-bottom: 30px;
-    border-bottom: 1px solid #000000;
+    border-bottom: var(--line-main) var(--color-primary);
     margin-bottom: 30px;
 
     p a{
@@ -158,7 +203,7 @@ em{
     display: none;
 }
 .profile-box{
-    border:1px solid #000000;
+    border:var(--line-main) var(--color-primary);
     position: fixed;
     padding: 10px;
     background-color: rgba(212, 212, 212, 0.9);
@@ -179,7 +224,7 @@ em{
         border-radius: 5px;
     }
     h4{
-        font-family: 'Roboto', sans-serif;
+        font-family: var(--font-main);
         color:#ffffff;
         font-size: 18px;
         text-transform: uppercase;
@@ -206,7 +251,7 @@ em{
             font-weight: 200;
         }
         a:hover{
-            border-bottom: 1px solid #000000;
+            border-bottom: var(--line-main) var(--color-primary);
         }
     }
     .experience{
@@ -219,19 +264,19 @@ em{
         .xp-bar{
             width: 92%;
             background-color: #b1372b;
-            margin: 0 auto 5px auto;
-            border: 1px solid #000000;
+            margin: 0 auto 5.5px auto;
+            border: var(--line-main) var(--color-primary);
         }
         .inner-xp{
             background-color: #b1cc3d;
             padding: 3px 0;
-            border-right: 3px solid #000000;
+            border-right: 3px solid var(--color-primary);
             box-sizing: content-box;
-            box-shadow: -2px 0 0 0 #000000 inset;
+            box-shadow: -2px 0 0 0 var(--color-primary) inset;
             float: left;
         }
         li.level{
-            border: 1px solid #000000;
+            border: var(--line-main) var(--color-primary);
             height: 30px;
             min-width: 30px;
             text-align: center;
@@ -299,8 +344,8 @@ em{
     }
     .key-points{
         padding: 10px;
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+        border-top: var(--line-main) var(--color-primary);
+        border-bottom: var(--line-main) var(--color-primary);
         margin: 10px 0 20px 0;
     }
     .extra-padding{
@@ -310,7 +355,7 @@ em{
         text-align: center;
     }
     .menu{
-        border-top: 1px solid #000000;
+        border-top: var(--line-main) var(--color-primary);
         margin-top: 50px;
     }
     .no-desc{
@@ -331,9 +376,9 @@ em{
         }
     }
     .sidebar{
-        border: 1px solid #000000;
+        border: var(--line-main) var(--color-primary);
         padding: 15px;
-        background-color: rgba(212, 212, 212, 0.45);
+        background-color: var(--color-secondary);
         max-width: 36%;
         width: 100%;
         float: right;
@@ -341,7 +386,7 @@ em{
         box-sizing: border-box;
 
         .dividing-line{
-            border-bottom:1px solid #000000;
+            border-bottom:var(--line-main) var(--color-primary);
         }
     }
     .all-comments{
@@ -350,8 +395,8 @@ em{
         margin-bottom: 45px;
 
         .comments-box{
-            border-right: 1px solid #000000;
-            border-left: 1px solid #000000;
+            border-right: var(--line-main) var(--color-primary);
+            border-left: var(--line-main) var(--color-primary);
             display: inline-block;
             width: 100%;
             max-width: 33%;
@@ -380,13 +425,13 @@ em{
                 }
                 textarea{
                     width:98%;
-                    font-family: 'Roboto',sans-serif;
+                    font-family: var(--font-main);
                     font-size: 19px;
                     font-weight: 300;
                     resize: none;
                     resize: vertical;
                     outline: none;
-                    border: 1px solid #000000;
+                    border: var(--line-main) var(--color-primary);
                 }
             }
         }
@@ -403,7 +448,7 @@ em{
     }
     button{
         background: none;
-        border: 1px solid #000000;
+        border: var(--line-main) var(--color-primary);
         padding: 10px;
         margin: 10px;
         display: inline-block;
@@ -416,7 +461,7 @@ em{
             font-weight: 100;
         }
         a:hover{
-            border-bottom: 1px solid #000000;
+            border-bottom: var(--line-main) var(--color-primary);
         }
     }
 }
@@ -428,7 +473,7 @@ em{
     }
     .profile-box{
         position: static;
-        margin: -1px auto;
+        margin: -1.5px auto;
         border-left: none;
         border-right: none;
         background-color: #ffffff;
@@ -436,8 +481,8 @@ em{
 }
 
 /* NAV */
-.dnd-header{
-    border-bottom: 1px solid #000000;
+nav{
+    border-bottom: var(--line-main) var(--color-primary);
     padding-bottom: 10px;
     background: rgba(255,255,255,0.95);
     position: sticky;
@@ -447,14 +492,21 @@ em{
 }
 .header-list{
     width: 100%;
+    margin: 0;
 
     li{
         float: right;
+        margin: 10px 20px 0 0;
 
         a{
+            text-decoration: none;
             text-transform: uppercase; 
             font-weight: 100;
             font-size: 19px;
+
+            &:hover{
+                border-bottom: var(--line-main) var(--color-primary);
+            }
         }
     }
     .left{
@@ -504,14 +556,14 @@ em{
     }
     input:focus, input:hover{
         padding:9px;
-        border: 2px solid #000000;
+        border: 2px solid var(--color-primary);
     }
     button{
         font-size: 26px;
         font-weight: 100;
     }
     button:hover{
-        border: 2px solid #000000;
+        border: 2px solid var(--color-primary);
     }
     li{
         font-weight: 100;
@@ -520,7 +572,7 @@ em{
         text-align: center;
         margin-top: 20px;
         margin-bottom: 35px;
-        border-top: 1px solid #000000;
+        border-top: var(--line-main) var(--color-primary);
 
         .inputs{
             li{
@@ -558,7 +610,7 @@ em{
     }
     .characters{
         padding: 20px 0;
-        border-top: 1px solid #000000;
+        border-top: var(--line-main) var(--color-primary);
         margin: 0;
 
         li:first-child{
@@ -580,7 +632,7 @@ em{
         font-weight: 100;
     }
     a:hover{
-        border-bottom: 1px solid #000000;
+        border-bottom: var(--line-main) var(--color-primary);
     }
 }
 .category-link{
@@ -593,8 +645,8 @@ em{
 
     .core{
         text-transform: capitalize;
-        border-top: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+        border-top: var(--line-main) var(--color-primary);
+        border-bottom: var(--line-main) var(--color-primary);
         padding: 10px 0;
         text-align: center;
 
@@ -614,7 +666,7 @@ em{
     }
     hr{
         margin: 15px 0;
-        border-top: 1px solid #000000;
+        border-top: var(--line-main) var(--color-primary);
     }
     button{
         padding: 10px;
@@ -628,7 +680,17 @@ em{
         cursor: pointer;
     }
     button:hover span{
-        border-bottom: 1px solid #000000;
+        border-bottom: var(--line-main) var(--color-primary);
+    }
+    table{
+        width: 100%;
+    }
+    .titles td{
+        border-bottom: var(--line-main) var(--color-primary);
+        text-transform: uppercase;
+        font-weight: 900;
+        font-size: 21px;
+        letter-spacing: -0.5px;
     }
 }
 div.submit{
@@ -639,24 +701,24 @@ div.submit{
         -webkit-appearance: none;
         width: 15px;
         height: 15px;
-        border: 1px solid #000000;
+        border: var(--line-main) var(--color-primary);
         text-align: center;
         box-sizing: border-box;
         border-radius: 0;
     }
     input[type=checkbox]:hover{
-        border: 2px solid #000000;
+        border: 2px solid var(--color-primary);
     }
     input[type=checkbox]:checked{
-        background-color: #000000;
+        background-color: var(--color-primary);
     }
     input:not([type=checkbox]), select{
-        border: 1px solid #000000;
+        border: var(--line-main) var(--color-primary);
         border-radius: 0;
         -webkit-appearance: none;
         padding: 10px;
         background: none;
-        font-family: 'Roboto',sans-serif;
+        font-family: var(--font-main);
         font-weight: 200;
         font-size: 26px;
         text-transform: none;
@@ -672,8 +734,8 @@ div.submit{
         text-transform: capitalize;
     }
     .arrow{
-        border-right: 1px solid #000000;
-        border-bottom: 1px solid #000000;
+        border-right: var(--line-main) var(--color-primary);
+        border-bottom: var(--line-main) var(--color-primary);
         width: 10px;
         height: 10px;
         position: relative;

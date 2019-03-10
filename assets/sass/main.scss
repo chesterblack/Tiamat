@@ -41,7 +41,7 @@ body{
 }
 h1{
     display: inline-block;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 12px;
@@ -49,8 +49,8 @@ h1{
     margin: 20px 0 0 0;
     font-size: 50px;
 }
-p, a, li{
-    font-family: Roboto, sans-serif;
+p, a, li, td{
+    font-family: 'Roboto', sans-serif;
     font-size: 26px;
     margin: 0;
     color: var(--lightnesscolor);
@@ -91,7 +91,7 @@ li {
     border: none;
     padding: 0;
     background: none;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 26px;
     margin: 0 5px;
     float: right;
@@ -201,7 +201,7 @@ nav a:hover{
   color: var(--activeColor);
   border: none;
   margin: 0 auto;
-  font-family: Roboto, sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   margin-top: 10px;
   display: none;
@@ -229,10 +229,9 @@ nav a:hover{
 }
 h2{
     display: inline-block;
-    font-family: Roboto, sans-serif;
+    font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
     color: var(--lightnesscolor);
-    display: inline-block;
     font-size: 85px;
     margin: 0;
 }
