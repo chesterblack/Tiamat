@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {embed="/_includes/dnd-header"}
-    {exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
-		<title>{title}</title>
-	{/exp:channel:entries}
-</head>
+{layout="/_includes/layout-main"}
+{layout:set name="title"}{exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}{title}{/exp:channel:entries}{/layout:set}
+
 <body class="character-sheet">
     <?php
         error_reporting(E_ALL);
@@ -188,6 +183,6 @@
     {!--<?php if(!$character_name){ ?>
     {redirect="404"}
     <?php } ?>--}
+    </div>
 
 </body>
-</html>

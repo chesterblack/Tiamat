@@ -6,7 +6,7 @@
     $weaponName = $_REQUEST['q'];
 
     $weapons = $process->getEquipment("weapons","*",$weaponName);
-
+    
     foreach($weapons as $weapon){
         $type = $weapon['proficiency']." ".$weapon['type'];
         $damage = $weapon['damage']." ".$weapon['damage_type'];

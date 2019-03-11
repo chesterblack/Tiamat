@@ -1,0 +1,20 @@
+{
+  "name": "Tiamat",
+  "version": "1.0.0",
+  "description": "Personal site just for practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chesterblack/Tiamat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chesterblack/Tiamat/issues"
+  },
+  "homepage": "https://github.com/chesterblack/Tiamat#readme"
+}

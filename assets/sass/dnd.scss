@@ -508,19 +508,21 @@ nav{
                 border-bottom: var(--line-main) var(--color-primary);
             }
         }
+        button{
+            padding: 5px 10px;
+            margin: 0;
+            font-size: 16px;
+    
+            p{
+                font-weight: 100;
+            }
+        }
+        button:focus{
+            outline: none;
+        }
     }
     .left{
         float: left;
-    }
-    button{
-        padding: 5px 10px;
-
-        p{
-            font-weight: 100;
-        }
-    }
-    button:focus{
-        outline: none;
     }
 }
 

@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{embed=/_includes/dnd-header}
-	{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}
-		<title>{title}</title>
-	{/exp:channel:entries}
-</head>
+{layout="/_includes/layout-main"}
+{layout:set name="title"}{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}{title}{/exp:channel:entries}{/layout:set}
 <body>
     <?php 
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
@@ -221,4 +215,3 @@
 		</div>
 	</div>
 </body>
-</html>
