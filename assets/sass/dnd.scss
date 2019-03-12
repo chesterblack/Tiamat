@@ -14,6 +14,12 @@ body{
 .clearfix{
     clear: both;
 }
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
 .container{
     max-width: 1000px;
     padding: 0 20px;
@@ -56,7 +62,7 @@ p{
     font-weight: 300;
     font-size: 19px;
 }
-h1{
+h1, footer h6{
     display: inline-block;
     color: var(--color-primary);
     font-family: var(--font-main);
@@ -167,9 +173,6 @@ input:not([type=checkbox]){
 }
 
 /* STORY */
-a.thin{
-    margin:0 10px;
-}
 .chapter{
     padding-bottom: 30px;
     border-bottom: var(--line-main) var(--color-primary);
@@ -188,7 +191,7 @@ em{
 
     li{
         display: inline-block;
-        margin-bottom: 10px;
+        margin: 5px;
     }
 }
 .top-arrow{
@@ -296,11 +299,9 @@ em{
     }
     .left{
         max-width: 60%;
-        float: left;
     }
     .right{
         max-width: 39%;
-        float: right;
     }
     
     img{
@@ -521,8 +522,22 @@ nav{
             outline: none;
         }
     }
-    .left{
-        float: left;
+}
+
+/* FOOTER */
+footer{
+    border-top: var(--line-main) var(--color-primary);
+    margin-top: 100px;
+    padding: 20px 0;
+    font-weight: var(--weight-main);
+
+    li{
+        display: inline-block;
+    }
+    a,p{
+        margin-bottom: 5px;
+        font-size: 19px;
+        text-decoration: none;
     }
 }
 
@@ -532,11 +547,9 @@ nav{
 
     .left{
         max-width: 50%;
-        float: left;
         margin-top: 130px;
     }
     .right{
-        float: right;
         text-align: center;
     }
     p{
