@@ -11,6 +11,10 @@
 body{
     margin: 0;
 }
+hr{
+    border-top: 1px solid;
+    border-bottom: none;
+}
 .clearfix{
     clear: both;
 }
@@ -495,6 +499,9 @@ nav{
     width: 100%;
     margin: 0;
 
+    .left{
+        float: left;
+    }
     li{
         float: right;
         margin: 10px 20px 0 0;
@@ -527,8 +534,7 @@ nav{
 /* FOOTER */
 footer{
     border-top: var(--line-main) var(--color-primary);
-    margin-top: 100px;
-    padding: 20px 0;
+    margin-top: 50px;
     font-weight: var(--weight-main);
 
     li{
@@ -758,5 +764,31 @@ div.submit{
         right: 40px;
         transform: rotate(45deg);
         display: inline-block;
+    }
+}
+
+// NEWSLETTER
+.newsletter{
+    p,h2{
+        margin-top: 25px;
+    }
+    input{
+        max-width: 550px;
+        width: 100%;
+        margin-left: 0;
+        box-sizing: border-box;
+
+        &:focus{
+            box-shadow: inset 0px 0px 0px 1px var(--color-primary);
+        }
+    }
+    button{
+        font-size: 26px;
+        font-weight: 100;
+        padding: 10px 30px;
+
+        &:hover{
+            box-shadow: inset 0px 0px 0px 1px var(--color-primary);
+        }
     }
 }

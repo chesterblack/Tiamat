@@ -177,11 +177,12 @@
             <h2>
                 Equipment
             </h2>
-            <ul class="inputs">
+            <ul class="inputs" id="weapons">
                 <li>WEAPON:
                     <select id="weapon" name="weapon" onchange="showWeaponProperties()">
                         <?php
                             $weapons = $process->getEquipment('weapons','name,short_name','');
+
                             foreach($weapons as $weapon){
                                 $weaponShortName = $weapon['short_name'];
                                 $weaponName = $weapon['name'];
@@ -189,23 +190,23 @@
                             }
                         ?>
                     </select>
-                <div class='arrow'></div>
+                    <div class='arrow'></div>
+                    <script>
+                        function showWeaponProperties(){
+                            var xmlHttp = new XMLHttpRequest();
+                            xmlHttp.onreadystatechange = function(){
+                                if (this.readyState == 4 && this.status == 200){   
+                                    document.getElementById('weapon-properties').innerHTML = this.responseText;
+                                }
+                            };
+                            var selectedWeapon = document.getElementById('weapon');
+                            xmlHttp.open("GET", "/assets/php/ajax-weapons.php?q=" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true);
+                            xmlHttp.send();
+                        }
+                        showWeaponProperties()
+                    </script>
                 </li>
             </ul>
-            <script>
-                function showWeaponProperties(){
-                    var xmlHttp = new XMLHttpRequest();
-                    xmlHttp.onreadystatechange = function(){
-                        if (this.readyState == 4 && this.status == 200){   
-                            document.getElementById('weapon-properties').innerHTML = this.responseText;
-                        }
-                    };
-                    var selectedWeapon = document.getElementById('weapon');
-                    xmlHttp.open("GET", "/assets/php/ajax-weapons.php?q=" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true);
-                    xmlHttp.send();
-                }
-                showWeaponProperties()
-            </script>
             <table cellpadding="0" cellspacing="0" border="0">
                 <tr class="titles">
                     <td>
@@ -230,6 +231,7 @@
                 <tr id="weapon-properties">
                 </tr>
             </table>
+            <button class="plus" type="button" onclick="addWeapon()">+</button>
             <hr>
             <input type="hidden" name="csrf_token" value="{csrf_token}">
             <div class="submit">
@@ -238,3 +240,33 @@
         </form>
     </div>
 </body>
+
+<script>
+
+console.log('helloworld')
+
+
+var weaponsList = <?php json_encode($weapons); ?>;
+
+
+
+var plusno = document.getElementsByClassName('plus');
+console.log(plusno)
+
+function addWeapon(){
+    document.getElementById('weapons').insertAdjacentHTML("beforeend","<li>WEAPON: <select class=\"weaponselect\" id=\"weapon\" name=\"weapon\" onchange=\"showWeaponProperties()\">"+addSelectOptions()+"</select> <div class='arrow'></div><script>function showWeaponProperties(){var xmlHttp=new XMLHttpRequest(); xmlHttp.onreadystatechange=function(){if (this.readyState==4 && this.status==200){document.getElementById('weapon-properties').innerHTML=this.responseText;}}; var selectedWeapon=document.getElementById('weapon'); xmlHttp.open(\"GET\", \"/assets/php/ajax-weapons.php?q=\" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true); xmlHttp.send();}showWeaponProperties() </script> </li><div class='arrow'");
+}
+
+function addSelectOptions(){
+    weaponsList.forEach(function(entry){
+        var weaponSelects = document.getElementsByClassName('weaponselect');
+
+        weaponsSelects.forEach(function(select){
+            select.innerHTML += "<option value='"+entry.shortname+"'>"+entry.name+"</option>"
+        });
+    });
+}
+
+</script>
+
+{!--<script src="/assets/js/inventory.js"></script>--}
