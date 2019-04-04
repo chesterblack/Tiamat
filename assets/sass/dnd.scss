@@ -12,8 +12,7 @@ body{
     margin: 0;
 }
 hr{
-    border-top: 1px solid;
-    border-bottom: none;
+    border-top: 1px solid var(--color-primary);
 }
 .clearfix{
     clear: both;
@@ -186,16 +185,30 @@ input:not([type=checkbox]){
         font-size: 19px;
     }
 }
+.book{
+    text-align: center;
+    padding-bottom: 10px;
+    
+    h3{
+        text-transform: uppercase;
+    }
+}
 em{
     margin-left: 35px;
 }
 .menu{
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 90px;
 
+    ul{
+        margin-bottom: 30px;
+    }
+    hr{
+        margin-top: 30px;
+    }
     li{
         display: inline-block;
-        margin: 5px;
+        margin: 0 5px;
     }
 }
 .top-arrow{

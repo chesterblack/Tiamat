@@ -40,49 +40,59 @@
         </div>
         
         <div class="menu">
-            {exp:channel:entries channel="story" status="not closed" orderby="chapter" sort="asc"}
-                <li><a class="thin" href="#{url_title}">{title}</a></li>
-            {/exp:channel:entries}
+            {exp:channel:categories style="linear" category_group="4"}
+                <ul>
+                    <h2>- {category_name}: {book_title} -</h2><br />
+                    {exp:channel:entries channel="story" status="not closed" orderby="chapter" sort="asc" category="{category_id}" dynamic="no"}
+                        <li><a class="thin" href="#{url_title}">{title}</a></li>
+                    {/exp:channel:entries}
+                </ul>
+            {/exp:channel:categories}
         </div>
 
-        {exp:channel:entries channel="story" status="not closed" orderby="chapter" sort="asc"}
-            <div class="chapter" id="{url_title}">
+        {exp:channel:categories style="linear" category_group="4"}
+            <div class="chapter book">
+                <h2>- {category_name} -</h2>
+                <h3>{book_title}</h3>
+            </div>
 
-                <h2>Chapter {chapter}</h2>
+            {exp:channel:entries channel="story" status="not closed" orderby="chapter" sort="asc" category="{category_id}"}
+                <div class="chapter" id="{url_title}">
+                    <h2>Chapter {chapter}</h2>
 
-                <h3>{title}</h3>
+                    <h3>{title}</h3>
 
-                <p>
-                    {embed="/story/php-test" searchsource="{what-happened}"}
-                </p>
-           </div>
-
-        {/exp:channel:entries}
+                    <p>
+                        {embed="/story/php-test" searchsource="{what-happened}"}
+                    </p>
+                </div>
+            {/exp:channel:entries}
+        {/exp:channel:categories}
     </div>
 
     <a href="#top" class="top-arrow">
         <img src="/assets/images/arrow-up.svg" />
     </a>
 
-    <?php 
+    {!--<?php 
     var_dump($profileBoxes);
     foreach ($profileBoxes as $boxChannel => $boxProfile) {
         echo "$boxChannel";
         echo "$boxProfile \n";
         echo "{exp:channel:entries channel='$boxChannel' url_title='{embed:profileurl}'}
         <div class='profile-box hidden categories' id='{url_title}'>
-                        <ul>    
-                            {categories orderby='asc'}
-                            <li style='background-color:{colour}'>
-                                <h4>{category_name}</h4>
-                            </li>
-                            {/categories}
-                        </ul>
-                        <h2>{title}</h2>
-                        <p>{standfirst}</p>
-                    </div>
-    {/exp:channel:entries}"; 
+            <ul>
+                {categories orderby='asc'}
+                <li style='background-color:{colour}'>
+                    <h4>{category_name}</h4>
+                </li>
+                {/categories}
+            </ul>
+            <h2>{title}</h2>
+            <p>{standfirst}</p>
+        </div>
+        {/exp:channel:entries}"; 
     }
-    ?>
+    ?>--}
     
 </body>
