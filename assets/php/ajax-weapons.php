@@ -8,6 +8,7 @@
     $weapons = $process->getEquipment("weapons","*",$weaponName);
     
     foreach($weapons as $weapon){
+        $name = $weapon['name'];
         $type = $weapon['proficiency']." ".$weapon['type'];
         $damage = $weapon['damage']." ".$weapon['damage_type'];
         $weight = $weapon['weight'];
@@ -17,7 +18,8 @@
             $range = $weapon['ranges'];
         // }
 
-        echo "<td>$type</td><td>$damage</td><td>$weight</td><td>$price</td><td>$properties</td><td>$range</td>";
 
+
+        echo "<td name='weapon' value='$name'>$name</td><td>$type</td><td>$damage</td><td>$weight</td><td>$price</td><td>$properties</td><td>$range</td>";
     }
 ?>

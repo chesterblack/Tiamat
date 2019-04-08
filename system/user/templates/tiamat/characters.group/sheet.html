@@ -30,6 +30,8 @@
         $alignmentShort = $process->getData("character_alignment","{last_segment}");
         $character_alignment = $process->unshorten($alignmentShort);
         $skills = $process->getSkills("{last_segment}");
+
+        $weapons = $process->getInventory($process->unshorten('{last_segment}'));
     ?>
 
     {embed="/_includes/nav"}
@@ -176,6 +178,57 @@
             <li><h2>Passive Perception:</h2> <?php echo $process->getPassivePerception("{last_segment}") ?></li>
             <li><h2>Initiative:</h2> <?php echo $process->getModifier($dexterity); ?>
         </ul>
+        <h2>Equipment</h2>
+        <table cellpadding="0" cellspacing="0" border="0" id="weaponStats">
+            <tr class="titles">
+                <td>
+                    Name
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    Damage
+                </td>
+                <td>
+                    Weight
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    Properties
+                </td>
+                <td>
+                    Range
+                </td>
+            </tr>
+        <?php foreach($weapons as $weapon){ ?>
+            <tr>
+                <td>
+                    <?= $weapon['name'] ?>
+                </td>
+                <td>
+                    <?= $weapon['type'] ?>
+                </td>
+                <td>
+                    <?= $weapon['damage'] ?>
+                </td>
+                <td>
+                    <?= $weapon['weight'] ?>
+                </td>
+                <td>
+                    <?= $weapon['price'] ?>
+                </td>
+                <td>
+                    <?= $weapon['properties'] ?>
+                </td>
+                <td>
+                    <?= $weapon['ranges'] ?>
+                </td>
+            </tr>
+        <?php }; ?>
+        </table>
     </div>
 
     {/if}

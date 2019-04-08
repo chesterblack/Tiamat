@@ -718,6 +718,10 @@ footer{
     }
     table{
         width: 100%;
+
+        tr:nth-child(2n+3){
+            background-color: var(--color-secondary);
+        }
     }
     .titles td{
         border-bottom: var(--line-main) var(--color-primary);
@@ -726,6 +730,13 @@ footer{
         font-size: 21px;
         letter-spacing: -0.5px;
     }
+}
+#savedTitle{
+    margin-top: 20px;
+}
+button.plus{
+    min-width: 55px;
+    margin-left: -20px;
 }
 div.submit{
     text-align: center;

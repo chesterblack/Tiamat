@@ -31,8 +31,61 @@
                 $inputs = array("character_name"=>$character_name, "character_race"=>$character_race,"character_subrace"=>$character_subrace, "character_class"=>$character_class,"character_subclass"=>$character_subclass,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma,"character_alignment"=>$character_alignment,"skills"=>$skills);
 
                 $process->addData($inputs);
+
+                $process->addInventory($_POST['weapon'], $character_name);
+
             }
         ?>
+
+        <script>
+
+
+            var weaponDropdown = document.getElementById('weapon');
+            var weaponNo = 0;
+            function selectWeapon(){
+                var weaponDropdown = document.getElementById('weapon');
+                try{
+                    selectedWeapon = weaponDropdown.options[weaponDropdown.selectedIndex].value
+                }catch{
+                    selectedWeapon = 'battleaxe';
+                }
+
+
+
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200){   
+                        document.getElementById('weapon-properties').innerHTML = this.responseText;
+                    }
+                };
+                xmlHttp.open("GET", `/assets/php/ajax-weapons.php?q=${selectedWeapon}`, true);
+                xmlHttp.send();
+
+            };
+
+            function addWeapon(){
+                weaponNo++;
+                var weaponProps = document.getElementById('weapon-properties');
+                var clone = weaponProps.cloneNode(true);
+                clone.id = `weaponNo${weaponNo}`;
+                var savedList = document.getElementById('weapons');
+                document.getElementById('savedTitle').className = "";
+                savedList.className = "";
+                savedList.appendChild(clone);
+                document.getElementById('hiddenWeapons').innerHTML += `<input type='checkbox' id='hiddenWeapon${weaponNo}' name='weapon[]' value='${selectedWeapon}' checked />`;
+                document.getElementById(`weaponNo${weaponNo}`).innerHTML += `<td onclick='deleteWeapon(${weaponNo})' style='text-align: center;'><img src='/assets/images/trash-simple.svg' /></td>`;
+            };
+
+            function deleteWeapon(weaponNo){
+                var weaponStats = document.getElementById(`weaponNo${weaponNo}`);
+                var hiddenWeapon = document.getElementById(`hiddenWeapon${weaponNo}`);
+
+                weaponStats.remove();
+                hiddenWeapon.remove();
+            }
+
+            selectWeapon();
+        </script>
 
         <script>
             showSubraces("dwarf");
@@ -170,16 +223,16 @@
                 <li><label><input type="checkbox" name="skill[]" value="religion"><span>religion</span></label></li>
                 <li><label><input type="checkbox" name="skill[]" value="sleight_of_hand"><span>sleight of hand</span></label></li>
                 <li><label><input type="checkbox" name="skill[]" value="stealth"><span>stealth</span></label></li>
-                <li><label><input type="checkbox" name="skill[]" value="survival"><span>survival</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="survival" ><span>survival</span></label></li>
             </ul>
             <div class="clearfix"></div>
             <hr>
             <h2>
                 Equipment
             </h2>
-            <ul class="inputs" id="weapons">
+            <ul class="inputs">
                 <li>WEAPON:
-                    <select id="weapon" name="weapon" onchange="showWeaponProperties()">
+                    <select id="weapon" onchange="selectWeapon()">
                         <?php
                             $weapons = $process->getEquipment('weapons','name,short_name','');
 
@@ -191,49 +244,70 @@
                         ?>
                     </select>
                     <div class='arrow'></div>
-                    <script>
-                        function showWeaponProperties(){
-                            var xmlHttp = new XMLHttpRequest();
-                            xmlHttp.onreadystatechange = function(){
-                                if (this.readyState == 4 && this.status == 200){   
-                                    document.getElementById('weapon-properties').innerHTML = this.responseText;
-                                }
-                            };
-                            var selectedWeapon = document.getElementById('weapon');
-                            xmlHttp.open("GET", "/assets/php/ajax-weapons.php?q=" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true);
-                            xmlHttp.send();
-                        }
-                        showWeaponProperties()
-                    </script>
+                    <button class="plus" type="button" onclick="addWeapon()">+</button>
                 </li>
-            </ul>
-            <table cellpadding="0" cellspacing="0" border="0">
-                <tr class="titles">
-                    <td>
-                        Type
-                    </td>
-                    <td>
-                        Damage
-                    </td>
-                    <td>
-                        Weight
-                    </td>
-                    <td>
-                        Price
-                    </td>
-                    <td>
-                        Properties
-                    </td>
-                    <td>
-                        Range
-                    </td>
-                </tr>
-                <tr id="weapon-properties">
-                </tr>
-            </table>
-            <button class="plus" type="button" onclick="addWeapon()">+</button>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr class="titles">
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            Damage
+                        </td>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            Properties
+                        </td>
+                        <td>
+                            Range
+                        </td>
+                    </tr>
+                    <tr id="weapon-properties">
+                    </tr>
+                </table>
+                <h2 class="hidden" id="savedTitle">
+                    Selected weapons
+                </h2>
+                <table cellpadding="0" cellspacing="0" border="0" id="weapons" class="hidden">
+                    <tr class="titles">
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            Damage
+                        </td>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            Properties
+                        </td>
+                        <td>
+                            Range
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr id="weaponStats">
+                    </tr>
+                </table>
+            </ul>            
             <hr>
             <input type="hidden" name="csrf_token" value="{csrf_token}">
+            <ul id="hiddenWeapons" class="hidden"></ul>
             <div class="submit">
                 <button type="submit" name="entered"><span>SUBMIT</span></button>
             </div>
@@ -241,14 +315,9 @@
     </div>
 </body>
 
-<script>
-
-console.log('helloworld')
-
+{!-- <script>
 
 var weaponsList = <?php json_encode($weapons); ?>;
-
-
 
 var plusno = document.getElementsByClassName('plus');
 console.log(plusno)
@@ -267,6 +336,6 @@ function addSelectOptions(){
     });
 }
 
-</script>
+</script> --}
 
 {!--<script src="/assets/js/inventory.js"></script>--}
