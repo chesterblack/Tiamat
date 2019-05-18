@@ -1,10 +1,25 @@
 <?php
-    $find = "/<a channel='(.*?)' profile='(.*?)'>(.*?)<\/a>/";
-
-    $replace = "<a href=\"/$1/profile/$2\" target=\"_blank\" onmouseover=\"showBox('$2')\" onmouseout=\"showBox('$2')\">$3</a> <?php \$profileBoxes['$1'] = '$2'; ?>";
+    // $find = "/<a channel='(.*?)' profile='(.*?)'>(.*?)<\/a>/";
 
     $search = "{embed:searchsource}";
+    $find = array();
+    $replace = array();
 
-    echo preg_replace($find,$replace,$search);
+    {exp:channel:entries channel="locations|characters|items"}
+
+    {aka}
+    array_push($find, "{aka:name}");
+    array_push($replace, "<a href=\"/{channel_short_name}/profile/{url_title}\" target=\"_blank\" onmouseover=\"showBox('{url_title}')\" onmouseout=\"showBox('{url_title}')\">{aka:name}</a>");
+    {/aka}
+
+    array_push($find, "{title}");
+    array_push($replace, "<a href=\"/{channel_short_name}/profile/{url_title}\" target=\"_blank\" onmouseover=\"showBox('{url_title}')\" onmouseout=\"showBox('{url_title}')\">{title}</a>");
+
+    {/exp:channel:entries}
+
+    // echo "<pre>";
+    // print_r($find);
+
+    echo str_replace($find, $replace, $search);
 ?>
 
