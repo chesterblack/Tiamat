@@ -146,11 +146,12 @@
 		{/exp:channel:entries}
 
 		<div class="all-comments">
-
 			<div class="comments-box">
+                {exp:comment:entries sort="asc" limit="1" author_id="2" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<h2>
 					Lloyd's notes:
-				</h2>
+                </h2>
+                {/exp:comment:entries}
 				{exp:comment:entries sort="asc" limit="20" author_id="2" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
@@ -170,9 +171,11 @@
 			</div>
 
 			<div class="comments-box">
+                {exp:comment:entries sort="asc" limit="1" author_id="3" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<h2>
 					Harry's notes:
-				</h2>
+                </h2>
+                {/exp:comment:entries}
 				{exp:comment:entries sort="asc" limit="20" author_id="3" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
@@ -192,9 +195,11 @@
 			</div>
 
 			<div class="comments-box">
+                {exp:comment:entries sort="asc" limit="1" author_id="4" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<h2>
 					Holly's notes:
-				</h2>
+                </h2>
+                {/exp:comment:entries}
 				{exp:comment:entries sort="asc" limit="20" author_id="4" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
@@ -211,7 +216,7 @@
 				</div>
 				{/exp:comment:form}
 				{/if}
-			</div>
+            </div>
 		</div>
 	</div>
 </body>

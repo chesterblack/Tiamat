@@ -31,7 +31,7 @@
         $character_alignment = $process->unshorten($alignmentShort);
         $skills = $process->getSkills("{last_segment}");
 
-        $weapons = $process->getInventory($process->unshorten('{last_segment}'));
+        $weapons = $process->getInventory($process->unshorten('{last_segment}'), "weapons");
     ?>
 
     {embed="/_includes/nav"}

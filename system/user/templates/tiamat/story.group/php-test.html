@@ -1,5 +1,4 @@
 <?php
-    // $find = "/<a channel='(.*?)' profile='(.*?)'>(.*?)<\/a>/";
 
     $search = "{embed:searchsource}";
     $find = array();
@@ -9,17 +8,14 @@
 
     {aka}
     array_push($find, "{aka:name}");
-    array_push($replace, "<a href=\"/{channel_short_name}/profile/{url_title}\" target=\"_blank\" onmouseover=\"showBox('{url_title}')\" onmouseout=\"showBox('{url_title}')\">{aka:name}</a>");
+    array_push($replace, "<a href=\"/{channel_short_name}/{url_title}\" target=\"_blank\" onmouseover=\"showBox('{url_title}')\" onmouseout=\"showBox('{url_title}')\">{aka:name}</a>");
     {/aka}
 
     array_push($find, "{title}");
-    array_push($replace, "<a href=\"/{channel_short_name}/profile/{url_title}\" target=\"_blank\" onmouseover=\"showBox('{url_title}')\" onmouseout=\"showBox('{url_title}')\">{title}</a>");
-
+    array_push($replace, "<a href=\"/{channel_short_name}/{url_title}\" target=\"_blank\" onmouseover=\"showBox('{url_title}')\" onmouseout=\"showBox('{url_title}')\">{title}</a>");
+    
     {/exp:channel:entries}
 
-    // echo "<pre>";
-    // print_r($find);
-
     echo str_replace($find, $replace, $search);
-?>
 
+?>

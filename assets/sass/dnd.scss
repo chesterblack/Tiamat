@@ -1,6 +1,7 @@
 :root{
     --color-primary: #000000;
     --color-secondary: rgba(212, 212, 212, 0.45);
+    --color-alert-neg: #b1372b;
     --font-main: 'Roboto', sans-serif;
     --weight-main: 100;
     --line-main: 1px solid;
@@ -10,6 +11,12 @@
 }
 body{
     margin: 0;
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding-bottom: 100px;
+    box-sizing: border-box;
 }
 hr{
     border-top: 1px solid var(--color-primary);
@@ -44,12 +51,13 @@ table{
     padding: 15px;
     background-color: var(--color-secondary);
     border: var(--line-main) var(--color-primary);
+    margin-bottom: 10px;
 }
 td{
     padding: 5px 10px 0 5px;
     max-width: 210px;
 }
-p,a,li,td,button,span,input,select{
+p,em,a,li,td,button,span,input,select{
     font-family: var(--font-main);
     font-size: 26px;
     margin: 0;
@@ -61,7 +69,7 @@ ul{
 li{
     list-style: none;
 }
-p{
+p,em{
     font-weight: 300;
     font-size: 19px;
 }
@@ -127,6 +135,10 @@ input:not([type=checkbox]){
     text-transform: uppercase;
     font-weight: 100;
 }
+.alert{
+    color: var(--color-alert-neg);
+    font-weight: 700;
+}
 
 /* HOMEPAGE */
 .homepage{
@@ -159,7 +171,7 @@ input:not([type=checkbox]){
         padding: 29px 19px;
     }
     ul{
-        margin-bottom: 0;
+        margin-bottom: 20px;
     }
     h2{
         font-weight: 100;
@@ -181,6 +193,9 @@ input:not([type=checkbox]){
     border-bottom: var(--line-main) var(--color-primary);
     margin-bottom: 30px;
 
+    em{
+        margin-left: 35px;
+    }
     p a{
         font-size: 19px;
     }
@@ -192,9 +207,6 @@ input:not([type=checkbox]){
     h3{
         text-transform: uppercase;
     }
-}
-em{
-    margin-left: 35px;
 }
 .menu{
     text-align: center;
@@ -549,6 +561,9 @@ footer{
     border-top: var(--line-main) var(--color-primary);
     margin-top: 50px;
     font-weight: var(--weight-main);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 
     li{
         display: inline-block;
