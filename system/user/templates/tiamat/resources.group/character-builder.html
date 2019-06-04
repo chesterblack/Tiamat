@@ -32,7 +32,8 @@
 
                 $process->addData($inputs);
 
-                $process->addInventory($_POST['weapon'], $character_name);
+                $process->addInventory($_POST['weapon'], $character_name, 'weapons');
+                $process->addInventory($_POST['armour'], $character_name, 'armour');
 
             }
         ?>
@@ -121,7 +122,7 @@
                 document.getElementById('savedTitleArmour').className = "";
                 savedList.className = "";
                 savedList.appendChild(clone);
-                document.getElementById('hiddenArmours').innerHTML += `<input type='checkbox' id='hiddenArmour${armourNo}' name='armour[]' value='${selectedArmour}' checked />`;
+                document.getElementById('hiddenArmour').innerHTML += `<input type='checkbox' id='hiddenArmour${armourNo}' name='armour[]' value='${selectedArmour}' checked />`;
                 document.getElementById(`armourNo${armourNo}`).innerHTML += `<td onclick='deleteArmour(${armourNo})' style='text-align: center;'><img src='/assets/images/trash-simple.svg' /></td>`;
             }
 
@@ -433,6 +434,7 @@
             <hr>
             <input type="hidden" name="csrf_token" value="{csrf_token}">
             <ul id="hiddenWeapons" class="hidden"></ul>
+            <ul id="hiddenArmour" class="hidden"></ul>
             <div class="submit">
                 <button type="submit" name="entered"><span>SUBMIT</span></button>
             </div>

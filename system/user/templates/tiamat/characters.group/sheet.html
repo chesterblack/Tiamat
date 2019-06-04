@@ -32,6 +32,8 @@
         $skills = $process->getSkills("{last_segment}");
 
         $weapons = $process->getInventory($process->unshorten('{last_segment}'), "weapons");
+        $armours = $process->getInventory($process->unshorten('{last_segment}'), "armour");
+
     ?>
 
     {embed="/_includes/nav"}
@@ -178,7 +180,8 @@
             <li><h2>Passive Perception:</h2> <?php echo $process->getPassivePerception("{last_segment}") ?></li>
             <li><h2>Initiative:</h2> <?php echo $process->getModifier($dexterity); ?>
         </ul>
-        <h2>Equipment</h2>
+        <?php if($weapons){ ?>
+        <h2>Weapons</h2>
         <table cellpadding="0" cellspacing="0" border="0" id="weaponStats">
             <tr class="titles">
                 <td>
@@ -203,7 +206,10 @@
                     Range
                 </td>
             </tr>
-        <?php foreach($weapons as $weapon){ ?>
+        <?php foreach($weapons as $weapon){
+            $base_damage = $weapon['damage'];
+            
+        ?>
             <tr>
                 <td>
                     <?= $weapon['name'] ?>
@@ -227,9 +233,100 @@
                     <?= $weapon['ranges'] ?>
                 </td>
             </tr>
+        <?php } ?>
+        </table>
+        <?php 
+            }
+            if($armours){ 
+        ?>
+        <h2>Armour</h2>
+        <table cellpadding="0" cellspacing="0" border="0" id="armourStats">
+            <tr class="titles">
+                <td>
+                    Name
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    AC
+                </td>
+                <td>
+                    Weight
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    STR Req
+                </td>
+                <td>
+                    Stealth
+                </td>
+            </tr>
+        <?php 
+            foreach($armours as $armour){
+                $name = $armour['name'];
+                $type = $armour['type'];
+                switch($type){
+                    case "Light":
+                        $dexBonus = '∞';
+                        break;
+                    case "Medium":
+                        $dexBonus = 2;
+                        break;
+                    case "Heavy":
+                        $dexBonus = 0;
+                        break;
+                    case "Shield":
+                        $dexBonus = 0;
+                        break;
+                    default:
+                        $dexBonus = 0;
+                }
+                $dexModifier = $process->getModifier($dexterity);
+                if($dexBonus){
+                    if($dexModifier > $dexBonus){
+                        $ac = (int)$armour['base_ac'] + (int)$dexModifier;
+                    }else{
+                        $ac = (int)$armour['base_ac'] + (int)$dexBonus;
+                    }
+                }else{
+                    $ac = $armour['base_ac'];
+                }
+                $weight = $armour['weight'];
+                $price = $armour['price'];
+                $minStrength = $armour['min_strength'];
+                $stealth = $armour['stealth'];
+        ?>
+            <tr>
+                <td>
+                    <?= $name ?>
+                </td>
+                <td>
+                    <?= $type ?>
+                </td>
+                <td>
+                    <?= $ac ?>
+                </td>
+                <td>
+                    <?= $weight . 'lbs' ?>
+                </td>
+                <td>
+                    <?= $price ?>
+                </td>
+                <td>
+                    <?= $minStrength ?>
+                </td>
+                <td>
+                    <?= $stealth ?>
+                </td>
+            </tr>
         <?php }; ?>
         </table>
+        <?php } ?>
     </div>
+        
 
     {/if}
 
