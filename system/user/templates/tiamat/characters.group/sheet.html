@@ -206,9 +206,73 @@
                     Range
                 </td>
             </tr>
-        <?php foreach($weapons as $weapon){
-            $base_damage = $weapon['damage'];
-            
+        <?php 
+        
+        $weapon_prof = $process->getItemProficiency($character_mainclass, 'weapon_prof');
+        $strength_mod = $process->getModifier($strength);
+        $dexterity_mod = $process->getModifier($dexterity);
+        foreach($weapons as $weapon){
+            if(strpos($weapon['properties'], 'finesse')){
+                $finesse = true;
+            }else{
+                $finesse = false;
+            }
+            if(strpos($weapon['properties'], 'thrown')){
+                $thrown = true;
+            }else{
+                $thrown = false;
+            }
+            if(
+                (
+                    $weapon['type'] == 'melee' && 
+                    $finesse &&
+                    $strength > $dexterity
+                ) || (
+                    $weapon['type'] == 'melee' &&
+                    $finesse == false
+                ) || (
+                    $thrown &&
+                    $strength > $dexterity
+                )
+            ){
+                if($weapon['proficiency'] == 'martial' && $weapon_prof != 'martial'){
+                    if($strength_mod == 0){
+                        $damage = false;
+                    }elseif($strength_mod > 0){
+                        $damage = '+' . $strength_mod;
+                    }elseif($strength_mod < 0){
+                        $damage = $strength_mod;
+                    }
+                }else{
+                    $total_mod = $strength_mod + $process->getProficiency("{last_segment}");
+                    if($total_mod == 0){
+                        $damage = false;
+                    }elseif($total_mod > 0){
+                        $damage = '+' . $total_mod;
+                    }elseif($total_mod < 0){
+                        $damage = $total_mod;
+                    }
+                }
+            }else{
+                if($weapon['proficiency'] == 'martial' && $weapon_prof != 'martial'){
+                    if($dexterity_mod == 0){
+                        $damage = false;
+                    }elseif($dexterity_mod > 0){
+                        $damage = '+' . $dexterity_mod;
+                    }elseif($dexterity_mod < 0){
+                        $damage = $dexterity_mod;
+                    }
+                }else{
+                    $total_mod = $dexterity_mod + $process->getProficiency("{last_segment}");
+                    if($total_mod == 0){
+                        $damage = false;
+                    }elseif($total_mod > 0){
+                        $damage = '+' . $total_mod;
+                    }elseif($total_mod < 0){
+                        $damage = $total_mod;
+                    }
+                }
+            }
         ?>
             <tr>
                 <td>
@@ -218,7 +282,7 @@
                     <?= $weapon['type'] ?>
                 </td>
                 <td>
-                    <?= $weapon['damage'] ?>
+                    <?= $weapon['damage'].$damage ?>
                 </td>
                 <td>
                     <?= $weapon['weight'] ?>
