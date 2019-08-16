@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {embed="/_includes/dnd-header"}
-    {exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}
-		<title>{title}</title>
-	{/exp:channel:entries}
-</head>
+{layout="/_includes/layout-main"}
+{layout:set name="title"}{exp:channel:entries channel='characters' limit='1' url_title="{last_segment}"}{title}{/exp:channel:entries}{/layout:set}
+
 <body class="character-sheet">
     <?php
         error_reporting(E_ALL);
@@ -35,6 +30,10 @@
         $alignmentShort = $process->getData("character_alignment","{last_segment}");
         $character_alignment = $process->unshorten($alignmentShort);
         $skills = $process->getSkills("{last_segment}");
+
+        $weapons = $process->getInventory($process->unshorten('{last_segment}'), "weapons");
+        $armours = $process->getInventory($process->unshorten('{last_segment}'), "armour");
+
     ?>
 
     {embed="/_includes/nav"}
@@ -95,7 +94,7 @@
 				<h3>
 					{standfirst}
                 </h3>
-                <?php if($process->checkMatch($character_name)){ ?>
+                <?php if($process->alreadyExists($character_name)){ ?>
                     <button><a href="/characters/{last_segment}">View profile</a></button>
                 <?php } ?>
 			</div>
@@ -181,13 +180,223 @@
             <li><h2>Passive Perception:</h2> <?php echo $process->getPassivePerception("{last_segment}") ?></li>
             <li><h2>Initiative:</h2> <?php echo $process->getModifier($dexterity); ?>
         </ul>
+        <?php if($weapons){ ?>
+        <h2>Weapons</h2>
+        <table cellpadding="0" cellspacing="0" border="0" id="weaponStats">
+            <tr class="titles">
+                <td>
+                    Name
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    Damage
+                </td>
+                <td>
+                    Weight
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    Properties
+                </td>
+                <td>
+                    Range
+                </td>
+            </tr>
+        <?php 
+        
+        $weapon_prof = $process->getItemProficiency($character_mainclass, 'weapon_prof');
+        $strength_mod = $process->getModifier($strength);
+        $dexterity_mod = $process->getModifier($dexterity);
+        foreach($weapons as $weapon){
+            if(strpos($weapon['properties'], 'finesse')){
+                $finesse = true;
+            }else{
+                $finesse = false;
+            }
+            if(strpos($weapon['properties'], 'thrown')){
+                $thrown = true;
+            }else{
+                $thrown = false;
+            }
+            if(
+                (
+                    $weapon['type'] == 'melee' && 
+                    $finesse &&
+                    $strength > $dexterity
+                ) || (
+                    $weapon['type'] == 'melee' &&
+                    $finesse == false
+                ) || (
+                    $thrown &&
+                    $strength > $dexterity
+                )
+            ){
+                if($weapon['proficiency'] == 'martial' && $weapon_prof != 'martial'){
+                    if($strength_mod == 0){
+                        $damage = false;
+                    }elseif($strength_mod > 0){
+                        $damage = '+' . $strength_mod;
+                    }elseif($strength_mod < 0){
+                        $damage = $strength_mod;
+                    }
+                }else{
+                    $total_mod = $strength_mod + $process->getProficiency("{last_segment}");
+                    if($total_mod == 0){
+                        $damage = false;
+                    }elseif($total_mod > 0){
+                        $damage = '+' . $total_mod;
+                    }elseif($total_mod < 0){
+                        $damage = $total_mod;
+                    }
+                }
+            }else{
+                if($weapon['proficiency'] == 'martial' && $weapon_prof != 'martial'){
+                    if($dexterity_mod == 0){
+                        $damage = false;
+                    }elseif($dexterity_mod > 0){
+                        $damage = '+' . $dexterity_mod;
+                    }elseif($dexterity_mod < 0){
+                        $damage = $dexterity_mod;
+                    }
+                }else{
+                    $total_mod = $dexterity_mod + $process->getProficiency("{last_segment}");
+                    if($total_mod == 0){
+                        $damage = false;
+                    }elseif($total_mod > 0){
+                        $damage = '+' . $total_mod;
+                    }elseif($total_mod < 0){
+                        $damage = $total_mod;
+                    }
+                }
+            }
+        ?>
+            <tr>
+                <td>
+                    <?= $weapon['name'] ?>
+                </td>
+                <td>
+                    <?= $weapon['type'] ?>
+                </td>
+                <td>
+                    <?= $weapon['damage'].$damage ?>
+                </td>
+                <td>
+                    <?= $weapon['weight'] ?>
+                </td>
+                <td>
+                    <?= $weapon['price'] ?>
+                </td>
+                <td>
+                    <?= $weapon['properties'] ?>
+                </td>
+                <td>
+                    <?= $weapon['ranges'] ?>
+                </td>
+            </tr>
+        <?php } ?>
+        </table>
+        <?php 
+            }
+            if($armours){ 
+        ?>
+        <h2>Armour</h2>
+        <table cellpadding="0" cellspacing="0" border="0" id="armourStats">
+            <tr class="titles">
+                <td>
+                    Name
+                </td>
+                <td>
+                    Type
+                </td>
+                <td>
+                    AC
+                </td>
+                <td>
+                    Weight
+                </td>
+                <td>
+                    Price
+                </td>
+                <td>
+                    STR Req
+                </td>
+                <td>
+                    Stealth
+                </td>
+            </tr>
+        <?php 
+            foreach($armours as $armour){
+                $name = $armour['name'];
+                $type = $armour['type'];
+                switch($type){
+                    case "Light":
+                        $dexBonus = '∞';
+                        break;
+                    case "Medium":
+                        $dexBonus = 2;
+                        break;
+                    case "Heavy":
+                        $dexBonus = 0;
+                        break;
+                    case "Shield":
+                        $dexBonus = 0;
+                        break;
+                    default:
+                        $dexBonus = 0;
+                }
+                $dexModifier = $process->getModifier($dexterity);
+                if($dexBonus){
+                    if($dexModifier > $dexBonus){
+                        $ac = (int)$armour['base_ac'] + (int)$dexModifier;
+                    }else{
+                        $ac = (int)$armour['base_ac'] + (int)$dexBonus;
+                    }
+                }else{
+                    $ac = $armour['base_ac'];
+                }
+                $weight = $armour['weight'];
+                $price = $armour['price'];
+                $minStrength = $armour['min_strength'];
+                $stealth = $armour['stealth'];
+        ?>
+            <tr>
+                <td>
+                    <?= $name ?>
+                </td>
+                <td>
+                    <?= $type ?>
+                </td>
+                <td>
+                    <?= $ac ?>
+                </td>
+                <td>
+                    <?= $weight . 'lbs' ?>
+                </td>
+                <td>
+                    <?= $price ?>
+                </td>
+                <td>
+                    <?= $minStrength ?>
+                </td>
+                <td>
+                    <?= $stealth ?>
+                </td>
+            </tr>
+        <?php }; ?>
+        </table>
+        <?php } ?>
     </div>
+        
 
     {/if}
 
     {!--<?php if(!$character_name){ ?>
     {redirect="404"}
     <?php } ?>--}
+    </div>
 
 </body>
-</html>

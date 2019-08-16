@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {embed="/_includes/dnd-header"}
-    <title>Category</title>
-</head>
+{layout="/_includes/layout-main"}
+
 <body class="archive">
     {embed="/_includes/nav"}
     <div class="container">
-        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="characters"}
+        {exp:channel:category_archive show="{last_segment_category_id}" style="linear" channel="characters|story"}
         {categories}
             <h1 style="border-left:5px solid {colour}; padding-left:15px;">{category_name}</h1>
         {/categories}
         {exp:channel:entries category="{last_segment_category_id}"}
+        {layout:set name="title"}{last_segment_category_name} {channel}{/layout:set}
         <div class="profile-box categories" id="{url_title}">
-            <a href="/{channel}/{url_title}">
+            <a href="/{channel_short_name}/{url_title}">
+
                 <h2>{title}</h2>
             </a>
             <p>{standfirst}</p>
@@ -28,4 +26,3 @@
         </div>
     </div>
 </body>
-</html>

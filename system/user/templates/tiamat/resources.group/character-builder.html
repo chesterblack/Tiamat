@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    {embed="/_includes/dnd-header"}
-    <title>Character Builder</title>
-</head>
+{layout="/_includes/layout-main"}
+{layout:set name="title"}Character Builder{/layout:set}
+
 <body>
     {embed="/_includes/nav"}
     <div class="container character-sheet">
@@ -34,8 +31,112 @@
                 $inputs = array("character_name"=>$character_name, "character_race"=>$character_race,"character_subrace"=>$character_subrace, "character_class"=>$character_class,"character_subclass"=>$character_subclass,"strength"=>$strength,"constitution"=>$constitution,"dexterity"=>$dexterity,"intelligence"=>$intelligence,"wisdom"=>$wisdom,"charisma"=>$charisma,"character_alignment"=>$character_alignment,"skills"=>$skills);
 
                 $process->addData($inputs);
+
+                $process->addInventory($_POST['weapon'], $character_name, 'weapons');
+                $process->addInventory($_POST['armour'], $character_name, 'armour');
+
             }
         ?>
+
+        <script>
+            var weaponDropdown = document.getElementById('weapon');
+            var weaponNo = 0;
+            function selectWeapon(){
+                var weaponDropdown = document.getElementById('weapon');
+                try{
+                    selectedWeapon = weaponDropdown.options[weaponDropdown.selectedIndex].value
+                }catch{
+                    selectedWeapon = 'battleaxe';
+                }
+
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200){   
+                        document.getElementById('weapon-properties').innerHTML = this.responseText;
+                    }
+                };
+                xmlHttp.open("GET", `/assets/php/ajax-weapons.php?q=${selectedWeapon}&table=weapons`, true);
+                xmlHttp.send();
+
+            }
+
+            function addWeapon(){
+                weaponNo++;
+                var weaponProps = document.getElementById('weapon-properties');
+                var clone = weaponProps.cloneNode(true);
+                clone.id = `weaponNo${weaponNo}`;
+                var savedList = document.getElementById('weapons');
+                document.getElementById('savedTitleWeapons').className = "";
+                savedList.className = "";
+                savedList.appendChild(clone);
+                document.getElementById('hiddenWeapons').innerHTML += `<input type='checkbox' id='hiddenWeapon${weaponNo}' name='weapon[]' value='${selectedWeapon}' checked />`;
+                document.getElementById(`weaponNo${weaponNo}`).innerHTML += `<td onclick='deleteWeapon(${weaponNo})' style='text-align: center;'><img src='/assets/images/trash-simple.svg' /></td>`;
+            }
+
+            function deleteWeapon(weaponNo){
+                var weaponStats = document.getElementById(`weaponNo${weaponNo}`);
+                var hiddenWeapon = document.getElementById(`hiddenWeapon${weaponNo}`);
+
+                weaponStats.remove();
+                hiddenWeapon.remove();
+            }
+
+            var armourDropdown = document.getElementById('armour');
+            var armourNo = 0;
+            function selectArmour(){
+                var armourDropdown = document.getElementById('armour');
+                try{
+                    selectedArmour = armourDropdown.options[armourDropdown.selectedIndex].value
+                }catch{
+                    selectedArmour = 'padded';
+                }
+
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.onreadystatechange = function(){
+                    if (this.readyState == 4 && this.status == 200){   
+                        document.getElementById('armour-properties').innerHTML = this.responseText;
+                    }
+                };
+                xmlHttp.open("GET", `/assets/php/ajax-weapons.php?q=${selectedArmour}&table=armour`, true);
+                xmlHttp.send();
+
+                setTimeout(strCheck, 500);
+            }
+
+            function strCheck(){
+                var strengthVal = document.getElementsByName('strength')[0];
+                var minStr = document.getElementById('minStr');
+                if(parseInt(minStr.innerHTML, 10) > strengthVal.value){
+                    document.getElementById('strLabel').classList = 'alert';
+                }else{
+                    document.getElementById('strLabel').classList = '';
+                }
+            }
+
+            function addArmour(){
+                armourNo++;
+                var armourProps = document.getElementById('armour-properties');
+                var clone = armourProps.cloneNode(true);
+                clone.id = `armourNo${armourNo}`;
+                var savedList = document.getElementById('armours');
+                document.getElementById('savedTitleArmour').className = "";
+                savedList.className = "";
+                savedList.appendChild(clone);
+                document.getElementById('hiddenArmour').innerHTML += `<input type='checkbox' id='hiddenArmour${armourNo}' name='armour[]' value='${selectedArmour}' checked />`;
+                document.getElementById(`armourNo${armourNo}`).innerHTML += `<td onclick='deleteArmour(${armourNo})' style='text-align: center;'><img src='/assets/images/trash-simple.svg' /></td>`;
+            }
+
+            function deleteArmour(armourNo){
+                var armourStats = document.getElementById(`armourNo${armourNo}`);
+                var hiddenArmour = document.getElementById(`hiddenArmour${armourNo}`);
+
+                armourStats.remove();
+                hiddenArmour.remove();
+            }
+
+            selectArmour();
+            selectWeapon();
+        </script>
 
         <script>
             showSubraces("dwarf");
@@ -138,8 +239,9 @@
             <hr>
             <h2>Attributes</h2>
             <div class="clearfix"></div>
+            {!-- TODO: Show modifier next to the actual score --}
             <ul class="inputs attributes">
-                <li>STR: <input type="number" name="strength" value="10"></li>
+                <li>STR: <input type="number" name="strength" value="10" onchange="strCheck()"></li>
                 <li>CON: <input type="number" name="constitution" value="10"></li>
                 <li>DEX: <input type="number" name="dexterity" value="10"></li>
             </ul>
@@ -173,14 +275,195 @@
                 <li><label><input type="checkbox" name="skill[]" value="religion"><span>religion</span></label></li>
                 <li><label><input type="checkbox" name="skill[]" value="sleight_of_hand"><span>sleight of hand</span></label></li>
                 <li><label><input type="checkbox" name="skill[]" value="stealth"><span>stealth</span></label></li>
-                <li><label><input type="checkbox" name="skill[]" value="survival"><span>survival</span></label></li>
+                <li><label><input type="checkbox" name="skill[]" value="survival" ><span>survival</span></label></li>
             </ul>
             <div class="clearfix"></div>
             <hr>
-            <input type="hidden" name="csrf_token" value="{csrf_token}">
-            <button type="submit" name="entered">SUBMIT</button>
+            <h2>
+                Equipment
+            </h2>
+            <ul class="inputs">
+                <li>
+                    ARMOUR:
+                    <select id="armour" onchange="selectArmour()">
+                        <?php
+                            $armours = $process->getEquipment('armour','name,short_name','');
+
+                            foreach($armours as $armour){
+                                $armourShortName = $armour['short_name'];
+                                $armourName = $armour['name'];
+                                echo "<option value='$armourShortName'>$armourName</option>";
+                            }
+                        ?>
+                    </select>
+                    <div class='arrow'></div>
+                    <button class="plus" type="button" onclick="addArmour()">+</button>
+                </li>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr class="titles">
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            AC
+                        </td>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td id="strLabel">
+                            STR Req
+                        </td>
+                        <td>
+                            Stealth
+                        </td>
+                    </tr>
+                    <tr id="armour-properties">
+                    </tr>
+                </table>
+                <h2 class="hidden" id="savedTitleArmour">
+                    Selected armour
+                </h2>
+                <table cellpadding="0" cellspacing="0" border="0" id="armours" class="hidden">
+                    <tr class="titles">
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            AC
+                        </td>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            STR Req
+                        </td>
+                        <td>
+                            Stealth
+                        </td>
+                    </tr>
+                    <tr id="armourStats">
+                    </tr>
+                </table>
             </ul>
+            <ul class="inputs">
+                <li>WEAPON:
+                    <select id="weapon" onchange="selectWeapon()">
+                        <?php
+                            $weapons = $process->getEquipment('weapons','name,short_name','');
+
+                            foreach($weapons as $weapon){
+                                $weaponShortName = $weapon['short_name'];
+                                $weaponName = $weapon['name'];
+                                echo "<option value='$weaponShortName'>$weaponName</option>";
+                            }
+                        ?>
+                    </select>
+                    <div class='arrow'></div>
+                    <button class="plus" type="button" onclick="addWeapon()">+</button>
+                </li>
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tr class="titles">
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            Damage
+                        </td>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            Properties
+                        </td>
+                        <td>
+                            Range
+                        </td>
+                    </tr>
+                    <tr id="weapon-properties">
+                    </tr>
+                </table>
+                <h2 class="hidden" id="savedTitleWeapons">
+                    Selected weapons
+                </h2>
+                <table cellpadding="0" cellspacing="0" border="0" id="weapons" class="hidden">
+                    <tr class="titles">
+                        <td>
+                            Name
+                        </td>
+                        <td>
+                            Type
+                        </td>
+                        <td>
+                            Damage
+                        </td>
+                        <td>
+                            Weight
+                        </td>
+                        <td>
+                            Price
+                        </td>
+                        <td>
+                            Properties
+                        </td>
+                        <td>
+                            Range
+                        </td>
+                        <td></td>
+                    </tr>
+                    <tr id="weaponStats">
+                    </tr>
+                </table>
+            </ul>            
+            <hr>
+            <input type="hidden" name="csrf_token" value="{csrf_token}">
+            <ul id="hiddenWeapons" class="hidden"></ul>
+            <ul id="hiddenArmour" class="hidden"></ul>
+            <div class="submit">
+                <button type="submit" name="entered"><span>SUBMIT</span></button>
+            </div>
         </form>
     </div>
 </body>
-</html>
+
+{!-- <script>
+
+var weaponsList = <?php json_encode($weapons); ?>;
+
+var plusno = document.getElementsByClassName('plus');
+console.log(plusno)
+
+function addWeapon(){
+    document.getElementById('weapons').insertAdjacentHTML("beforeend","<li>WEAPON: <select class=\"weaponselect\" id=\"weapon\" name=\"weapon\" onchange=\"showWeaponProperties()\">"+addSelectOptions()+"</select> <div class='arrow'></div><script>function showWeaponProperties(){var xmlHttp=new XMLHttpRequest(); xmlHttp.onreadystatechange=function(){if (this.readyState==4 && this.status==200){document.getElementById('weapon-properties').innerHTML=this.responseText;}}; var selectedWeapon=document.getElementById('weapon'); xmlHttp.open(\"GET\", \"/assets/php/ajax-weapons.php?q=\" + selectedWeapon.options[selectedWeapon.selectedIndex].value, true); xmlHttp.send();}showWeaponProperties() </script> </li><div class='arrow'");
+}
+
+function addSelectOptions(){
+    weaponsList.forEach(function(entry){
+        var weaponSelects = document.getElementsByClassName('weaponselect');
+
+        weaponsSelects.forEach(function(select){
+            select.innerHTML += "<option value='"+entry.shortname+"'>"+entry.name+"</option>"
+        });
+    });
+}
+
+</script> --}
+
+{!--<script src="/assets/js/inventory.js"></script>--}

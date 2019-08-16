@@ -68,7 +68,7 @@
             }
         }
     }
-    h1{
+    h1,footer h6{
         font-size: 35px;
         letter-spacing: 9px;
     }
@@ -121,5 +121,12 @@
     }
     .combat-tracker .setup .inputs li{
         width: 100%;
+    }
+    footer{
+        .left,.right{
+            float: none;
+            width: 100%;
+            text-align: center;
+        }
     }
 }

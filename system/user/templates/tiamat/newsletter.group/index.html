@@ -1,0 +1,47 @@
+{layout="/_includes/layout-main"}
+{layout:set name="title"}Newsletter{/layout:set}
+{embed="/_includes/nav"}
+
+<?php
+
+error_reporting(E_ALL);
+
+require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/newsletter-signup.php";
+
+$message = "";
+
+if(isset($_GET['k'])){
+    $key = htmlentities($_GET['k']);
+    $message = $process->confirmEmail($key);
+}
+
+if(isset($_POST['email'])){
+    $email = htmlentities($_POST['email']);
+    $emailExists = $process->checkEmail('email_address',$email);
+    if (!$emailExists){
+        $process->insertEmail($email);
+        $process->sendConfirmationEmail($email);
+        $message = "Success! Please please check your inbox and spam/junk folder for your confirmation email.";
+    }elseif($emailExists = "unconfirmed"){
+        $message = "You have not confirmed, please check your inbox and spam/junk folder.";
+    }elseif($emailExists = "subscribed"){
+        $message = "You have already subscribed!";
+    }
+}
+
+?>
+
+<body>
+    <div class="container newsletter">
+        <h1>Newsletter Signup</h1>
+        <hr>
+        <p>
+            Enter your email address below to sign up to the newsletter! Not sure how frequently they're going to be sent out, but they'll have all the details on when there's new features or updated entries on the site.
+        </p>
+        <h2><?= $message; ?></h2>
+        <form method="POST" action="">
+            <input type="hidden" name="csrf_token" value="{csrf_token}">
+            <input type="email" name="email" placeholder="Enter email..."><button type="submit">Submit</button>
+        </form>
+    </div>
+</body>

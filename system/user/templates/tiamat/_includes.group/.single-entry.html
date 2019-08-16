@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	{embed=/_includes/dnd-header}
-	{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}
-		<title>{title}</title>
-	{/exp:channel:entries}
-</head>
+{layout="/_includes/layout-main"}
+{layout:set name="title"}{exp:channel:entries channel='{embed:page-channel}' limit='1' url_title="{last_segment}"}{title}{/exp:channel:entries}{/layout:set}
 <body>
     <?php 
         require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
@@ -152,11 +146,12 @@
 		{/exp:channel:entries}
 
 		<div class="all-comments">
-
 			<div class="comments-box">
+                {exp:comment:entries sort="asc" limit="1" author_id="2" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<h2>
 					Lloyd's notes:
-				</h2>
+                </h2>
+                {/exp:comment:entries}
 				{exp:comment:entries sort="asc" limit="20" author_id="2" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
@@ -176,9 +171,11 @@
 			</div>
 
 			<div class="comments-box">
+                {exp:comment:entries sort="asc" limit="1" author_id="3" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<h2>
 					Harry's notes:
-				</h2>
+                </h2>
+                {/exp:comment:entries}
 				{exp:comment:entries sort="asc" limit="20" author_id="3" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
@@ -198,9 +195,11 @@
 			</div>
 
 			<div class="comments-box">
+                {exp:comment:entries sort="asc" limit="1" author_id="4" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<h2>
 					Holly's notes:
-				</h2>
+                </h2>
+                {/exp:comment:entries}
 				{exp:comment:entries sort="asc" limit="20" author_id="4" channel="{embed:page-channel}" url_title="{last_segment}"}
 				<p>
 					{comment}
@@ -217,8 +216,7 @@
 				</div>
 				{/exp:comment:form}
 				{/if}
-			</div>
+            </div>
 		</div>
 	</div>
 </body>
-</html>
