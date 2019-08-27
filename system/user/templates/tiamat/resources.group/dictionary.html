@@ -1,0 +1,47 @@
+{layout="/_includes/layout-main"}
+{layout:set name="title"}Alfstranii Dictionary{/layout:set}
+
+
+<body>
+    {embed="/_includes/nav"}
+    <div class="container dictionary">
+        <h1>
+            Alfstranii Dictionary
+        </h1>
+        <input 
+            type="text" 
+            placeholder="English" 
+            name="english" 
+            id="english-search"
+            oninput="checkText('english')"
+        />
+            <input 
+            type="text" 
+            placeholder="Alfstranii" 
+            name="alfstranii" 
+            id="alfstranii-search" 
+            oninput="checkText('alfstranii')"
+        />
+        <button type="submit" onclick="search()">
+            Search
+        </button>
+        <table class="results" cellspacing="0">
+            <thead>
+                <tr class="titles">
+                    <td>
+                        English
+                    </td>
+                    <td>
+                        Alfstranii
+                    </td>
+                    <td>
+                        Notes
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="results"></tbody>
+        </table>
+    </div>
+    <script src="/assets/js/dictionary.js"></script>
+</body>
+</html>
