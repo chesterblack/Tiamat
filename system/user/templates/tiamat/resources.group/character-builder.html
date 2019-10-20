@@ -9,8 +9,32 @@
         </h1>
 
         <?php 
-            // error_reporting(E_ALL);
+            //error_reporting(E_ALL);
             require_once $_SERVER['DOCUMENT_ROOT']."/assets/php/character-generator.php";
+
+            if (isset($_GET['edit'])) {
+                $edit_name = htmlentities($_GET['edit']);
+                $editing_character = array();
+                $editing_character['name'] = $process->getData('character_name', $edit_name);
+                $editing_character['class'] = $process->getData('character_class', $edit_name);
+                $editing_character['subclass'] = $process->getData('character_subclass', $edit_name);
+                $editing_character['race'] = $process->getData('character_race', $edit_name);
+                $editing_character['subrace'] = $process->getData('character_subrace', $edit_name);
+                
+                $default_attribute['strength'] = $process->getData('strength', $edit_name);
+                $default_attribute['constitution'] = $process->getData('constitution', $edit_name);
+                $default_attribute['dexterity'] = $process->getData('dexterity', $edit_name);
+                $default_attribute['intelligence'] = $process->getData('intelligence', $edit_name);
+                $default_attribute['wisdom'] = $process->getData('wisdom', $edit_name);
+                $default_attribute['charisma'] = $process->getData('charisma', $edit_name);
+            } else {
+                $default_attribute['strength'] = 10;
+                $default_attribute['constitution'] = 10;
+                $default_attribute['dexterity'] = 10;
+                $default_attribute['intelligence'] = 10;
+                $default_attribute['wisdom'] = 10;
+                $default_attribute['charisma'] = 10;
+            }
 
             if (isset($_POST['entered'])){
                 $character_subrace = $_POST['character_subrace'];
@@ -138,10 +162,8 @@
             selectWeapon();
         </script>
 
-        <script>
-            showSubraces("dwarf");
-            showSubclasses("barbarian");
 
+        <script>
             function showSubraces(str){
                 if(str.length == 0){
                     document.getElementById("subrace").innerHTML = "";
@@ -150,7 +172,6 @@
                     xmlHttp.onreadystatechange = function(){
                         if (this.readyState == 4 && this.status == 200){
                             if(this.responseText[0] != undefined){
-                                console.log(this.responseText);
                                 document.getElementById("subraceouter").style.display = "inline-block";
                                 document.getElementById("subrace").innerHTML = this.responseText;
                             }else{
@@ -159,7 +180,8 @@
                             }
                         }
                     };
-                    xmlHttp.open("GET", "/assets/php/ajax-races.php?q=" + str, true);
+                    
+                    xmlHttp.open("GET", "/assets/php/ajax-races.php?editing=<?= $editing_character['subrace'] ?>&q=" + str, true);
                     xmlHttp.send();
                 }
             }
@@ -179,16 +201,25 @@
                             }
                         }
                     };
-                    xmlHttp.open("GET", "/assets/php/ajax-classes.php?q=" + str2, true);
+                    xmlHttp.open("GET", "/assets/php/ajax-classes.php?editing=<?= $editing_character['subclass'] ?>&q=" + str2, true);
+
                     xmlHttp.send();
                 }
             }
         </script>
 
+        <?php
+            if (isset($editing_character)) {
+                echo "<script>showSubraces('".$editing_character['race']."'); showSubclasses('".$editing_character['class']."')</script>";
+            } else {
+                echo "<script>showSubraces('dwarf'); showSubclasses('barbarian')</script>";
+            }
+        ?>
+
         <form action="" method="post">
             <ul class="inputs">
                 <hr>
-                <li class="attributes">NAME: <input type="text" name="character_name"></li>
+                <li class="attributes">NAME: <input type="text" name="character_name" value="<?php if (isset($editing_character)) {echo $editing_character['name'];} ?>"></li>
                 <li class="attributes">ALIGNMENT: <select name="character_alignment">
                     <option value="lawful_good">Lawful Good</option>
                     <option value="neutral_good">Neutral Good</option>
@@ -204,11 +235,16 @@
                 <div class="clearfix"></div>
                 <li class="attributes">CLASS: <select name="character_mainclass" onchange='showSubclasses(this.value)'>
                     <?php 
-                    $classes = $process->getClasses("class_name","");
-                    foreach($classes as $class){
-                        $class_name = $class['class_name'];
-                        echo "<option value='$class_name'>$class_name</option>\n";
-                    }
+                        $classes = $process->getClasses("class_name","");
+                        foreach($classes as $class){
+                            $class_name = $class['class_name'];
+
+                            if ($editing_character['class'] == $class_name) {
+                                echo "<option value='$class_name' selected>$class_name</option>\n";
+                            } else {
+                                echo "<option value='$class_name'>$class_name</option>\n";
+                            }
+                        }
                     ?>
                     </select>
                     <div class="arrow"></div>
@@ -221,11 +257,16 @@
                 <div class="clearfix"></div>
                 <li class="attributes">RACE: <select name="character_mainrace" onchange='showSubraces(this.value)'>
                     <?php 
-                    $races = $process->getRaces("race_name","");
-                    foreach($races as $race){
-                        $race_name = $race['race_name'];
-                        echo "<option value='$race_name'>$race_name</option>\n";
-                    }
+                        $races = $process->getRaces("race_name","");
+                        foreach($races as $race){
+                            $race_name = $race['race_name'];
+
+                            if ($editing_character['race'] == $race_name) {
+                                echo "<option value='$race_name' selected>$race_name</option>\n";
+                            } else {
+                                echo "<option value='$race_name'>$race_name</option>\n";
+                            }
+                        }
                     ?>
                 </select>
                 <div class="arrow"></div>
@@ -241,14 +282,14 @@
             <div class="clearfix"></div>
             {!-- TODO: Show modifier next to the actual score --}
             <ul class="inputs attributes">
-                <li>STR: <input type="number" name="strength" value="10" onchange="strCheck()"></li>
-                <li>CON: <input type="number" name="constitution" value="10"></li>
-                <li>DEX: <input type="number" name="dexterity" value="10"></li>
+                <li>STR: <input type="number" name="strength" value="<?= $default_attribute['strength'] ?>" onchange="strCheck()"></li>
+                <li>CON: <input type="number" name="constitution" value="<?= $default_attribute['constitution'] ?>"></li>
+                <li>DEX: <input type="number" name="dexterity" value="<?= $default_attribute['dexterity'] ?>"></li>
             </ul>
             <ul class="inputs attributes">
-                <li>INT: <input type="number" name="intelligence" value="10"></li>
-                <li>WIS: <input type="number" name="wisdom" value="10"></li>
-                <li>CHA: <input type="number" name="charisma" value="10"></li>
+                <li>INT: <input type="number" name="intelligence" value="<?= $default_attribute['intelligence'] ?>"></li>
+                <li>WIS: <input type="number" name="wisdom" value="<?= $default_attribute['wisdom'] ?>"></li>
+                <li>CHA: <input type="number" name="charisma" value="<?= $default_attribute['charisma'] ?>"></li>
             </ul>
             <hr>
             <h2>Skills</h2>
