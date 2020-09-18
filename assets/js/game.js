@@ -1,23 +1,48 @@
 // ----- ----- ----- //
 //    GLOBAL VARS    //
 // ----- ----- ----- //
-var textBox = document.getElementById("text");
-var responseBox = document.getElementById("responses");
-var dialogueBox = document.getElementById("dialogue");
-var newGameChoices = [{"text": "New Game", "function": "newGame()"}, {"text": "Load Game", "function": "loadGame()"}];
-
+const textBox = document.getElementById("text");
+const responseBox = document.getElementById("responses");
+const dialogueBox = document.getElementById("dialogue");
 
 // ----- ----- ----- //
 //     FUNCTIONS     //
 // ----- ----- ----- //
-function typeWriter(txt, clear = true, target, callback){
+function ajax(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.send(null);
+
+    xhr.onreadystatechange = function () {
+        var DONE = 4;
+        var OK = 200;
+        if (xhr.readyState === DONE) {
+            if (xhr.status === OK) {
+                callback(xhr.responseText);
+            } else {
+                console.log('Error: ' + xhr.status);
+            }
+        }
+    };
+}
+
+/**
+ * 
+ * Types out the text given one letter at a time like a typewriter
+ * 
+ * @param {string} txt Text to be typewritered out
+ * @param {boolean} clear Whether the existing text should be cleared first
+ * @param {object} target Where the text needs to go
+ * @param {function} callback What to do once the text has been typed
+ */
+function typeWriter(txt, clear = true, target, callback) {
     responseBox.innerHTML = "";
     if (clear) {
         target.innerHTML = "";
     }
 
-    var i = 0;
-    var speed = 20;
+    let i = 0;
+    let speed = 20;
 
     typeText();
     function typeText() {
@@ -30,90 +55,46 @@ function typeWriter(txt, clear = true, target, callback){
         }
     }
 }
-function narratorMessage(txt, clear = true, callback){
-    typeWriter(txt, clear, textBox, callback);
-}
-function dialogueMessage(txt, clear = true, callback){
-    // -- STARTED WORKING ON MULTPILE DIALOGUE BOXES
-    // dialogueBoxes = document.getElementsByClassName('dialogue-box');
-    // if (clear == true) {
-    //     for(var i = 0; i < dialogueBoxes.length; i++) {
-    //         dialogueBoxes[i].parentNode.removeChild(dialogueBoxes[i]);
-    //     }
-    // }
-    typeWriter(txt, clear, dialogueBox, callback);
+
+/**
+ * 
+ * Creates an option button
+ * 
+ * @param {string} text the text to go in the button
+ * @param {integer} id the room id of where the button goes
+ * 
+ * @returns {string} the button HTML
+ */
+function createChoiceBox(text, id) {
+    return "<button onclick=\"writeOutRoom("+id+")\">"+text+"</button>";
 }
 
-function presentChoices(choices){
-    responseBox.innerHTML = "";
-    for (var i = 0; i < choices.length; i++) {
-        responseBox.innerHTML += createChoiceBox(choices[i]);
+/**
+ * 
+ * Adds the option buttons to the responses div
+ * 
+ * @param {array} choices array of objects with text and ids to create the option buttons
+ */
+function presentChoices(choices) {
+    for (let i = 0; i < choices.length; i++) {
+        responseBox.innerHTML += createChoiceBox(choices[i].text, choices[i].id);
     }
 }
 
-function createChoiceBox(data){
-    return "<button onclick=\""+data.function+"\">"+data.text+"</button>";
-}
+/**
+ * 
+ * Fetches room data from the database based on id given, then prints out the message and presents the options of a room
+ * 
+ * @param {integer} id the id of the room to present
+ * 
+ */
+function writeOutRoom(id) {
+    var url = '/assets/php/game.php?function=fetchRoom&room=' + id;
 
-function newGame(){
-    narratorMessage("You approach a tavern, the sign on the door reads: The Savoury Salmon. It seems humble, but reasonably well-kept.", true, function(){
-        presentChoices([
-            {"text": "Walk in", "function": "fetchRoom('savoury-salmon')"}
-        ]);
-    });
-}
-
-function loadGame(){
-    narratorMessage("Sorry, loading games isn't available... yet", true);
-    presentChoices(newGameChoices);
-}
-
-function ajax(url, callback){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.send(null);
-
-    xhr.onreadystatechange = function () {
-        var DONE = 4;
-        var OK = 200;
-        if (xhr.readyState === DONE) {
-            if (xhr.status === OK) {
-                console.log(xhr.responseText);
-                callback(xhr.responseText);
-            } else {
-                console.log('Error: ' + xhr.status);
-            }
-        }
-    };
-}
-
-function fetchOptions(string){
-    var optionIDs = string.split(',');
-    var options = [];
-
-    for (var i = 0; i < optionIDs.length; i++) {
-        var url = '/assets/php/game.php?function=fetchOption&option=' + optionIDs[i];
-        ajax(url, function(response){
-            response = JSON.parse(response);
-            options.push(response);
-        });
-    }
-
-    return options;
-}
-
-function fetchRoom(roomName){
-    var url = '/assets/php/game.php?function=fetchRoom&room=' + roomName;
-
-    ajax(url, function(response){
-        response = JSON.parse(response);
-
-        var greeting = response.greeting;
-        var options = fetchOptions(response.options);
-    
-        narratorMessage(greeting, true, function(){
-            presentChoices(options);
+    ajax(url, (response) => {
+        roomData = JSON.parse(response);
+        typeWriter(roomData.message, true, textBox, () => {
+            presentChoices(roomData.options);
         });
     });
-
 }

@@ -10,3 +10,4 @@
 /assets/php/newsletter-signup.php
 /vendor
 .env
+/system/user/config/config.php

@@ -23,24 +23,21 @@
             case 'fetchRoom':
                 fetchRoom($_GET['room']);
                 break;
-            case 'fetchOption':
-                fetchOption($_GET['option']);
-                break;
+            default:
+                echo "Invalid function provided";
         }
     }
 
-    function fetchRoom($room){
-        $stmt = connect()->prepare('SELECT * FROM rooms WHERE room_name = :room');
-
-        $stmt->execute(['room' => $room]);
+    /**
+     * 
+     * Fetches data from rooms table
+     * 
+     * @param String $roomID - the id of the room row
+     * @return String - JSON encoded object
+     */
+    function fetchRoom($roomID){
+        $stmt = connect()->prepare('SELECT `data` FROM rooms WHERE id = :id');
+        $stmt->execute(['id' => $roomID]);
         $results = $stmt->fetch();
-        echo json_encode($results);
-    }
-
-    function fetchOption($option){
-        $stmt = connect()->prepare('SELECT * FROM options WHERE id = :id');
-
-        $stmt->execute(['id' => $option]);
-        $results = $stmt->fetch();
-        echo json_encode($results);
+        echo $results['data'];
     }
